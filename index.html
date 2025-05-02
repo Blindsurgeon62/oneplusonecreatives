@@ -72,48 +72,49 @@
             color: #888;
             margin-top: 40px;
         }
+        
+        /* Lightbox styles */
+        .photo-container img {
+            cursor: pointer;
+            transition: opacity 0.3s;
+        }
+
+        .photo-container img:hover {
+            opacity: 0.9;
+        }
+
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            text-align: center;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .lightbox img {
+            max-width: 90%;
+            max-height: 90vh;
+            margin: auto;
+            position: relative;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .close-lightbox {
+            color: white;
+            font-size: 30px;
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            cursor: pointer;
+        }
     </style>
-css/* Lightbox styles */
-.photo-container img {
-    cursor: pointer;
-    transition: opacity 0.3s;
-}
-
-.photo-container img:hover {
-    opacity: 0.9;
-}
-
-.lightbox {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.9);
-    z-index: 1000;
-    text-align: center;
-    padding: 20px;
-    box-sizing: border-box;
-}
-
-.lightbox img {
-    max-width: 90%;
-    max-height: 90vh;
-    margin: auto;
-    position: relative;
-    top: 50%;
-    transform: translateY(-50%);
-}
-
-.close-lightbox {
-    color: white;
-    font-size: 30px;
-    position: absolute;
-    top: 20px;
-    right: 30px;
-    cursor: pointer;
-}
 </head>
 <body>
     <div class="container">
@@ -139,36 +140,38 @@ css/* Lightbox styles */
             © 2025 One Plus One Creatives. All Rights Reserved.
         </div>
     </div>
-<!-- Lightbox container -->
-<div id="lightbox" class="lightbox">
-    <span class="close-lightbox" onclick="closeLightbox()">&times;</span>
-    <img id="lightbox-img" src="">
-</div>
-<script>
-    function openLightbox(imageSrc) {
-        document.getElementById('lightbox-img').src = imageSrc;
-        document.getElementById('lightbox').style.display = 'block';
-        document.body.style.overflow = 'hidden'; // Prevent scrolling
-    }
     
-    function closeLightbox() {
-        document.getElementById('lightbox').style.display = 'none';
-        document.body.style.overflow = 'auto'; // Restore scrolling
-    }
+    <!-- Lightbox container -->
+    <div id="lightbox" class="lightbox">
+        <span class="close-lightbox" onclick="closeLightbox()">&times;</span>
+        <img id="lightbox-img" src="">
+    </div>
     
-    // Close lightbox when clicking outside the image
-    document.getElementById('lightbox').addEventListener('click', function(e) {
-        if (e.target === this) {
-            closeLightbox();
+    <script>
+        function openLightbox(imageSrc) {
+            document.getElementById('lightbox-img').src = imageSrc;
+            document.getElementById('lightbox').style.display = 'block';
+            document.body.style.overflow = 'hidden'; // Prevent scrolling
         }
-    });
-    
-    // Close lightbox with ESC key
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape') {
-            closeLightbox();
+        
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+            document.body.style.overflow = 'auto'; // Restore scrolling
         }
-    });
-</script>
+        
+        // Close lightbox when clicking outside the image
+        document.getElementById('lightbox').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeLightbox();
+            }
+        });
+        
+        // Close lightbox with ESC key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeLightbox();
+            }
+        });
+    </script>
 </body>
 </html>
