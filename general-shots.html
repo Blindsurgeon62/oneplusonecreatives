@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>One Plus One Creatives</title>
+    <title>General Shots (35mm Film) - One Plus One Creatives</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -43,17 +43,21 @@
             box-shadow: 0 2px 10px rgba(0,0,0,0.3);
         }
         
-        .nav span {
+        .nav a {
             display: inline-block;
             margin: 0 15px;
             color: #888;
             text-decoration: none;
             font-weight: bold;
             font-size: 1.1rem;
-            cursor: default;
+            transition: color 0.3s;
         }
         
-        .nav span.active {
+        .nav a:hover {
+            color: #ffffff;
+        }
+        
+        .nav a.active {
             color: #ffffff;
             border-bottom: 2px solid #ffffff;
         }
@@ -149,6 +153,32 @@
             overflow: hidden;
             border-radius: 4px;
         }
+        
+        /* Category filters */
+        .filter-container {
+            margin-bottom: 30px;
+        }
+        
+        .filter-button {
+            display: inline-block;
+            padding: 8px 15px;
+            margin: 0 5px 10px;
+            background-color: #333;
+            color: #b0b0b0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .filter-button:hover {
+            background-color: #444;
+        }
+        
+        .filter-button.active {
+            background-color: #555;
+            color: white;
+        }
     </style>
 </head>
 <body>
@@ -156,83 +186,73 @@
         <h1>One Plus One Creatives</h1>
         <div class="tagline">Creating Space Between Choice and Consequence</div>
         
-        <!-- Navigation (non-functional) -->
+        <!-- Navigation with links -->
         <div class="nav">
-            <span class="active">Home</span>
-             <a href="general-shots.html">General Shots (35mm Film)</a>
-            <span>Astro/Night (35mm Film)</span>
-            <span>My Makings</span>
-            <span>Repairs</span>
-            <span>Musings</span>
+            <a href="index.html">Home</a>
+            <a href="general-film.html" class="active">General Shots (35mm Film)</a>
+            <a href="#">Astro/Night (35mm Film)</a>
+            <a href="#">My Makings</a>
+            <a href="#">Repairs</a>
+            <a href="#">Musings</a>
         </div>
         
         <div class="content-box">
-            <h2>1+1</h2>
-            <p>Hey there! I've wanted to do this for a while! Welcome to my space, its where I can put all of the stuff I'm doing creatively! I hope to encourage you to go out and find those things that makes you smile.<p>
-        </div>
-        
-        <div class="content-box">
-            <h2>Some of the photos I've taken</h2>
+            <h2>35mm Film Photography</h2>
+            <p>As I'm making this webpage, I may make it more specific, but for now, these are just some shots I liked</p>
             
-            <!-- Photo grid for all images -->
+            <!-- Optional category filters -->
+            <div class="filter-container">
+                <button class="filter-button active" onclick="filterPhotos('all')">All Photos</button>
+                <button class="filter-button" onclick="filterPhotos('street')">Street</button>
+                <button class="filter-button" onclick="filterPhotos('nature')">Nature</button>
+                <button class="filter-button" onclick="filterPhotos('people')">People</button>
+            </div>
+            
+            <!-- Photo grid for general film shots -->
             <div class="photo-grid" id="gallery">
-                <div class="photo-item">
+                <!-- You can place images in different categories by adding data-category attributes -->
+                <div class="photo-item" data-category="street">
+                    <img src="slrphotos/Film001Thumb.jpg" alt="Street Scene" onclick="openLightbox('slrphotos/Film001.jpg')">
+                </div>
+                <div class="photo-item" data-category="nature">
+                    <img src="slrphotos/Film002Thumb.jpg" alt="Nature Scene" onclick="openLightbox('slrphotos/Film002.jpg')">
+                </div>
+                <div class="photo-item" data-category="people">
+                    <img src="slrphotos/Film003Thumb.jpg" alt="Portrait" onclick="openLightbox('slrphotos/Film003.jpg')">
+                </div>
+                <div class="photo-item" data-category="street">
+                    <img src="slrphotos/Film004Thumb.jpg" alt="Urban Scene" onclick="openLightbox('slrphotos/Film004.jpg')">
+                </div>
+                <div class="photo-item" data-category="nature">
+                    <img src="slrphotos/Film005Thumb.jpg" alt="Landscape" onclick="openLightbox('slrphotos/Film005.jpg')">
+                </div>
+                <div class="photo-item" data-category="people">
+                    <img src="slrphotos/Film006Thumb.jpg" alt="Portrait" onclick="openLightbox('slrphotos/Film006.jpg')">
+                </div>
+                
+                <!-- Example placeholders - replace with your actual images -->
+                <!-- You can use the same images as your homepage initially -->
+                <div class="photo-item" data-category="street">
                     <img src="slrphotos/Misc001Thumb.jpg" alt="Photo 1" onclick="openLightbox('slrphotos/Misc001.jpg')">
                 </div>
-                <div class="photo-item">
+                <div class="photo-item" data-category="nature">
                     <img src="slrphotos/Misc002Thumb.jpg" alt="Photo 2" onclick="openLightbox('slrphotos/Misc002.jpg')">
                 </div>
-                <div class="photo-item">
+                <div class="photo-item" data-category="people">
                     <img src="slrphotos/Misc003Thumb.jpg" alt="Photo 3" onclick="openLightbox('slrphotos/Misc003.jpg')">
                 </div>
-                <div class="photo-item">
+                <div class="photo-item" data-category="street">
                     <img src="slrphotos/Misc004Thumb.jpg" alt="Photo 4" onclick="openLightbox('slrphotos/Misc004.jpg')">
                 </div>
-                <div class="photo-item">
+                <div class="photo-item" data-category="nature">
                     <img src="slrphotos/Misc005Thumb.jpg" alt="Photo 5" onclick="openLightbox('slrphotos/Misc005.jpg')">
                 </div>
-                <div class="photo-item">
+                <div class="photo-item" data-category="people">
                     <img src="slrphotos/Misc006Thumb.jpg" alt="Photo 6" onclick="openLightbox('slrphotos/Misc006.jpg')">
-                </div>
-                <div class="photo-item">
-                    <img src="slrphotos/Misc007Thumb.jpg" alt="Photo 7" onclick="openLightbox('slrphotos/Misc007.jpg')">
-                </div>
-                <div class="photo-item">
-                    <img src="slrphotos/Misc008Thumb.jpg" alt="Photo 8" onclick="openLightbox('slrphotos/Misc008.jpg')">
-                </div>
-                <div class="photo-item">
-                    <img src="slrphotos/Misc009Thumb.jpg" alt="Photo 9" onclick="openLightbox('slrphotos/Misc009.jpg')">
-                </div>
-                <div class="photo-item">
-                    <img src="slrphotos/Misc010Thumb.jpg" alt="Photo 10" onclick="openLightbox('slrphotos/Misc010.jpg')">
-                </div>
-                <div class="photo-item">
-                    <img src="slrphotos/Misc011Thumb.jpg" alt="Photo 11" onclick="openLightbox('slrphotos/Misc011.jpg')">
-                </div>
-                <div class="photo-item">
-                    <img src="slrphotos/Misc012Thumb.jpg" alt="Photo 12" onclick="openLightbox('slrphotos/Misc012.jpg')">
-                </div>
-                <div class="photo-item">
-                    <img src="slrphotos/Misc013Thumb.jpg" alt="Photo 13" onclick="openLightbox('slrphotos/Misc013.jpg')">
-                </div>
-                <div class="photo-item">
-                    <img src="slrphotos/Misc014Thumb.jpg" alt="Photo 14" onclick="openLightbox('slrphotos/Misc014.jpg')">
-                </div>
-                <div class="photo-item">
-                    <img src="slrphotos/Misc015Thumb.jpg" alt="Photo 15" onclick="openLightbox('slrphotos/Misc015.jpg')">
-                </div>
-                <div class="photo-item">
-                    <img src="slrphotos/Misc016Thumb.jpg" alt="Photo 16" onclick="openLightbox('slrphotos/Misc016.jpg')">
-                </div>
-                <div class="photo-item">
-                    <img src="slrphotos/Misc017Thumb.jpg" alt="Photo 17" onclick="openLightbox('slrphotos/Misc017.jpg')">
-                </div>
-                <div class="photo-item">
-                    <img src="slrphotos/Misc018Thumb.jpg" alt="Photo 18" onclick="openLightbox('slrphotos/Misc018.jpg')">
                 </div>
             </div>
             
-            <p>Film Is Fun</p>
+            <p>All photos shot on 35mm film and developed at home</p>
         </div>
         
         <div class="copyright">
@@ -311,6 +331,30 @@
                 img.addEventListener('load', imageLoaded);
             }
         });
+        
+        // Category filtering functionality
+        function filterPhotos(category) {
+            const items = document.querySelectorAll('.photo-item');
+            
+            items.forEach(item => {
+                if (category === 'all' || item.getAttribute('data-category') === category) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+            
+            // Update active button
+            const buttons = document.querySelectorAll('.filter-button');
+            buttons.forEach(button => {
+                button.classList.remove('active');
+            });
+            
+            event.currentTarget.classList.add('active');
+            
+            // Re-run masonry layout after filtering
+            setTimeout(resizeGridItems, 100);
+        }
     </script>
 </body>
 </html>
