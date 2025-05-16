@@ -10,8 +10,8 @@
             line-height: 1.6;
             margin: 0;
             padding: 0;
-            color: #333;
-            background-color: #f7f7f7;
+            color: #e0e0e0;
+            background-color: #1a1a1a;
         }
         
         .container {
@@ -25,26 +25,51 @@
         h1 {
             font-size: 3rem;
             margin-bottom: 10px;
-            color: #333;
+            color: #f0f0f0;
         }
         
         .tagline {
             font-size: 1.5rem;
-            color: #666;
-            margin-bottom: 60px;
+            color: #b0b0b0;
+            margin-bottom: 30px;
+        }
+        
+        /* Navigation */
+        .nav {
+            margin-bottom: 30px;
+            background-color: #2a2a2a;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+        
+        .nav span {
+            display: inline-block;
+            margin: 0 15px;
+            color: #888;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            cursor: default;
+        }
+        
+        .nav span.active {
+            color: #ffffff;
+            border-bottom: 2px solid #ffffff;
         }
         
         .content-box {
-            background-color: white;
+            background-color: #2a2a2a;
             padding: 40px;
             border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
             margin-bottom: 30px;
         }
         
         h2 {
             font-size: 2rem;
             margin-bottom: 30px;
+            color: #f0f0f0;
         }
         
         p {
@@ -52,7 +77,7 @@
             margin-bottom: 20px;
         }
         
-        /* New styles for photography */
+        /* Photography styles */
         .photo-container img {
             max-width: 100%;
             height: auto;
@@ -63,7 +88,7 @@
         
         .photo-description {
             font-style: italic;
-            color: #666;
+            color: #b0b0b0;
             margin-bottom: 30px;
         }
         
@@ -80,7 +105,7 @@
         }
 
         .photo-container img:hover {
-            opacity: 0.9;
+            opacity: 0.8;
         }
 
         .lightbox {
@@ -131,65 +156,85 @@
 <body>
     <div class="container">
         <h1>One Plus One Creatives</h1>
-        <div class="tagline">If This isn't Nice, I don't know what is. -Kurt Vonnegut Jr.</div>
+        <div class="tagline">Creating Space Between Choice and Consequence</div>
+        
+        <!-- Navigation (non-functional) -->
+        <div class="nav">
+            <span class="active">Home</span>
+            <span>SLR General</span>
+            <span>SLR Astro/Night</span>
+            <span>My Makings</span>
+            <span>Restorations</span>
+            <span>Musings</span>
+        </div>
         
         <div class="content-box">
-            <h2>SLR Photography</h2>
-            <div class="photo-container">
-                <img src="slrphotos/Sand-Thumb.jpg" alt="Its Sand" onclick="openLightbox('slrphotos/Sand.jpg')">
-                <p class="photo-description">Sand from a Zoo!</p>
-            </div>
-            
-            <!-- Photo grid for new images -->
+            <h2>Welcome to My Creative Space</h2>
+            <p>Hey there! I'm new to all this, but I'm having fun learning. I've wanted a place where I can put all of the stuff I like to work on, all in one place. Mainly this is for my film photography, but I'm hoping to have this be where I can keep all of my endeavors and ideas in one place.</p>
+            <p>If you like anything, that's great 8)</p>
+        </div>
+        
+        <div class="content-box">
+            <h2>My Photography</h2>
+            <!-- Photo grid for all images -->
             <div class="photo-grid">
                 <div class="photo-container">
-                    <img src="slrphotos/thumb0001.jpg" alt="Photo 1" onclick="openLightbox('slrphotos/0001.jpg')">
+                    <img src="slrphotos/Misc001Thumb.jpg" alt="Photo 1" onclick="openLightbox('slrphotos/Misc001.jpg')">
                 </div>
                 <div class="photo-container">
-                    <img src="slrphotos/thumb0002.jpg" alt="Photo 2" onclick="openLightbox('slrphotos/0002.jpg')">
+                    <img src="slrphotos/Misc002Thumb.jpg" alt="Photo 2" onclick="openLightbox('slrphotos/Misc002.jpg')">
                 </div>
                 <div class="photo-container">
-                    <img src="slrphotos/thumb0003.jpg" alt="Photo 3" onclick="openLightbox('slrphotos/0003.jpg')">
+                    <img src="slrphotos/Misc003Thumb.jpg" alt="Photo 3" onclick="openLightbox('slrphotos/Misc003.jpg')">
                 </div>
                 <div class="photo-container">
-                    <img src="slrphotos/thumb0004.jpg" alt="Photo 4" onclick="openLightbox('slrphotos/0004.jpg')">
+                    <img src="slrphotos/Misc004Thumb.jpg" alt="Photo 4" onclick="openLightbox('slrphotos/Misc004.jpg')">
                 </div>
                 <div class="photo-container">
-                    <img src="slrphotos/thumb0005.jpg" alt="Photo 5" onclick="openLightbox('slrphotos/0005.jpg')">
+                    <img src="slrphotos/Misc005Thumb.jpg" alt="Photo 5" onclick="openLightbox('slrphotos/Misc005.jpg')">
                 </div>
                 <div class="photo-container">
-                    <img src="slrphotos/thumb0006.jpg" alt="Photo 6" onclick="openLightbox('slrphotos/0006.jpg')">
+                    <img src="slrphotos/Misc006Thumb.jpg" alt="Photo 6" onclick="openLightbox('slrphotos/Misc006.jpg')">
                 </div>
                 <div class="photo-container">
-                    <img src="slrphotos/thumb0008.jpg" alt="Photo 8" onclick="openLightbox('slrphotos/0008.jpg')">
-                </div>  
-                <div class="photo-container">
-                    <img src="slrphotos/thumb0010.jpg" alt="Photo 10" onclick="openLightbox('slrphotos/0010.jpg')">
+                    <img src="slrphotos/Misc007Thumb.jpg" alt="Photo 7" onclick="openLightbox('slrphotos/Misc007.jpg')">
                 </div>
                 <div class="photo-container">
-                    <img src="slrphotos/thumb0011.jpg" alt="Photo 11" onclick="openLightbox('slrphotos/0011.jpg')">
+                    <img src="slrphotos/Misc008Thumb.jpg" alt="Photo 8" onclick="openLightbox('slrphotos/Misc008.jpg')">
                 </div>
                 <div class="photo-container">
-                    <img src="slrphotos/thumb0012.jpg" alt="Photo 12" onclick="openLightbox('slrphotos/0012.jpg')">
+                    <img src="slrphotos/Misc009Thumb.jpg" alt="Photo 9" onclick="openLightbox('slrphotos/Misc009.jpg')">
                 </div>
                 <div class="photo-container">
-                    <img src="slrphotos/thumb0013.jpg" alt="Photo 13" onclick="openLightbox('slrphotos/0013.jpg')">
+                    <img src="slrphotos/Misc010Thumb.jpg" alt="Photo 10" onclick="openLightbox('slrphotos/Misc010.jpg')">
                 </div>
                 <div class="photo-container">
-                    <img src="slrphotos/thumb0014.jpg" alt="Photo 14" onclick="openLightbox('slrphotos/0014.jpg')">
+                    <img src="slrphotos/Misc011Thumb.jpg" alt="Photo 11" onclick="openLightbox('slrphotos/Misc011.jpg')">
                 </div>
                 <div class="photo-container">
-                    <img src="slrphotos/thumb0015.jpg" alt="Photo 15" onclick="openLightbox('slrphotos/0015.jpg')">
+                    <img src="slrphotos/Misc012Thumb.jpg" alt="Photo 12" onclick="openLightbox('slrphotos/Misc012.jpg')">
+                </div>
+                <div class="photo-container">
+                    <img src="slrphotos/Misc013Thumb.jpg" alt="Photo 13" onclick="openLightbox('slrphotos/Misc013.jpg')">
+                </div>
+                <div class="photo-container">
+                    <img src="slrphotos/Misc014Thumb.jpg" alt="Photo 14" onclick="openLightbox('slrphotos/Misc014.jpg')">
+                </div>
+                <div class="photo-container">
+                    <img src="slrphotos/Misc015Thumb.jpg" alt="Photo 15" onclick="openLightbox('slrphotos/Misc015.jpg')">
+                </div>
+                <div class="photo-container">
+                    <img src="slrphotos/Misc016Thumb.jpg" alt="Photo 16" onclick="openLightbox('slrphotos/Misc016.jpg')">
+                </div>
+                <div class="photo-container">
+                    <img src="slrphotos/Misc017Thumb.jpg" alt="Photo 17" onclick="openLightbox('slrphotos/Misc017.jpg')">
+                </div>
+                <div class="photo-container">
+                    <img src="slrphotos/Misc018Thumb.jpg" alt="Photo 18" onclick="openLightbox('slrphotos/Misc018.jpg')">
                 </div>
             </div>
             
             <p>Film Is Fun</p>
-        </div>
-        
-        <div class="content-box">
-            <h2>So it Begins</h2>
-            <p>Hey there! I'm new to all this, but I'm having fun learning. I'm working on something I hope you will enjoy. This... whole project of mine is just beginning, and Im not sure of my plans, or when even this basic Page will be acceptable!</p>
-            <p>Anyways.. Stay tuned for updates on my film photography, vintage restorations, and some philosophical musings.</p>
         </div>
         
         <div class="copyright">
