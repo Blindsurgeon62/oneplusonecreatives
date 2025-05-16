@@ -16,7 +16,7 @@
         
         .container {
             width: 80%;
-            max-width: 800px;
+            max-width: 1200px; /* Increased max-width for better gallery display */
             margin: 0 auto;
             padding: 40px 20px;
             text-align: center;
@@ -78,12 +78,17 @@
         }
         
         /* Photography styles */
-        .photo-container img {
-            max-width: 100%;
+        .photo-item img {
+            width: 100%;
             height: auto;
             display: block;
-            margin: 0 auto 20px;
             border-radius: 4px;
+            cursor: pointer;
+            transition: opacity 0.3s;
+        }
+        
+        .photo-item img:hover {
+            opacity: 0.8;
         }
         
         .photo-description {
@@ -99,15 +104,6 @@
         }
         
         /* Lightbox styles */
-        .photo-container img {
-            cursor: pointer;
-            transition: opacity 0.3s;
-        }
-
-        .photo-container img:hover {
-            opacity: 0.8;
-        }
-
         .lightbox {
             display: none;
             position: fixed;
@@ -140,16 +136,18 @@
             cursor: pointer;
         }
         
-        /* Photo grid styles */
+        /* Masonry Grid Layout */
         .photo-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            margin: 30px 0;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            grid-auto-rows: 10px;
+            grid-gap: 15px;
         }
-
-        .photo-grid .photo-container {
-            margin: 0;
+        
+        .photo-item {
+            margin-bottom: 0; /* Remove bottom margin */
+            overflow: hidden;
+            border-radius: 4px;
         }
     </style>
 </head>
@@ -161,74 +159,76 @@
         <!-- Navigation (non-functional) -->
         <div class="nav">
             <span class="active">Home</span>
-            <span>SLR Photography</span>
-            <span>SLR Astro/Night</span>
+            <span>Film General</span>
+            <span>Astro/Night</span>
             <span>My Makings</span>
+            <span>Repairs</span>
             <span>Musings</span>
         </div>
         
         <div class="content-box">
-            <h2>1+1</h2>
-            <p>Hey there! I've wanted to do this for years, to have a place where I can put all of the stuff I've done creatively... all in one place, I appreciate you taking the time to check it out!</p>
-            
+            <h2>Welcome to My Creative Space</h2>
+            <p>Hey there! I'm new to all this, but I'm having fun learning. I've wanted a place where I can put all of the stuff I like to work on, all in one place. Mainly this is for my film photography, but I'm hoping to have this be where I can keep all of my endeavors and ideas in one place.</p>
+            <p>If you like anything, that's great 8)</p>
         </div>
         
         <div class="content-box">
-            <h2>SLR Photography</h2>
+            <h2>My Photography</h2>
+            
             <!-- Photo grid for all images -->
-            <div class="photo-grid">
-                <div class="photo-container">
+            <div class="photo-grid" id="gallery">
+                <div class="photo-item">
                     <img src="slrphotos/Misc001Thumb.jpg" alt="Photo 1" onclick="openLightbox('slrphotos/Misc001.jpg')">
                 </div>
-                <div class="photo-container">
+                <div class="photo-item">
                     <img src="slrphotos/Misc002Thumb.jpg" alt="Photo 2" onclick="openLightbox('slrphotos/Misc002.jpg')">
                 </div>
-                <div class="photo-container">
+                <div class="photo-item">
                     <img src="slrphotos/Misc003Thumb.jpg" alt="Photo 3" onclick="openLightbox('slrphotos/Misc003.jpg')">
                 </div>
-                <div class="photo-container">
+                <div class="photo-item">
                     <img src="slrphotos/Misc004Thumb.jpg" alt="Photo 4" onclick="openLightbox('slrphotos/Misc004.jpg')">
                 </div>
-                <div class="photo-container">
+                <div class="photo-item">
                     <img src="slrphotos/Misc005Thumb.jpg" alt="Photo 5" onclick="openLightbox('slrphotos/Misc005.jpg')">
                 </div>
-                <div class="photo-container">
+                <div class="photo-item">
                     <img src="slrphotos/Misc006Thumb.jpg" alt="Photo 6" onclick="openLightbox('slrphotos/Misc006.jpg')">
                 </div>
-                <div class="photo-container">
+                <div class="photo-item">
                     <img src="slrphotos/Misc007Thumb.jpg" alt="Photo 7" onclick="openLightbox('slrphotos/Misc007.jpg')">
                 </div>
-                <div class="photo-container">
+                <div class="photo-item">
                     <img src="slrphotos/Misc008Thumb.jpg" alt="Photo 8" onclick="openLightbox('slrphotos/Misc008.jpg')">
                 </div>
-                <div class="photo-container">
+                <div class="photo-item">
                     <img src="slrphotos/Misc009Thumb.jpg" alt="Photo 9" onclick="openLightbox('slrphotos/Misc009.jpg')">
                 </div>
-                <div class="photo-container">
+                <div class="photo-item">
                     <img src="slrphotos/Misc010Thumb.jpg" alt="Photo 10" onclick="openLightbox('slrphotos/Misc010.jpg')">
                 </div>
-                <div class="photo-container">
+                <div class="photo-item">
                     <img src="slrphotos/Misc011Thumb.jpg" alt="Photo 11" onclick="openLightbox('slrphotos/Misc011.jpg')">
                 </div>
-                <div class="photo-container">
+                <div class="photo-item">
                     <img src="slrphotos/Misc012Thumb.jpg" alt="Photo 12" onclick="openLightbox('slrphotos/Misc012.jpg')">
                 </div>
-                <div class="photo-container">
+                <div class="photo-item">
                     <img src="slrphotos/Misc013Thumb.jpg" alt="Photo 13" onclick="openLightbox('slrphotos/Misc013.jpg')">
                 </div>
-                <div class="photo-container">
+                <div class="photo-item">
                     <img src="slrphotos/Misc014Thumb.jpg" alt="Photo 14" onclick="openLightbox('slrphotos/Misc014.jpg')">
                 </div>
-                <div class="photo-container">
+                <div class="photo-item">
                     <img src="slrphotos/Misc015Thumb.jpg" alt="Photo 15" onclick="openLightbox('slrphotos/Misc015.jpg')">
                 </div>
-                <div class="photo-container">
+                <div class="photo-item">
                     <img src="slrphotos/Misc016Thumb.jpg" alt="Photo 16" onclick="openLightbox('slrphotos/Misc016.jpg')">
                 </div>
-                <div class="photo-container">
+                <div class="photo-item">
                     <img src="slrphotos/Misc017Thumb.jpg" alt="Photo 17" onclick="openLightbox('slrphotos/Misc017.jpg')">
                 </div>
-                <div class="photo-container">
+                <div class="photo-item">
                     <img src="slrphotos/Misc018Thumb.jpg" alt="Photo 18" onclick="openLightbox('slrphotos/Misc018.jpg')">
                 </div>
             </div>
@@ -270,6 +270,46 @@
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape') {
                 closeLightbox();
+            }
+        });
+        
+        // Masonry layout implementation
+        function resizeGridItems() {
+            const grid = document.getElementById('gallery');
+            const rowHeight = parseInt(window.getComputedStyle(grid).getPropertyValue('grid-auto-rows'));
+            const rowGap = parseInt(window.getComputedStyle(grid).getPropertyValue('grid-row-gap'));
+            
+            const items = grid.querySelectorAll('.photo-item');
+            
+            items.forEach(item => {
+                const content = item.querySelector('img');
+                const contentHeight = content.getBoundingClientRect().height;
+                
+                const rowSpan = Math.ceil((contentHeight + rowGap) / (rowHeight + rowGap));
+                item.style.gridRowEnd = 'span ' + rowSpan;
+            });
+        }
+        
+        // Initialize layout
+        window.addEventListener('load', resizeGridItems);
+        window.addEventListener('resize', resizeGridItems);
+        
+        // Ensure images are loaded before calculating layout
+        const allImages = document.querySelectorAll('.photo-item img');
+        let imagesLoaded = 0;
+        
+        function imageLoaded() {
+            imagesLoaded++;
+            if (imagesLoaded === allImages.length) {
+                resizeGridItems();
+            }
+        }
+        
+        allImages.forEach(img => {
+            if (img.complete) {
+                imageLoaded();
+            } else {
+                img.addEventListener('load', imageLoaded);
             }
         });
     </script>
