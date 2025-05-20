@@ -242,9 +242,15 @@
         
         <div class="content-box">
             <h2>35mm Film Photography</h2>
-            <p>Here you will find most of my work! I shot these using two cameras: my Canon Rebel 2000 paired with either a Canon EF 28-70mm II or Vivitar Series 1 100-400mm F4.5-6.7, or the Canon AV-1 using the FD 50mm 1:1.8 S.C.</p>
+            <p>Here you will find most of my work! I shot these using two cameras: my Canon Rebel 2000 paired with either a Canon EF 28-70mm II or Vivitar Series 1 100-400mm F4.5-6.7, and my cherished Canon AV-1 with the FD 50mm 1:1.8 S.C.—an old faithful gifted by my stellar uncle way back in 2007 while taking Photography 101 as a junior!</p>
             
-          
+            <!-- Optional category filters -->
+            <div class="filter-container">
+                <button class="filter-button active" onclick="filterPhotos('all')">All Photos</button>
+                <button class="filter-button" onclick="filterPhotos('street')">Street</button>
+                <button class="filter-button" onclick="filterPhotos('nature')">Nature</button>
+                <button class="filter-button" onclick="filterPhotos('people')">People</button>
+            </div>
             
             <!-- Photo grid for general film shots -->
             <div class="photo-grid" id="gallery">
@@ -341,15 +347,88 @@
     </div>
     
     <script>
-        function openLightbox(imageSrc) {
+        // Global variables for navigation
+        let allImages = [];
+        let currentImageIndex = 0;
+        let startX, startY, endX, endY;
+        const minSwipeDistance = 50;
+        
+        // Collect all image sources when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            collectAllImages();
+        });
+        
+        function collectAllImages() {
+            const photoItems = document.querySelectorAll('.photo-item');
+            allImages = [];  // Reset the array
+            
+            photoItems.forEach(item => {
+                if (item.style.display !== 'none') {  // Only collect visible images
+                    const img = item.querySelector('img');
+                    const onclickAttr = img.getAttribute('onclick');
+                    if (onclickAttr) {
+                        const match = onclickAttr.match(/openLightbox\('([^']+)',\s*(\d+)\)/);
+                        if (match && match[1]) {
+                            allImages.push({
+                                src: match[1],
+                                index: parseInt(match[2])
+                            });
+                        }
+                    }
+                }
+            });
+            
+            // Sort the images by their index
+            allImages.sort((a, b) => a.index - b.index);
+            
+            // Extract just the sources
+            allImages = allImages.map(item => item.src);
+            console.log('Collected images:', allImages);
+        }
+        
+        function openLightbox(imageSrc, index) {
+            // Make sure we have collected all images
+            if (allImages.length === 0) {
+                collectAllImages();
+            }
+            
+            // Find the index of this image in our array
+            currentImageIndex = allImages.indexOf(imageSrc);
+            if (currentImageIndex === -1) currentImageIndex = 0;
+            
             document.getElementById('lightbox-img').src = imageSrc;
             document.getElementById('lightbox').style.display = 'block';
             document.body.style.overflow = 'hidden'; // Prevent scrolling
+            updateImageCounter();
+            
+            console.log('Opened lightbox:', imageSrc, 'Index:', currentImageIndex);
         }
         
         function closeLightbox() {
             document.getElementById('lightbox').style.display = 'none';
             document.body.style.overflow = 'auto'; // Restore scrolling
+        }
+        
+        function nextImage() {
+            if (allImages.length === 0) return;
+            
+            currentImageIndex = (currentImageIndex + 1) % allImages.length;
+            document.getElementById('lightbox-img').src = allImages[currentImageIndex];
+            updateImageCounter();
+            console.log('Next image:', currentImageIndex, allImages[currentImageIndex]);
+        }
+        
+        function prevImage() {
+            if (allImages.length === 0) return;
+            
+            currentImageIndex = (currentImageIndex - 1 + allImages.length) % allImages.length;
+            document.getElementById('lightbox-img').src = allImages[currentImageIndex];
+            updateImageCounter();
+            console.log('Previous image:', currentImageIndex, allImages[currentImageIndex]);
+        }
+        
+        function updateImageCounter() {
+            document.getElementById('image-counter').textContent = `${currentImageIndex + 1} / ${allImages.length}`;
         }
         
         // Close lightbox when clicking outside the image
@@ -359,54 +438,66 @@
             }
         });
         
-        // Close lightbox with ESC key
+        // Close lightbox with ESC key and arrow navigation
         document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') {
-                closeLightbox();
+            if (document.getElementById('lightbox').style.display === 'block') {
+                if (e.key === 'Escape') {
+                    closeLightbox();
+                } else if (e.key === 'ArrowRight') {
+                    nextImage();
+                } else if (e.key === 'ArrowLeft') {
+                    prevImage();
+                }
             }
         });
         
-        // Masonry layout implementation
-        function resizeGridItems() {
-            const grid = document.getElementById('gallery');
-            const rowHeight = parseInt(window.getComputedStyle(grid).getPropertyValue('grid-auto-rows'));
-            const rowGap = parseInt(window.getComputedStyle(grid).getPropertyValue('grid-row-gap'));
-            
-            const items = grid.querySelectorAll('.photo-item');
-            
-            items.forEach(item => {
-                const content = item.querySelector('img');
-                const contentHeight = content.getBoundingClientRect().height;
-                
-                const rowSpan = Math.ceil((contentHeight + rowGap) / (rowHeight + rowGap));
-                item.style.gridRowEnd = 'span ' + rowSpan;
-            });
-        }
+        // Touch swipe detection
+        const lightbox = document.getElementById('lightbox');
         
-        // Initialize layout
-        window.addEventListener('load', resizeGridItems);
-        window.addEventListener('resize', resizeGridItems);
-        
-        // Ensure images are loaded before calculating layout
-        const allImages = document.querySelectorAll('.photo-item img');
-        let imagesLoaded = 0;
-        
-        function imageLoaded() {
-            imagesLoaded++;
-            if (imagesLoaded === allImages.length) {
-                resizeGridItems();
-            }
-        }
-        
-        allImages.forEach(img => {
-            if (img.complete) {
-                imageLoaded();
-            } else {
-                img.addEventListener('load', imageLoaded);
-            }
+        lightbox.addEventListener('touchstart', function(e) {
+            startX = e.touches[0].clientX;
+            startY = e.touches[0].clientY;
         });
         
-        // Category filtering functionality
+        lightbox.addEventListener('touchend', function(e) {
+            if (!startX || !startY) return;
+            
+            endX = e.changedTouches[0].clientX;
+            endY = e.changedTouches[0].clientY;
+            
+            const diffX = startX - endX;
+            const diffY = startY - endY;
+            
+            // If horizontal swipe is greater than vertical swipe
+            if (Math.abs(diffX) > Math.abs(diffY)) {
+                if (Math.abs(diffX) > minSwipeDistance) {
+                    if (diffX > 0) {
+                        // Swipe left, go to next
+                        nextImage();
+                    } else {
+                        // Swipe right, go to previous
+                        prevImage();
+                    }
+                }
+            }
+            
+            // Reset values
+            startX = null;
+            startY = null;
+        });
+        
+        // Make sure the navigation buttons in lightbox don't trigger the click event of the lightbox
+        document.querySelector('.prev-btn').addEventListener('click', function(e) {
+            e.stopPropagation();
+            prevImage();
+        });
+        
+        document.querySelector('.next-btn').addEventListener('click', function(e) {
+            e.stopPropagation();
+            nextImage();
+        });
+        
+        // Category filtering functionality - rebuild image array after filtering
         function filterPhotos(category) {
             const items = document.querySelectorAll('.photo-item');
             
@@ -428,7 +519,53 @@
             
             // Re-run masonry layout after filtering
             setTimeout(resizeGridItems, 100);
+            
+            // Update the image array after filtering
+            collectAllImages();
         }
+        
+        // Masonry layout implementation
+        function resizeGridItems() {
+            const grid = document.getElementById('gallery');
+            const rowHeight = parseInt(window.getComputedStyle(grid).getPropertyValue('grid-auto-rows'));
+            const rowGap = parseInt(window.getComputedStyle(grid).getPropertyValue('grid-row-gap'));
+            
+            const items = grid.querySelectorAll('.photo-item');
+            
+            items.forEach(item => {
+                const content = item.querySelector('img');
+                const contentHeight = content.getBoundingClientRect().height;
+                
+                const rowSpan = Math.ceil((contentHeight + rowGap) / (rowHeight + rowGap));
+                item.style.gridRowEnd = 'span ' + rowSpan;
+            });
+        }
+        
+        // Initialize layout
+        window.addEventListener('load', function() {
+            resizeGridItems();
+            collectAllImages();
+        });
+        window.addEventListener('resize', resizeGridItems);
+        
+        // Ensure images are loaded before calculating layout
+        const galleryImages = document.querySelectorAll('.photo-item img');
+        let imagesLoaded = 0;
+        
+        function imageLoaded() {
+            imagesLoaded++;
+            if (imagesLoaded === galleryImages.length) {
+                resizeGridItems();
+            }
+        }
+        
+        galleryImages.forEach(img => {
+            if (img.complete) {
+                imageLoaded();
+            } else {
+                img.addEventListener('load', imageLoaded);
+            }
+        });
     </script>
 </body>
 </html>
