@@ -53,7 +53,21 @@
             cursor: default;
         }
         
-        .nav span.active {
+        .nav a {
+            display: inline-block;
+            margin: 0 15px;
+            color: #888;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+        
+        .nav a:hover {
+            color: #ffffff;
+        }
+        
+        .nav span.active, .nav a.active {
             color: #ffffff;
             border-bottom: 2px solid #ffffff;
         }
@@ -125,6 +139,7 @@
             position: relative;
             top: 50%;
             transform: translateY(-50%);
+            z-index: 1001;
         }
 
         .close-lightbox {
@@ -134,6 +149,48 @@
             top: 20px;
             right: 30px;
             cursor: pointer;
+            z-index: 1002;
+        }
+        
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: white;
+            font-size: 50px;
+            cursor: pointer;
+            opacity: 0.7;
+            z-index: 1002;
+            transition: opacity 0.3s, background-color 0.3s;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.3);
+            border-radius: 5px;
+        }
+        
+        .lightbox-nav:hover {
+            opacity: 1;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        
+        .prev-btn {
+            left: 20px;
+        }
+        
+        .next-btn {
+            right: 20px;
+        }
+        
+        .image-counter {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 5px 15px;
+            border-radius: 15px;
+            font-size: 14px;
+            z-index: 1002;
         }
         
         /* Masonry Grid Layout */
@@ -142,6 +199,18 @@
             grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
             grid-auto-rows: 10px;
             grid-gap: 15px;
+        }
+        
+        /* Logo styles */
+        .logo-container {
+            margin-bottom: 25px;
+            display: flex;
+            justify-content: center;
+        }
+        
+        .main-logo {
+            max-width: 250px;
+            height: auto;
         }
         
         .photo-item {
@@ -154,21 +223,24 @@
 <body>
     <div class="container">
         <h1>One Plus One Creatives</h1>
-        <div class="tagline">Creating Space Between Choice and Consequence</div>
+        <div class="tagline">Between Choice and Consequence</div>
         
-        <!-- Navigation (non-functional) -->
+        <!-- Navigation with links -->
         <div class="nav">
             <span class="active">Home</span>
-             <a href="general-shots.html">General Shots (35mm Film)</a>
+            <a href="general-shots.html">General Shots (35mm Film)</a>
             <span>Astro/Night (35mm Film)</span>
             <span>My Makings</span>
             <span>Repairs</span>
             <span>Musings</span>
+            <span>Digital</span>
         </div>
         
         <div class="content-box">
-            <h2>1+1</h2>
-            <p>Hey there! I've wanted to do this for a while! Welcome to my space, its where I can put all of the stuff I'm doing creatively! I hope to encourage you to go out and find those things that makes you smile.<p>
+            <div class="logo-container">
+                <img src="Logo.png" alt="One Plus One Creatives Logo" class="main-logo">
+            </div>
+            <p>Welcome to my space 8) its where I put all of the stuff I'm doing creatively! with this I hope to encourage you to go out and find those things that makes you smile.</p>
         </div>
         
         <div class="content-box">
@@ -177,58 +249,58 @@
             <!-- Photo grid for all images -->
             <div class="photo-grid" id="gallery">
                 <div class="photo-item">
-                    <img src="slrphotos/Misc001Thumb.jpg" alt="Photo 1" onclick="openLightbox('slrphotos/Misc001.jpg')">
+                    <img src="slrphotos/Misc001Thumb.jpg" alt="Photo 1" onclick="openLightbox('slrphotos/Misc001.jpg', 0)">
                 </div>
                 <div class="photo-item">
-                    <img src="slrphotos/Misc002Thumb.jpg" alt="Photo 2" onclick="openLightbox('slrphotos/Misc002.jpg')">
+                    <img src="slrphotos/Misc002Thumb.jpg" alt="Photo 2" onclick="openLightbox('slrphotos/Misc002.jpg', 1)">
                 </div>
                 <div class="photo-item">
-                    <img src="slrphotos/Misc003Thumb.jpg" alt="Photo 3" onclick="openLightbox('slrphotos/Misc003.jpg')">
+                    <img src="slrphotos/Misc003Thumb.jpg" alt="Photo 3" onclick="openLightbox('slrphotos/Misc003.jpg', 2)">
                 </div>
                 <div class="photo-item">
-                    <img src="slrphotos/Misc004Thumb.jpg" alt="Photo 4" onclick="openLightbox('slrphotos/Misc004.jpg')">
+                    <img src="slrphotos/Misc004Thumb.jpg" alt="Photo 4" onclick="openLightbox('slrphotos/Misc004.jpg', 3)">
                 </div>
                 <div class="photo-item">
-                    <img src="slrphotos/Misc005Thumb.jpg" alt="Photo 5" onclick="openLightbox('slrphotos/Misc005.jpg')">
+                    <img src="slrphotos/Misc005Thumb.jpg" alt="Photo 5" onclick="openLightbox('slrphotos/Misc005.jpg', 4)">
                 </div>
                 <div class="photo-item">
-                    <img src="slrphotos/Misc006Thumb.jpg" alt="Photo 6" onclick="openLightbox('slrphotos/Misc006.jpg')">
+                    <img src="slrphotos/Misc006Thumb.jpg" alt="Photo 6" onclick="openLightbox('slrphotos/Misc006.jpg', 5)">
                 </div>
                 <div class="photo-item">
-                    <img src="slrphotos/Misc007Thumb.jpg" alt="Photo 7" onclick="openLightbox('slrphotos/Misc007.jpg')">
+                    <img src="slrphotos/Misc007Thumb.jpg" alt="Photo 7" onclick="openLightbox('slrphotos/Misc007.jpg', 6)">
                 </div>
                 <div class="photo-item">
-                    <img src="slrphotos/Misc008Thumb.jpg" alt="Photo 8" onclick="openLightbox('slrphotos/Misc008.jpg')">
+                    <img src="slrphotos/Misc008Thumb.jpg" alt="Photo 8" onclick="openLightbox('slrphotos/Misc008.jpg', 7)">
                 </div>
                 <div class="photo-item">
-                    <img src="slrphotos/Misc009Thumb.jpg" alt="Photo 9" onclick="openLightbox('slrphotos/Misc009.jpg')">
+                    <img src="slrphotos/Misc009Thumb.jpg" alt="Photo 9" onclick="openLightbox('slrphotos/Misc009.jpg', 8)">
                 </div>
                 <div class="photo-item">
-                    <img src="slrphotos/Misc010Thumb.jpg" alt="Photo 10" onclick="openLightbox('slrphotos/Misc010.jpg')">
+                    <img src="slrphotos/Misc010Thumb.jpg" alt="Photo 10" onclick="openLightbox('slrphotos/Misc010.jpg', 9)">
                 </div>
                 <div class="photo-item">
-                    <img src="slrphotos/Misc011Thumb.jpg" alt="Photo 11" onclick="openLightbox('slrphotos/Misc011.jpg')">
+                    <img src="slrphotos/Misc011Thumb.jpg" alt="Photo 11" onclick="openLightbox('slrphotos/Misc011.jpg', 10)">
                 </div>
                 <div class="photo-item">
-                    <img src="slrphotos/Misc012Thumb.jpg" alt="Photo 12" onclick="openLightbox('slrphotos/Misc012.jpg')">
+                    <img src="slrphotos/Misc012Thumb.jpg" alt="Photo 12" onclick="openLightbox('slrphotos/Misc012.jpg', 11)">
                 </div>
                 <div class="photo-item">
-                    <img src="slrphotos/Misc013Thumb.jpg" alt="Photo 13" onclick="openLightbox('slrphotos/Misc013.jpg')">
+                    <img src="slrphotos/Misc013Thumb.jpg" alt="Photo 13" onclick="openLightbox('slrphotos/Misc013.jpg', 12)">
                 </div>
                 <div class="photo-item">
-                    <img src="slrphotos/Misc014Thumb.jpg" alt="Photo 14" onclick="openLightbox('slrphotos/Misc014.jpg')">
+                    <img src="slrphotos/Misc014Thumb.jpg" alt="Photo 14" onclick="openLightbox('slrphotos/Misc014.jpg', 13)">
                 </div>
                 <div class="photo-item">
-                    <img src="slrphotos/Misc015Thumb.jpg" alt="Photo 15" onclick="openLightbox('slrphotos/Misc015.jpg')">
+                    <img src="slrphotos/Misc015Thumb.jpg" alt="Photo 15" onclick="openLightbox('slrphotos/Misc015.jpg', 14)">
                 </div>
                 <div class="photo-item">
-                    <img src="slrphotos/Misc016Thumb.jpg" alt="Photo 16" onclick="openLightbox('slrphotos/Misc016.jpg')">
+                    <img src="slrphotos/Misc016Thumb.jpg" alt="Photo 16" onclick="openLightbox('slrphotos/Misc016.jpg', 15)">
                 </div>
                 <div class="photo-item">
-                    <img src="slrphotos/Misc017Thumb.jpg" alt="Photo 17" onclick="openLightbox('slrphotos/Misc017.jpg')">
+                    <img src="slrphotos/Misc017Thumb.jpg" alt="Photo 17" onclick="openLightbox('slrphotos/Misc017.jpg', 16)">
                 </div>
                 <div class="photo-item">
-                    <img src="slrphotos/Misc018Thumb.jpg" alt="Photo 18" onclick="openLightbox('slrphotos/Misc018.jpg')">
+                    <img src="slrphotos/Misc018Thumb.jpg" alt="Photo 18" onclick="openLightbox('slrphotos/Misc018.jpg', 17)">
                 </div>
             </div>
             
@@ -243,19 +315,95 @@
     <!-- Lightbox container -->
     <div id="lightbox" class="lightbox">
         <span class="close-lightbox" onclick="closeLightbox()">&times;</span>
+        <div class="lightbox-nav prev-btn" onclick="prevImage()">&lsaquo;</div>
         <img id="lightbox-img" src="">
+        <div class="lightbox-nav next-btn" onclick="nextImage()">&rsaquo;</div>
+        <div class="image-counter" id="image-counter">1 / 18</div>
     </div>
     
     <script>
-        function openLightbox(imageSrc) {
+        // Global variables for navigation
+        let allImages = [];
+        let currentImageIndex = 0;
+        let startX, startY, endX, endY;
+        const minSwipeDistance = 50;
+        
+        // Collect all image sources when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            collectAllImages();
+        });
+        
+        function collectAllImages() {
+            const photoItems = document.querySelectorAll('.photo-item');
+            allImages = [];  // Reset the array
+            
+            photoItems.forEach(item => {
+                if (item.style.display !== 'none') {  // Only collect visible images
+                    const img = item.querySelector('img');
+                    const onclickAttr = img.getAttribute('onclick');
+                    if (onclickAttr) {
+                        const match = onclickAttr.match(/openLightbox\('([^']+)',\s*(\d+)\)/);
+                        if (match && match[1]) {
+                            allImages.push({
+                                src: match[1],
+                                index: parseInt(match[2])
+                            });
+                        }
+                    }
+                }
+            });
+            
+            // Sort the images by their index
+            allImages.sort((a, b) => a.index - b.index);
+            
+            // Extract just the sources
+            allImages = allImages.map(item => item.src);
+            console.log('Collected images:', allImages);
+        }
+        
+        function openLightbox(imageSrc, index) {
+            // Make sure we have collected all images
+            if (allImages.length === 0) {
+                collectAllImages();
+            }
+            
+            // Find the index of this image in our array
+            currentImageIndex = allImages.indexOf(imageSrc);
+            if (currentImageIndex === -1) currentImageIndex = 0;
+            
             document.getElementById('lightbox-img').src = imageSrc;
             document.getElementById('lightbox').style.display = 'block';
             document.body.style.overflow = 'hidden'; // Prevent scrolling
+            updateImageCounter();
+            
+            console.log('Opened lightbox:', imageSrc, 'Index:', currentImageIndex);
         }
         
         function closeLightbox() {
             document.getElementById('lightbox').style.display = 'none';
             document.body.style.overflow = 'auto'; // Restore scrolling
+        }
+        
+        function nextImage() {
+            if (allImages.length === 0) return;
+            
+            currentImageIndex = (currentImageIndex + 1) % allImages.length;
+            document.getElementById('lightbox-img').src = allImages[currentImageIndex];
+            updateImageCounter();
+            console.log('Next image:', currentImageIndex, allImages[currentImageIndex]);
+        }
+        
+        function prevImage() {
+            if (allImages.length === 0) return;
+            
+            currentImageIndex = (currentImageIndex - 1 + allImages.length) % allImages.length;
+            document.getElementById('lightbox-img').src = allImages[currentImageIndex];
+            updateImageCounter();
+            console.log('Previous image:', currentImageIndex, allImages[currentImageIndex]);
+        }
+        
+        function updateImageCounter() {
+            document.getElementById('image-counter').textContent = `${currentImageIndex + 1} / ${allImages.length}`;
         }
         
         // Close lightbox when clicking outside the image
@@ -265,11 +413,63 @@
             }
         });
         
-        // Close lightbox with ESC key
+        // Close lightbox with ESC key and arrow navigation
         document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') {
-                closeLightbox();
+            if (document.getElementById('lightbox').style.display === 'block') {
+                if (e.key === 'Escape') {
+                    closeLightbox();
+                } else if (e.key === 'ArrowRight') {
+                    nextImage();
+                } else if (e.key === 'ArrowLeft') {
+                    prevImage();
+                }
             }
+        });
+        
+        // Touch swipe detection
+        const lightbox = document.getElementById('lightbox');
+        
+        lightbox.addEventListener('touchstart', function(e) {
+            startX = e.touches[0].clientX;
+            startY = e.touches[0].clientY;
+        });
+        
+        lightbox.addEventListener('touchend', function(e) {
+            if (!startX || !startY) return;
+            
+            endX = e.changedTouches[0].clientX;
+            endY = e.changedTouches[0].clientY;
+            
+            const diffX = startX - endX;
+            const diffY = startY - endY;
+            
+            // If horizontal swipe is greater than vertical swipe
+            if (Math.abs(diffX) > Math.abs(diffY)) {
+                if (Math.abs(diffX) > minSwipeDistance) {
+                    if (diffX > 0) {
+                        // Swipe left, go to next
+                        nextImage();
+                    } else {
+                        // Swipe right, go to previous
+                        prevImage();
+                    }
+                }
+            }
+            
+            // Reset values
+            startX = null;
+            startY = null;
+        });
+        
+        // Make sure the navigation buttons in lightbox don't trigger the click event of the lightbox
+        document.querySelector('.prev-btn').addEventListener('click', function(e) {
+            e.stopPropagation();
+            prevImage();
+        });
+        
+        document.querySelector('.next-btn').addEventListener('click', function(e) {
+            e.stopPropagation();
+            nextImage();
         });
         
         // Masonry layout implementation
@@ -290,21 +490,24 @@
         }
         
         // Initialize layout
-        window.addEventListener('load', resizeGridItems);
+        window.addEventListener('load', function() {
+            resizeGridItems();
+            collectAllImages();
+        });
         window.addEventListener('resize', resizeGridItems);
         
         // Ensure images are loaded before calculating layout
-        const allImages = document.querySelectorAll('.photo-item img');
+        const galleryImages = document.querySelectorAll('.photo-item img');
         let imagesLoaded = 0;
         
         function imageLoaded() {
             imagesLoaded++;
-            if (imagesLoaded === allImages.length) {
+            if (imagesLoaded === galleryImages.length) {
                 resizeGridItems();
             }
         }
         
-        allImages.forEach(img => {
+        galleryImages.forEach(img => {
             if (img.complete) {
                 imageLoaded();
             } else {
