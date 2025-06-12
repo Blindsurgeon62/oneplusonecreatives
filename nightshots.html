@@ -211,6 +211,22 @@
             z-index: 1002;
         }
         
+        .image-caption {
+            position: absolute;
+            bottom: 60px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 14px;
+            z-index: 1002;
+            text-align: center;
+            max-width: 80%;
+            line-height: 1.4;
+        }
+        
         /* Masonry Grid Layout */
         .photo-grid {
             display: grid;
@@ -250,8 +266,7 @@
             <a href="general-shots.html">General Shots (35mm Film)</a>
             <span class="active">Astro/Night (35mm Film)</span>
             <span>Digital</span>
-            <span>My Makings</span>
-            <span>Repairs</span>
+            <a href="tinkering.html">Tinkering/Restorations</a>
             <span>Musings</span>
         </div>
         
@@ -261,74 +276,105 @@
             
             <!-- Photo grid for all night images -->
             <div class="photo-grid" id="gallery">
+                <!-- New MayCFO photos added at the top -->
                 <div class="photo-item">
-                    <img src="slrphotos/FridayThumb001.jpg" alt="Night Photo 1" onclick="openLightbox('slrphotos/Friday001.jpg', 0)">
+                    <img src="slrphotos/MayCFOThumb001.jpg" alt="May CFO Photo 1" onclick="openLightbox('slrphotos/MayCFO001.jpg', 0)">
                 </div>
                 <div class="photo-item">
-                    <img src="slrphotos/FridayThumb002.jpg" alt="Night Photo 2" onclick="openLightbox('slrphotos/Friday002.jpg', 1)">
+                    <img src="slrphotos/MayCFOThumb002.jpg" alt="May CFO Photo 2" onclick="openLightbox('slrphotos/MayCFO002.jpg', 1)">
+                </div>
+                <div class="photo-item">
+                    <img src="slrphotos/MayCFOThumb003.jpg" alt="May CFO Photo 3" onclick="openLightbox('slrphotos/MayCFO003.jpg', 2)">
+                </div>
+                <div class="photo-item">
+                    <img src="slrphotos/MayCFOThumb004.jpg" alt="May CFO Photo 4" onclick="openLightbox('slrphotos/MayCFO004.jpg', 3)">
+                </div>
+                <div class="photo-item">
+                    <img src="slrphotos/MayCFOThumb005.jpg" alt="May CFO Photo 5" onclick="openLightbox('slrphotos/MayCFO005.jpg', 4)">
+                </div>
+                <div class="photo-item">
+                    <img src="slrphotos/MayCFOThumb006.jpg" alt="May CFO Photo 6" onclick="openLightbox('slrphotos/MayCFO006.jpg', 5)">
+                </div>
+                <div class="photo-item">
+                    <img src="slrphotos/MayCFOThumb007.jpg" alt="May CFO Photo 7" onclick="openLightbox('slrphotos/MayCFO007.jpg', 6)">
+                </div>
+                <div class="photo-item">
+                    <img src="slrphotos/MayCFOThumb008.jpg" alt="May CFO Photo 8" onclick="openLightbox('slrphotos/MayCFO008.jpg', 7)">
+                </div>
+                <!-- Removed Friday009 through Friday013 - moved to general shots -->
+                <div class="photo-item">
+                    <img src="slrphotos/MayCFOThumb013.jpg" alt="May CFO Photo 13" onclick="openLightbox('slrphotos/MayCFO013.jpg', 8)">
+                </div>
+                <div class="photo-item">
+                    <img src="slrphotos/MayCFOThumb011.jpg" alt="May CFO Photo 11" onclick="openLightbox('slrphotos/MayCFO011.jpg', 9)">
+                </div>
+                <div class="photo-item">
+                    <img src="slrphotos/MayCFOThumb012.jpg" alt="May CFO Photo 12" onclick="openLightbox('slrphotos/MayCFO012.jpg', 10)">
+                </div>
+                <div class="photo-item">
+                    <img src="slrphotos/MayCFOThumb014.jpg" alt="May CFO Photo 14" onclick="openLightbox('slrphotos/MayCFO014.jpg', 11)">
+                </div>
+                <div class="photo-item">
+                    <img src="slrphotos/MayCFOThumb015.jpg" alt="May CFO Photo 15" onclick="openLightbox('slrphotos/MayCFO015.jpg', 12)">
+                </div>
+                <div class="photo-item">
+                    <img src="slrphotos/MayCFOThumb016.jpg" alt="May CFO Photo 16" onclick="openLightbox('slrphotos/MayCFO016.jpg', 13)">
+                </div>
+                
+                <!-- Existing photos with updated indices -->
+                <div class="photo-item">
+                    <img src="slrphotos/FridayThumb001.jpg" alt="Night Photo 1" onclick="openLightbox('slrphotos/Friday001.jpg', 14)">
+                </div>
+                <div class="photo-item">
+                    <img src="slrphotos/FridayThumb002.jpg" alt="Night Photo 2" onclick="openLightbox('slrphotos/Friday002.jpg', 15)">
                 </div>
                 <!-- Moved from general-shots: Tests006 -->
                 <div class="photo-item">
-                    <img src="slrphotos/TestsThumb006.jpg" alt="Film Photo 6" onclick="openLightbox('slrphotos/Tests006.jpg', 2)">
+                    <img src="slrphotos/TestsThumb006.jpg" alt="Film Photo 6" onclick="openLightbox('slrphotos/Tests006.jpg', 16)">
                 </div>
                 <div class="photo-item">
-                    <img src="slrphotos/FridayThumb006.jpg" alt="Night Photo 6" onclick="openLightbox('slrphotos/Friday006.jpg', 3)">
+                    <img src="slrphotos/FridayThumb006.jpg" alt="Night Photo 6" onclick="openLightbox('slrphotos/Friday006.jpg', 17)">
                 </div>
                 <div class="photo-item">
-                    <img src="slrphotos/FridayThumb007.jpg" alt="Night Photo 7" onclick="openLightbox('slrphotos/Friday007.jpg', 4)">
+                    <img src="slrphotos/FridayThumb007.jpg" alt="Night Photo 7" onclick="openLightbox('slrphotos/Friday007.jpg', 18)">
                 </div>
                 <!-- Moved from general-shots: Tests007 -->
                 <div class="photo-item">
-                    <img src="slrphotos/TestsThumb007.jpg" alt="Film Photo 7" onclick="openLightbox('slrphotos/Tests007.jpg', 5)">
+                    <img src="slrphotos/TestsThumb007.jpg" alt="Film Photo 7" onclick="openLightbox('slrphotos/Tests007.jpg', 19)">
                 </div>
                 <div class="photo-item">
-                    <img src="slrphotos/FridayThumb009.jpg" alt="Night Photo 9" onclick="openLightbox('slrphotos/Friday009.jpg', 6)">
+                    <img src="slrphotos/FridayThumb014.jpg" alt="Night Photo 14" onclick="openLightbox('slrphotos/Friday014.jpg', 20)">
                 </div>
                 <div class="photo-item">
-                    <img src="slrphotos/FridayThumb010.jpg" alt="Night Photo 10" onclick="openLightbox('slrphotos/Friday010.jpg', 7)">
+                    <img src="slrphotos/FridayThumb015.jpg" alt="Night Photo 15" onclick="openLightbox('slrphotos/Friday015.jpg', 21)">
                 </div>
                 <div class="photo-item">
-                    <img src="slrphotos/FridayThumb011.jpg" alt="Night Photo 11" onclick="openLightbox('slrphotos/Friday011.jpg', 8)">
+                    <img src="slrphotos/FridayThumb016.jpg" alt="Night Photo 16" onclick="openLightbox('slrphotos/Friday016.jpg', 22)">
                 </div>
                 <div class="photo-item">
-                    <img src="slrphotos/FridayThumb012.jpg" alt="Night Photo 12" onclick="openLightbox('slrphotos/Friday012.jpg', 9)">
+                    <img src="slrphotos/FridayThumb017.jpg" alt="Night Photo 17" onclick="openLightbox('slrphotos/Friday017.jpg', 23)">
                 </div>
                 <div class="photo-item">
-                    <img src="slrphotos/FridayThumb013.jpg" alt="Night Photo 13" onclick="openLightbox('slrphotos/Friday013.jpg', 10)">
+                    <img src="slrphotos/FridayThumb018.jpg" alt="Night Photo 18" onclick="openLightbox('slrphotos/Friday018.jpg', 24)">
                 </div>
                 <div class="photo-item">
-                    <img src="slrphotos/FridayThumb014.jpg" alt="Night Photo 14" onclick="openLightbox('slrphotos/Friday014.jpg', 11)">
+                    <img src="slrphotos/FridayThumb019.jpg" alt="Night Photo 19" onclick="openLightbox('slrphotos/Friday019.jpg', 25)">
                 </div>
                 <div class="photo-item">
-                    <img src="slrphotos/FridayThumb015.jpg" alt="Night Photo 15" onclick="openLightbox('slrphotos/Friday015.jpg', 12)">
+                    <img src="slrphotos/FridayThumb020.jpg" alt="Night Photo 20" onclick="openLightbox('slrphotos/Friday020.jpg', 26)">
                 </div>
                 <div class="photo-item">
-                    <img src="slrphotos/FridayThumb016.jpg" alt="Night Photo 16" onclick="openLightbox('slrphotos/Friday016.jpg', 13)">
+                    <img src="slrphotos/FridayThumb021.jpg" alt="Night Photo 21" onclick="openLightbox('slrphotos/Friday021.jpg', 27)">
                 </div>
                 <div class="photo-item">
-                    <img src="slrphotos/FridayThumb017.jpg" alt="Night Photo 17" onclick="openLightbox('slrphotos/Friday017.jpg', 14)">
+                    <img src="slrphotos/FridayThumb022.jpg" alt="Night Photo 22" onclick="openLightbox('slrphotos/Friday022.jpg', 28)">
                 </div>
                 <div class="photo-item">
-                    <img src="slrphotos/FridayThumb018.jpg" alt="Night Photo 18" onclick="openLightbox('slrphotos/Friday018.jpg', 15)">
-                </div>
-                <div class="photo-item">
-                    <img src="slrphotos/FridayThumb019.jpg" alt="Night Photo 19" onclick="openLightbox('slrphotos/Friday019.jpg', 16)">
-                </div>
-                <div class="photo-item">
-                    <img src="slrphotos/FridayThumb020.jpg" alt="Night Photo 20" onclick="openLightbox('slrphotos/Friday020.jpg', 17)">
-                </div>
-                <div class="photo-item">
-                    <img src="slrphotos/FridayThumb021.jpg" alt="Night Photo 21" onclick="openLightbox('slrphotos/Friday021.jpg', 18)">
-                </div>
-                <div class="photo-item">
-                    <img src="slrphotos/FridayThumb022.jpg" alt="Night Photo 22" onclick="openLightbox('slrphotos/Friday022.jpg', 19)">
-                </div>
-                <div class="photo-item">
-                    <img src="slrphotos/FridayThumb023.jpg" alt="Night Photo 23" onclick="openLightbox('slrphotos/Friday023.jpg', 20)">
+                    <img src="slrphotos/FridayThumb023.jpg" alt="Night Photo 23" onclick="openLightbox('slrphotos/Friday023.jpg', 29)">
                 </div>
                 <!-- Moved from general-shots: Tests001 -->
                 <div class="photo-item">
-                    <img src="slrphotos/TestsThumb001.jpg" alt="Film Photo 1" onclick="openLightbox('slrphotos/Tests001.jpg', 21)">
+                    <img src="slrphotos/TestsThumb001.jpg" alt="Film Photo 1" onclick="openLightbox('slrphotos/Tests001.jpg', 30)">
                 </div>
             </div>
         </div>
@@ -348,7 +394,8 @@
         <div class="lightbox-nav prev-btn" onclick="prevImage()">&lsaquo;</div>
         <img id="lightbox-img" src="">
         <div class="lightbox-nav next-btn" onclick="nextImage()">&rsaquo;</div>
-        <div class="image-counter" id="image-counter">1 / 22</div>
+        <div class="image-caption" id="image-caption"></div>
+        <div class="image-counter" id="image-counter">1 / 31</div>
     </div>
     
     <script>
@@ -357,6 +404,24 @@
         let currentImageIndex = 0;
         let startX, startY, endX, endY;
         const minSwipeDistance = 50;
+        
+        // Image captions for MayCFO photos
+        const imageCaptions = {
+            'slrphotos/MayCFO001.jpg': 'Ektachrome 100 E100 Color reversal film, Pushed +2 to 400 ISO',
+            'slrphotos/MayCFO002.jpg': 'Ektachrome 100 E100 Color reversal film, Pushed +2 to 400 ISO<br>Exposure: 1/60 (I believe)',
+            'slrphotos/MayCFO003.jpg': 'Ektachrome 100 E100 Color reversal film, Pushed +2 to 400 ISO<br>Exposure: 30 seconds',
+            'slrphotos/MayCFO004.jpg': 'Ektachrome 100 E100 Color reversal film, Pushed +2 to 400 ISO',
+            'slrphotos/MayCFO005.jpg': 'Ektachrome 100 E100 Color reversal film, Pushed +2 to 400 ISO',
+            'slrphotos/MayCFO006.jpg': 'Ektachrome 100 E100 Color reversal film, Pushed +2 to 400 ISO',
+            'slrphotos/MayCFO007.jpg': 'Ektachrome 100 E100 Color reversal film, Pushed +2 to 400 ISO',
+            'slrphotos/MayCFO008.jpg': 'Ektachrome 100 E100 Color reversal film, Pushed +2 to 400 ISO',
+            'slrphotos/MayCFO013.jpg': 'Ektachrome 100 E100 Color reversal film, Pushed +2 to 400 ISO<br>Exposure: 240 seconds',
+            'slrphotos/MayCFO011.jpg': 'Ektachrome 100 E100 Color reversal film, Pushed +2 to 400 ISO<br>Exposure: 40 seconds',
+            'slrphotos/MayCFO012.jpg': 'Ektachrome 100 E100 Color reversal film, Pushed +2 to 400 ISO<br>Exposure: 90 seconds',
+            'slrphotos/MayCFO014.jpg': 'Ektachrome 100 E100 Color reversal film, Pushed +2 to 400 ISO',
+            'slrphotos/MayCFO015.jpg': 'Ektachrome 100 E100 Color reversal film, Pushed +2 to 400 ISO<br>This shot was the longest exposure I\'ve done so far, at around 5 minutes. I am surprised it came out!',
+            'slrphotos/MayCFO016.jpg': 'Ektachrome 100 E100 Color reversal film, Pushed +2 to 400 ISO'
+        };
         
         // Collect all image sources when DOM is loaded
         document.addEventListener('DOMContentLoaded', function() {
@@ -434,6 +499,16 @@
         
         function updateImageCounter() {
             document.getElementById('image-counter').textContent = `${currentImageIndex + 1} / ${allImages.length}`;
+            
+            // Update caption
+            const currentImage = allImages[currentImageIndex];
+            const captionElement = document.getElementById('image-caption');
+            if (imageCaptions[currentImage]) {
+                captionElement.innerHTML = imageCaptions[currentImage];
+                captionElement.style.display = 'block';
+            } else {
+                captionElement.style.display = 'none';
+            }
         }
         
         // Close lightbox when clicking outside the image
@@ -461,7 +536,7 @@
         
         lightbox.addEventListener('touchstart', function(e) {
             startX = e.touches[0].clientX;
-            startY = e.touches[0].clientY;
+            startY = e.touches[0].Y;
         });
         
         lightbox.addEventListener('touchend', function(e) {
