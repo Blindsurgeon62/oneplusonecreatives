@@ -93,17 +93,82 @@
         }
         
         /* Photography styles */
+        .photo-item {
+            margin-bottom: 0;
+            overflow: hidden;
+            border-radius: 4px;
+            position: relative;
+            cursor: pointer;
+        }
+        
         .photo-item img {
             width: 100%;
             height: auto;
             display: block;
             border-radius: 4px;
-            cursor: pointer;
-            transition: opacity 0.3s;
+            transition: opacity 0.3s, transform 0.3s;
         }
         
-        .photo-item img:hover {
-            opacity: 0.8;
+        /* Gallery caption overlay */
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            padding: 10px;
+            font-size: 12px;
+            line-height: 1.4;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+            text-align: left;
+        }
+        
+        /* Desktop hover effect */
+        @media (hover: hover) and (pointer: fine) {
+            .photo-item:hover img {
+                opacity: 0.9;
+                transform: scale(1.02);
+            }
+            
+            .photo-item:hover .gallery-caption {
+                transform: translateY(0);
+            }
+        }
+        
+        /* Mobile/tablet tap effect */
+        @media (hover: none) or (pointer: coarse) {
+            .photo-item.caption-visible .gallery-caption {
+                transform: translateY(0);
+            }
+            
+            .photo-item.caption-visible img {
+                opacity: 0.9;
+            }
+            
+            /* Visual indicator for mobile */
+            .photo-item::after {
+                content: "ⓘ";
+                position: absolute;
+                top: 10px;
+                right: 10px;
+                background-color: rgba(255, 255, 255, 0.9);
+                color: #333;
+                width: 24px;
+                height: 24px;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 16px;
+                opacity: 0.8;
+                transition: opacity 0.3s;
+            }
+            
+            .photo-item.caption-visible::after {
+                opacity: 0.3;
+            }
         }
         
         .photo-description {
@@ -226,6 +291,63 @@
             text-align: center;
             max-width: 80%;
             line-height: 1.4;
+            display: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .image-caption.visible {
+            display: block;
+            opacity: 1;
+        }
+        
+        /* Info button in lightbox */
+        .info-btn {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 20px;
+            z-index: 1002;
+            transition: background-color 0.3s;
+            border: 2px solid transparent;
+        }
+        
+        .info-btn:hover {
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+        
+        .info-btn.active {
+            background-color: rgba(255, 255, 255, 0.2);
+            border-color: white;
+        }
+        
+        /* Keyboard hint */
+        .keyboard-hint {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 12px;
+            z-index: 1002;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 5px 10px;
+            border-radius: 5px;
+            display: none;
+        }
+        
+        @media (hover: hover) and (pointer: fine) {
+            .keyboard-hint {
+                display: block;
+            }
         }
         
         /* Masonry Grid Layout */
@@ -235,18 +357,12 @@
             grid-auto-rows: 10px;
             grid-gap: 15px;
         }
-        
-        .photo-item {
-            margin-bottom: 0; /* Remove bottom margin */
-            overflow: hidden;
-            border-radius: 4px;
-        }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>One Plus One Creatives</h1>
-        <div class="tagline">Creating Space Between Choice and Consequence</div>
+        <div class="tagline">Let's do things our future selves will thank us for</div>
         
         <!-- Navigation with links -->
         <div class="nav">
@@ -267,18 +383,23 @@
                 <!-- Moved from astro: Friday009 through Friday013 with Harman Red 125 film -->
                 <div class="photo-item">
                     <img src="slrphotos/FridayThumb009.jpg" alt="Night Photo 9" onclick="openLightbox('slrphotos/Friday009.jpg', 0)">
+                    <div class="gallery-caption">Harman Red 125 - A neat film that exposes light in reverse order than standard, starting with red instead of blue</div>
                 </div>
                 <div class="photo-item">
                     <img src="slrphotos/FridayThumb010.jpg" alt="Night Photo 10" onclick="openLightbox('slrphotos/Friday010.jpg', 1)">
+                    <div class="gallery-caption">Harman Red 125 - A neat film that exposes light in reverse order than standard, starting with red instead of blue</div>
                 </div>
                 <div class="photo-item">
                     <img src="slrphotos/FridayThumb011.jpg" alt="Night Photo 11" onclick="openLightbox('slrphotos/Friday011.jpg', 2)">
+                    <div class="gallery-caption">Harman Red 125 - A neat film that exposes light in reverse order than standard, starting with red instead of blue</div>
                 </div>
                 <div class="photo-item">
                     <img src="slrphotos/FridayThumb012.jpg" alt="Night Photo 12" onclick="openLightbox('slrphotos/Friday012.jpg', 3)">
+                    <div class="gallery-caption">Harman Red 125 - A neat film that exposes light in reverse order than standard, starting with red instead of blue</div>
                 </div>
                 <div class="photo-item">
                     <img src="slrphotos/FridayThumb013.jpg" alt="Night Photo 13" onclick="openLightbox('slrphotos/Friday013.jpg', 4)">
+                    <div class="gallery-caption">Harman Red 125 - A neat film that exposes light in reverse order than standard, starting with red instead of blue</div>
                 </div>
                 
                 <!-- Test Images (removed Tests001, 006, 007 and added Friday003, 004, 005, 008) -->
@@ -326,98 +447,124 @@
                     <img src="slrphotos/TestsThumb011.jpg" alt="Film Photo 11" onclick="openLightbox('slrphotos/Tests011.jpg', 17)">
                 </div>
                 
+                <!-- New IR Test Images -->
+                <div class="photo-item">
+                    <img src="slrphotos/IRtestThumb001.jpg" alt="IR Test Photo 1" onclick="openLightbox('slrphotos/IRtest001.jpg', 18)">
+                    <div class="gallery-caption">Rollei InfraRed 400</div>
+                </div>
+                <div class="photo-item">
+                    <img src="slrphotos/IRtestThumb002.jpg" alt="IR Test Photo 2" onclick="openLightbox('slrphotos/IRtest002.jpg', 19)">
+                    <div class="gallery-caption">Rollei InfraRed 400</div>
+                </div>
+                <div class="photo-item">
+                    <img src="slrphotos/IRtestThumb003.jpg" alt="IR Test Photo 3" onclick="openLightbox('slrphotos/IRtest003.jpg', 20)">
+                    <div class="gallery-caption">Rollei InfraRed 400</div>
+                </div>
+                <div class="photo-item">
+                    <img src="slrphotos/IRtestThumb004.jpg" alt="IR Test Photo 4" onclick="openLightbox('slrphotos/IRtest004.jpg', 21)">
+                    <div class="gallery-caption">Rollei InfraRed 400</div>
+                </div>
+                <div class="photo-item">
+                    <img src="slrphotos/IRtestThumb005.jpg" alt="IR Test Photo 5" onclick="openLightbox('slrphotos/IRtest005.jpg', 22)">
+                    <div class="gallery-caption">Rollei InfraRed 400</div>
+                </div>
+                <div class="photo-item">
+                    <img src="slrphotos/IRtestThumb006.jpg" alt="IR Test Photo 6" onclick="openLightbox('slrphotos/IRtest006.jpg', 23)">
+                    <div class="gallery-caption">Rollei InfraRed 400</div>
+                </div>
+                
                 <!-- Camping 2023 Images -->
                 <div class="photo-item">
-                    <img src="slrphotos/Camping2023Thumb001.jpg" alt="Camping 2023 Photo 1" onclick="openLightbox('slrphotos/Camping2023 001.jpg', 18)">
+                    <img src="slrphotos/Camping2023Thumb001.jpg" alt="Camping 2023 Photo 1" onclick="openLightbox('slrphotos/Camping2023 001.jpg', 24)">
                 </div>
                 <div class="photo-item">
-                    <img src="slrphotos/Camping2023Thumb002.jpg" alt="Camping 2023 Photo 2" onclick="openLightbox('slrphotos/Camping2023 002.jpg', 19)">
+                    <img src="slrphotos/Camping2023Thumb002.jpg" alt="Camping 2023 Photo 2" onclick="openLightbox('slrphotos/Camping2023 002.jpg', 25)">
                 </div>
                 <div class="photo-item">
-                    <img src="slrphotos/Camping2023Thumb003.jpg" alt="Camping 2023 Photo 3" onclick="openLightbox('slrphotos/Camping2023 003.jpg', 20)">
+                    <img src="slrphotos/Camping2023Thumb003.jpg" alt="Camping 2023 Photo 3" onclick="openLightbox('slrphotos/Camping2023 003.jpg', 26)">
                 </div>
                 <div class="photo-item">
-                    <img src="slrphotos/Camping2023Thumb004.jpg" alt="Camping 2023 Photo 4" onclick="openLightbox('slrphotos/Camping2023 004.jpg', 21)">
+                    <img src="slrphotos/Camping2023Thumb004.jpg" alt="Camping 2023 Photo 4" onclick="openLightbox('slrphotos/Camping2023 004.jpg', 27)">
                 </div>
                 <div class="photo-item">
-                    <img src="slrphotos/Camping2023Thumb005.jpg" alt="Camping 2023 Photo 5" onclick="openLightbox('slrphotos/Camping2023 005.jpg', 22)">
+                    <img src="slrphotos/Camping2023Thumb005.jpg" alt="Camping 2023 Photo 5" onclick="openLightbox('slrphotos/Camping2023 005.jpg', 28)">
                 </div>
                 <div class="photo-item">
-                    <img src="slrphotos/Camping2023Thumb006.jpg" alt="Camping 2023 Photo 6" onclick="openLightbox('slrphotos/Camping2023 006.jpg', 23)">
+                    <img src="slrphotos/Camping2023Thumb006.jpg" alt="Camping 2023 Photo 6" onclick="openLightbox('slrphotos/Camping2023 006.jpg', 29)">
                 </div>
                 <div class="photo-item">
-                    <img src="slrphotos/Camping2023Thumb007.jpg" alt="Camping 2023 Photo 7" onclick="openLightbox('slrphotos/Camping2023 007.jpg', 24)">
+                    <img src="slrphotos/Camping2023Thumb007.jpg" alt="Camping 2023 Photo 7" onclick="openLightbox('slrphotos/Camping2023 007.jpg', 30)">
                 </div>
                 <div class="photo-item">
-                    <img src="slrphotos/Camping2023Thumb008.jpg" alt="Camping 2023 Photo 8" onclick="openLightbox('slrphotos/Camping2023 008.jpg', 25)">
+                    <img src="slrphotos/Camping2023Thumb008.jpg" alt="Camping 2023 Photo 8" onclick="openLightbox('slrphotos/Camping2023 008.jpg', 31)">
                 </div>
                 <div class="photo-item">
-                    <img src="slrphotos/Camping2023Thumb009.jpg" alt="Camping 2023 Photo 9" onclick="openLightbox('slrphotos/Camping2023 009.jpg', 26)">
+                    <img src="slrphotos/Camping2023Thumb009.jpg" alt="Camping 2023 Photo 9" onclick="openLightbox('slrphotos/Camping2023 009.jpg', 32)">
                 </div>
                 <div class="photo-item">
-                    <img src="slrphotos/Camping2023Thumb010.jpg" alt="Camping 2023 Photo 10" onclick="openLightbox('slrphotos/Camping2023 010.jpg', 27)">
+                    <img src="slrphotos/Camping2023Thumb010.jpg" alt="Camping 2023 Photo 10" onclick="openLightbox('slrphotos/Camping2023 010.jpg', 33)">
                 </div>
                 <div class="photo-item">
-                    <img src="slrphotos/Camping2023Thumb011.jpg" alt="Camping 2023 Photo 11" onclick="openLightbox('slrphotos/Camping2023 011.jpg', 28)">
+                    <img src="slrphotos/Camping2023Thumb011.jpg" alt="Camping 2023 Photo 11" onclick="openLightbox('slrphotos/Camping2023 011.jpg', 34)">
                 </div>
                 <div class="photo-item">
-                    <img src="slrphotos/Misc003Thumb.jpg" alt="Photo 3" onclick="openLightbox('slrphotos/Misc003.jpg', 29)">
+                    <img src="slrphotos/Misc003Thumb.jpg" alt="Photo 3" onclick="openLightbox('slrphotos/Misc003.jpg', 35)">
                 </div>
                 <div class="photo-item">
-                    <img src="slrphotos/Camping2023Thumb012.jpg" alt="Camping 2023 Photo 12" onclick="openLightbox('slrphotos/Camping2023 012.jpg', 30)">
+                    <img src="slrphotos/Camping2023Thumb012.jpg" alt="Camping 2023 Photo 12" onclick="openLightbox('slrphotos/Camping2023 012.jpg', 36)">
                 </div>
                 <div class="photo-item">
-                    <img src="slrphotos/Camping2023Thumb013.jpg" alt="Camping 2023 Photo 13" onclick="openLightbox('slrphotos/Camping2023 013.jpg', 31)">
+                    <img src="slrphotos/Camping2023Thumb013.jpg" alt="Camping 2023 Photo 13" onclick="openLightbox('slrphotos/Camping2023 013.jpg', 37)">
                 </div>
                 
                 <!-- Photos moved from index page -->
                 <div class="photo-item">
-                    <img src="slrphotos/Misc001Thumb.jpg" alt="Photo 1" onclick="openLightbox('slrphotos/Misc001.jpg', 32)">
+                    <img src="slrphotos/Misc001Thumb.jpg" alt="Photo 1" onclick="openLightbox('slrphotos/Misc001.jpg', 38)">
                 </div>
                 <div class="photo-item">
-                    <img src="slrphotos/Misc002Thumb.jpg" alt="Photo 2" onclick="openLightbox('slrphotos/Misc002.jpg', 33)">
+                    <img src="slrphotos/Misc002Thumb.jpg" alt="Photo 2" onclick="openLightbox('slrphotos/Misc002.jpg', 39)">
                 </div>                              
                 <div class="photo-item">
-                    <img src="slrphotos/Misc005Thumb.jpg" alt="Photo 5" onclick="openLightbox('slrphotos/Misc005.jpg', 34)">
+                    <img src="slrphotos/Misc005Thumb.jpg" alt="Photo 5" onclick="openLightbox('slrphotos/Misc005.jpg', 40)">
                 </div>
                 <div class="photo-item">
-                    <img src="slrphotos/Misc006Thumb.jpg" alt="Photo 6" onclick="openLightbox('slrphotos/Misc006.jpg', 35)">
+                    <img src="slrphotos/Misc006Thumb.jpg" alt="Photo 6" onclick="openLightbox('slrphotos/Misc006.jpg', 41)">
                 </div>
                 <div class="photo-item">
-                    <img src="slrphotos/Misc007Thumb.jpg" alt="Photo 7" onclick="openLightbox('slrphotos/Misc007.jpg', 36)">
+                    <img src="slrphotos/Misc007Thumb.jpg" alt="Photo 7" onclick="openLightbox('slrphotos/Misc007.jpg', 42)">
                 </div>
                 <div class="photo-item">
-                    <img src="slrphotos/Misc008Thumb.jpg" alt="Photo 8" onclick="openLightbox('slrphotos/Misc008.jpg', 37)">
+                    <img src="slrphotos/Misc008Thumb.jpg" alt="Photo 8" onclick="openLightbox('slrphotos/Misc008.jpg', 43)">
                 </div>
                 <div class="photo-item">
-                    <img src="slrphotos/Misc009Thumb.jpg" alt="Photo 9" onclick="openLightbox('slrphotos/Misc009.jpg', 38)">
+                    <img src="slrphotos/Misc009Thumb.jpg" alt="Photo 9" onclick="openLightbox('slrphotos/Misc009.jpg', 44)">
                 </div>
                 <div class="photo-item">
-                    <img src="slrphotos/Misc010Thumb.jpg" alt="Photo 10" onclick="openLightbox('slrphotos/Misc010.jpg', 39)">
+                    <img src="slrphotos/Misc010Thumb.jpg" alt="Photo 10" onclick="openLightbox('slrphotos/Misc010.jpg', 45)">
                 </div>
                 <div class="photo-item">
-                    <img src="slrphotos/Misc011Thumb.jpg" alt="Photo 11" onclick="openLightbox('slrphotos/Misc011.jpg', 40)">
+                    <img src="slrphotos/Misc011Thumb.jpg" alt="Photo 11" onclick="openLightbox('slrphotos/Misc011.jpg', 46)">
                 </div>
                 <div class="photo-item">
-                    <img src="slrphotos/Misc012Thumb.jpg" alt="Photo 12" onclick="openLightbox('slrphotos/Misc012.jpg', 41)">
+                    <img src="slrphotos/Misc012Thumb.jpg" alt="Photo 12" onclick="openLightbox('slrphotos/Misc012.jpg', 47)">
                 </div>
                 <div class="photo-item">
-                    <img src="slrphotos/Misc013Thumb.jpg" alt="Photo 13" onclick="openLightbox('slrphotos/Misc013.jpg', 42)">
+                    <img src="slrphotos/Misc013Thumb.jpg" alt="Photo 13" onclick="openLightbox('slrphotos/Misc013.jpg', 48)">
                 </div>
                 <div class="photo-item">
-                    <img src="slrphotos/Misc014Thumb.jpg" alt="Photo 14" onclick="openLightbox('slrphotos/Misc014.jpg', 43)">
+                    <img src="slrphotos/Misc014Thumb.jpg" alt="Photo 14" onclick="openLightbox('slrphotos/Misc014.jpg', 49)">
                 </div>
                 <div class="photo-item">
-                    <img src="slrphotos/Misc015Thumb.jpg" alt="Photo 15" onclick="openLightbox('slrphotos/Misc015.jpg', 44)">
+                    <img src="slrphotos/Misc015Thumb.jpg" alt="Photo 15" onclick="openLightbox('slrphotos/Misc015.jpg', 50)">
                 </div>
                 <div class="photo-item">
-                    <img src="slrphotos/Misc016Thumb.jpg" alt="Photo 16" onclick="openLightbox('slrphotos/Misc016.jpg', 45)">
+                    <img src="slrphotos/Misc016Thumb.jpg" alt="Photo 16" onclick="openLightbox('slrphotos/Misc016.jpg', 51)">
                 </div>
                 <div class="photo-item">
-                    <img src="slrphotos/Misc017Thumb.jpg" alt="Photo 17" onclick="openLightbox('slrphotos/Misc017.jpg', 46)">
+                    <img src="slrphotos/Misc017Thumb.jpg" alt="Photo 17" onclick="openLightbox('slrphotos/Misc017.jpg', 52)">
                 </div>
                 <div class="photo-item">
-                    <img src="slrphotos/Misc018Thumb.jpg" alt="Photo 18" onclick="openLightbox('slrphotos/Misc018.jpg', 47)">
+                    <img src="slrphotos/Misc018Thumb.jpg" alt="Photo 18" onclick="openLightbox('slrphotos/Misc018.jpg', 53)">
                 </div>
             </div>
         </div>
@@ -434,11 +581,13 @@
     <!-- Lightbox container -->
     <div id="lightbox" class="lightbox">
         <span class="close-lightbox" onclick="closeLightbox()">&times;</span>
+        <div class="keyboard-hint">Press 'i' for info</div>
         <div class="lightbox-nav prev-btn" onclick="prevImage()">&lsaquo;</div>
         <img id="lightbox-img" src="">
         <div class="lightbox-nav next-btn" onclick="nextImage()">&rsaquo;</div>
         <div class="image-caption" id="image-caption"></div>
-        <div class="image-counter" id="image-counter">1 / 48</div>
+        <div class="image-counter" id="image-counter">1 / 54</div>
+        <div class="info-btn" id="info-btn" onclick="toggleCaption()">ⓘ</div>
     </div>
     
     <script>
@@ -447,6 +596,7 @@
         let currentImageIndex = 0;
         let startX, startY, endX, endY;
         const minSwipeDistance = 50;
+        let captionVisible = false;
         
         // Image captions for specific photos
         const imageCaptions = {
@@ -454,12 +604,50 @@
             'slrphotos/Friday010.jpg': 'Harman Red 125 - A neat film that exposes light in reverse order than standard, starting with red instead of blue',
             'slrphotos/Friday011.jpg': 'Harman Red 125 - A neat film that exposes light in reverse order than standard, starting with red instead of blue',
             'slrphotos/Friday012.jpg': 'Harman Red 125 - A neat film that exposes light in reverse order than standard, starting with red instead of blue',
-            'slrphotos/Friday013.jpg': 'Harman Red 125 - A neat film that exposes light in reverse order than standard, starting with red instead of blue'
+            'slrphotos/Friday013.jpg': 'Harman Red 125 - A neat film that exposes light in reverse order than standard, starting with red instead of blue',
+            'slrphotos/IRtest001.jpg': 'Rollei InfraRed 400',
+            'slrphotos/IRtest002.jpg': 'Rollei InfraRed 400',
+            'slrphotos/IRtest003.jpg': 'Rollei InfraRed 400',
+            'slrphotos/IRtest004.jpg': 'Rollei InfraRed 400',
+            'slrphotos/IRtest005.jpg': 'Rollei InfraRed 400',
+            'slrphotos/IRtest006.jpg': 'Rollei InfraRed 400'
         };
+        
+        // Mobile caption toggle functionality
+        function setupMobileCaptions() {
+            const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+            
+            if (isTouchDevice) {
+                const photoItems = document.querySelectorAll('.photo-item');
+                
+                photoItems.forEach(item => {
+                    item.addEventListener('click', function(e) {
+                        // Check if the click is intended for lightbox
+                        const img = e.target.closest('img');
+                        if (img) {
+                            // Small delay to separate caption toggle from lightbox open
+                            setTimeout(() => {
+                                this.classList.toggle('caption-visible');
+                            }, 10);
+                        }
+                    });
+                });
+                
+                // Hide caption when clicking outside
+                document.addEventListener('click', function(e) {
+                    if (!e.target.closest('.photo-item')) {
+                        document.querySelectorAll('.photo-item.caption-visible').forEach(item => {
+                            item.classList.remove('caption-visible');
+                        });
+                    }
+                });
+            }
+        }
         
         // Collect all image sources when DOM is loaded
         document.addEventListener('DOMContentLoaded', function() {
             collectAllImages();
+            setupMobileCaptions();
         });
         
         function collectAllImages() {
@@ -503,6 +691,12 @@
             document.getElementById('lightbox-img').src = imageSrc;
             document.getElementById('lightbox').style.display = 'block';
             document.body.style.overflow = 'hidden'; // Prevent scrolling
+            
+            // Reset caption visibility
+            captionVisible = false;
+            document.getElementById('image-caption').classList.remove('visible');
+            document.getElementById('info-btn').classList.remove('active');
+            
             updateImageCounter();
             
             console.log('Opened lightbox:', imageSrc, 'Index:', currentImageIndex);
@@ -519,6 +713,13 @@
             currentImageIndex = (currentImageIndex + 1) % allImages.length;
             document.getElementById('lightbox-img').src = allImages[currentImageIndex];
             updateImageCounter();
+            
+            // Maintain caption visibility if it was visible
+            if (captionVisible) {
+                const captionElement = document.getElementById('image-caption');
+                captionElement.classList.add('visible');
+            }
+            
             console.log('Next image:', currentImageIndex, allImages[currentImageIndex]);
         }
         
@@ -528,20 +729,44 @@
             currentImageIndex = (currentImageIndex - 1 + allImages.length) % allImages.length;
             document.getElementById('lightbox-img').src = allImages[currentImageIndex];
             updateImageCounter();
+            
+            // Maintain caption visibility if it was visible
+            if (captionVisible) {
+                const captionElement = document.getElementById('image-caption');
+                captionElement.classList.add('visible');
+            }
+            
             console.log('Previous image:', currentImageIndex, allImages[currentImageIndex]);
         }
         
         function updateImageCounter() {
             document.getElementById('image-counter').textContent = `${currentImageIndex + 1} / ${allImages.length}`;
             
-            // Update caption
+            // Update caption content (but don't show it)
             const currentImage = allImages[currentImageIndex];
             const captionElement = document.getElementById('image-caption');
+            const infoBtn = document.getElementById('info-btn');
+            
             if (imageCaptions[currentImage]) {
                 captionElement.innerHTML = imageCaptions[currentImage];
-                captionElement.style.display = 'block';
+                infoBtn.style.display = 'flex';
             } else {
-                captionElement.style.display = 'none';
+                captionElement.innerHTML = '';
+                infoBtn.style.display = 'none';
+            }
+        }
+        
+        function toggleCaption() {
+            captionVisible = !captionVisible;
+            const captionElement = document.getElementById('image-caption');
+            const infoBtn = document.getElementById('info-btn');
+            
+            if (captionVisible) {
+                captionElement.classList.add('visible');
+                infoBtn.classList.add('active');
+            } else {
+                captionElement.classList.remove('visible');
+                infoBtn.classList.remove('active');
             }
         }
         
@@ -561,6 +786,8 @@
                     nextImage();
                 } else if (e.key === 'ArrowLeft') {
                     prevImage();
+                } else if (e.key === 'i' || e.key === 'I') {
+                    toggleCaption();
                 }
             }
         });
@@ -609,6 +836,10 @@
         document.querySelector('.next-btn').addEventListener('click', function(e) {
             e.stopPropagation();
             nextImage();
+        });
+        
+        document.getElementById('info-btn').addEventListener('click', function(e) {
+            e.stopPropagation();
         });
         
         // Masonry layout implementation
