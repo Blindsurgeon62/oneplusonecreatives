@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tinkering/Restorations - One Plus One Creatives</title>
+    <title>Shoulder Strap Sew Time - One Plus One Creatives</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -78,35 +78,41 @@
             border-radius: 8px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.3);
             margin-bottom: 30px;
+            text-align: left;
         }
         
-        /* Quote box styling */
-        .quote-box {
-            background-color: #333;
-            padding: 25px;
-            border-radius: 8px;
-            margin: 30px auto;
-            max-width: 800px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        .project-header {
+            text-align: center;
+            margin-bottom: 40px;
         }
         
-        .quote-text {
-            font-style: italic;
-            font-size: 1.1rem;
-            line-height: 1.8;
+        .project-title {
+            font-size: 2rem;
             color: #f0f0f0;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
         }
         
-        .quote-author {
-            font-size: 1rem;
+        .project-summary {
+            font-size: 1.1rem;
             color: #b0b0b0;
-            text-align: right;
+            text-align: center;
+            margin-bottom: 30px;
+            font-style: italic;
         }
         
         h2 {
             font-size: 1.6rem;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
+            margin-top: 40px;
+            color: #f0f0f0;
+            border-bottom: 2px solid #444;
+            padding-bottom: 10px;
+        }
+        
+        h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            margin-top: 30px;
             color: #f0f0f0;
         }
         
@@ -116,55 +122,158 @@
             line-height: 1.8;
         }
         
-        .small-italic {
-            font-style: italic;
-            font-size: 0.9rem;
+        ul {
+            margin-bottom: 20px;
+            padding-left: 20px;
         }
         
-        /* Project Grid Layout */
-        .projects-grid {
+        li {
+            margin-bottom: 8px;
+            line-height: 1.6;
+        }
+        
+        /* Photo Gallery */
+        .photo-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            grid-gap: 30px;
-            margin-top: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-gap: 15px;
+            margin: 30px 0;
         }
         
-        .project-item {
-            background-color: #333;
-            border-radius: 8px;
+        .photo-item {
             overflow: hidden;
-            transition: transform 0.3s, box-shadow 0.3s;
-            cursor: pointer;
+            border-radius: 4px;
         }
         
-        .project-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.4);
-        }
-        
-        .project-thumbnail {
+        .photo-item img {
             width: 100%;
-            height: 200px;
-            object-fit: cover;
+            height: auto;
             display: block;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: opacity 0.3s, transform 0.3s;
         }
         
-        .project-info {
+        .photo-item img:hover {
+            opacity: 0.8;
+            transform: scale(1.02);
+        }
+        
+        .photo-caption {
+            text-align: center;
+            font-size: 0.9rem;
+            color: #888;
+            margin-top: 8px;
+            font-style: italic;
+        }
+        
+        /* Lightbox styles */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            text-align: center;
             padding: 20px;
-            text-align: left;
+            box-sizing: border-box;
+        }
+
+        .lightbox img {
+            max-width: 90%;
+            max-height: 90vh;
+            margin: auto;
+            position: relative;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1001;
+        }
+
+        .close-lightbox {
+            color: white;
+            font-size: 30px;
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            cursor: pointer;
+            z-index: 1002;
         }
         
-        .project-title {
-            font-size: 1.3rem;
-            font-weight: bold;
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: white;
+            font-size: 50px;
+            cursor: pointer;
+            opacity: 0.7;
+            z-index: 1002;
+            transition: opacity 0.3s, background-color 0.3s;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.3);
+            border-radius: 5px;
+        }
+        
+        .lightbox-nav:hover {
+            opacity: 1;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        
+        .prev-btn {
+            left: 20px;
+        }
+        
+        .next-btn {
+            right: 20px;
+        }
+        
+        .image-counter {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 5px 15px;
+            border-radius: 15px;
+            font-size: 14px;
+            z-index: 1002;
+        }
+        
+        .image-caption {
+            position: absolute;
+            bottom: 60px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 14px;
+            z-index: 1002;
+            text-align: center;
+            max-width: 80%;
+            line-height: 1.4;
+        }
+        
+        .back-button {
+            background-color: #444;
             color: #f0f0f0;
-            margin-bottom: 10px;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            display: inline-block;
+            margin-bottom: 30px;
+            transition: background-color 0.3s;
+            font-size: 1rem;
         }
         
-        .project-description {
-            font-size: 0.95rem;
-            color: #b0b0b0;
-            line-height: 1.5;
+        .back-button:hover {
+            background-color: #555;
         }
         
         .copyright {
@@ -172,14 +281,12 @@
             color: #888;
             margin-top: 40px;
             margin-bottom: 10px;
-            text-align: center;
         }
         
         /* Contact link */
         .contact {
             font-size: 1rem;
             margin-bottom: 30px;
-            text-align: center;
         }
         
         .contact a {
@@ -205,34 +312,75 @@
             <a href="general-shots.html">General Shots (35mm Film)</a>
             <a href="nightshots.html">Astro/Night (35mm Film)</a>
             <span>Digital</span>
-            <span class="active">Tinkering/Restorations</span>
+            <a href="tinkering.html">Tinkering/Restorations</a>
             <span>Musings</span>
         </div>
         
         <div class="content-box">
-            <h2>Tinkering & Restorations</h2>
+            <a href="tinkering.html" class="back-button">← Back to Tinkering/Restorations</a>
             
-            <div class="quote-box">
-                <div class="quote-text">
-                    "Nobody will stop you from creating. Do it tonight. Do it tomorrow. That is the way to make your soul grow-whether there is a market for it or not! The kick of creation is the act of creating, not anything that happens afterward"
-                </div>
-                <div class="quote-author">- Kurt Vonnegut Jr.</div>
-            </div>
-            
-            <p>These DIY's are just things I'm happy to have made, I am not very good at this kind of stuff, but I'd like to show off some of the things I do. Why? so that if you are worried about your ability to make stuff, I want to show that the hardest step <span class="small-italic">(not really, but..)</span> is starting in the first place! You are better than you think!</p>
-            
-            <!-- Projects grid -->
-            <div class="projects-grid">
-                <div class="project-item" onclick="window.location.href='shoulderstrapsewtime.html'">
-                    <img src="slrphotos/CanonstrapThumb011.jpg" alt="Shoulder Strap Project" class="project-thumbnail">
-                    <div class="project-info">
-                        <div class="project-title">Shoulder Strap Sew Time</div>
-                        <div class="project-description">
-                            A quick little project to make a vintage Canon strap work with a less-vintage camera.
-                        </div>
-                    </div>
+            <div class="project-header">
+                <div class="project-title">Shoulder Strap Sew Time</div>
+                
+                <div class="project-summary">
+                    Scored this great vintage Canon strap from Japan Meister, a store on ebay (dudes super chill BTW) it wouldn\'t fit my Rebel 2000 so I used this as an opportunity to make some customizations to it!
                 </div>
             </div>
+            
+            <h2>Materials & Tools</h2>
+            <div id="materials-tools">EDIT THE MATERIALS AND TOOLS IN THE JAVASCRIPT SECTION BELOW</div>
+            
+            <h2>Process Photos</h2>
+            <div class="photo-grid" id="gallery">
+                <div class="photo-item">
+                    <img src="slrphotos/CanonstrapThumb001.jpg" alt="Canon strap modification 1" onclick="openLightbox('slrphotos/Canonstrap001.jpg', 0)">
+                    <div class="photo-caption">Its the same era as my AV-1, as you can see here.</div>
+                </div>
+                <div class="photo-item">
+                    <img src="slrphotos/CanonstrapThumb002.jpg" alt="Canon strap modification 2" onclick="openLightbox('slrphotos/Canonstrap002.jpg', 1)">
+                    <div class="photo-caption">The Strap for the Rebel is more functional and lighter, but I don\'t like it.. too bad this doesn\'t fit! But I had an idea 8)</div>
+                </div>
+                <div class="photo-item">
+                    <img src="slrphotos/CanonstrapThumb003.jpg" alt="Canon strap modification 3" onclick="openLightbox('slrphotos/Canonstrap003.jpg', 2)">
+                    <div class="photo-caption">I got some Pilobond for another project I did, I\'m glad I had it, as its just what I needed. Flexible yet strong.</div>
+                </div>
+                <div class="photo-item">
+                    <img src="slrphotos/CanonstrapThumb004.jpg" alt="Canon strap modification 4" onclick="openLightbox('slrphotos/Canonstrap004.jpg', 3)">
+                    <div class="photo-caption">I Channeled Adam Savage here and masked masked MASKED</div>
+                </div>
+                <div class="photo-item">
+                    <img src="slrphotos/CanonstrapThumb005.jpg" alt="Canon strap modification 5" onclick="openLightbox('slrphotos/Canonstrap005.jpg', 4)">
+                    <div class="photo-caption">I didn\'t think this part through.. but it was fine 8) Just sat for a bit and thought about my next steps.</div>
+                </div>
+                <div class="photo-item">
+                    <img src="slrphotos/CanonstrapThumb006.jpg" alt="Canon strap modification 6" onclick="openLightbox('slrphotos/Canonstrap006.jpg', 5)">
+                    <div class="photo-caption">I didn\'t think well enough though, as this was my second attempt. The first time I just glued loops, before trying to lace them in the eyeholes! </div>
+                </div>
+                <div class="photo-item">
+                    <img src="slrphotos/CanonstrapThumb007.jpg" alt="Canon strap modification 7" onclick="openLightbox('slrphotos/Canonstrap007.jpg', 6)">
+                    <div class="photo-caption">The next day I peeled off the tape and was not surprised at the result. But the visible glue isn\'t going to be a problem</div>
+                </div>
+                <div class="photo-item">
+                    <img src="slrphotos/CanonstrapThumb008.jpg" alt="Canon strap modification 8" onclick="openLightbox('slrphotos/Canonstrap008.jpg', 7)">
+                    <div class="photo-caption">I wanted to be sure the added straps would hold fast. so I spent some time sewing them to the best of my ability. This was fun, I didn\'t know what I was doing.. but that\'s okay.  I realized that the end of the string needed both stop and stay somewhere, so grabbed some superglue! </div>
+                </div>
+                <div class="photo-item">
+                    <img src="slrphotos/CanonstrapThumb009.jpg" alt="Canon strap modification 9" onclick="openLightbox('slrphotos/Canonstrap009.jpg', 8)">
+                    <div class="photo-caption">I looked my paints and pens, and scored with this Gunpla marker, this was PERFECT, check that out! Inside that pen, is a thin, semitranslucent paint, so it soaked into the shoelace instead of laying on top of the fabric, and intereacted with the microscopic (I think that\'s what happening anyway) airbubles in the dried glue in a very satisfyingly-invisible way.</div>
+                </div>
+                <div class="photo-item">
+                    <img src="slrphotos/CanonstrapThumb010.jpg" alt="Canon strap modification 10" onclick="openLightbox('slrphotos/Canonstrap010.jpg', 9)">
+                    <div class="photo-caption">Not too Shabby</div>
+                </div>
+                <div class="photo-item">
+                    <img src="slrphotos/CanonstrapThumb011.jpg" alt="Canon strap modification 11" onclick="openLightbox('slrphotos/Canonstrap011.jpg', 10)">
+                    <div class="photo-caption">Yeah this was great! I\'m glad I got to do some new things with this little project. It took about 4 hours all told.</div>
+                </div>
+            </div>
+            
+            <!-- Additional content section -->
+            <div id="additional-content">EDIT THE CONTENT IN THE JAVASCRIPT SECTION BELOW</div>
+            
         </div>
         
         <div class="copyright">
@@ -243,5 +391,226 @@
             <a href="mailto:contact@oneplusonecreatives.com">Contact Me</a>
         </div>
     </div>
+    
+    <!-- Lightbox container -->
+    <div id="lightbox" class="lightbox">
+        <span class="close-lightbox" onclick="closeLightbox()">&times;</span>
+        <div class="lightbox-nav prev-btn" onclick="prevImage()">&lsaquo;</div>
+        <img id="lightbox-img" src="">
+        <div class="lightbox-nav next-btn" onclick="nextImage()">&rsaquo;</div>
+        <div class="image-caption" id="image-caption"></div>
+        <div class="image-counter" id="image-counter">1 / 11</div>
+    </div>
+    
+    <script>
+        // Global variables for navigation
+        let allImages = [];
+        let currentImageIndex = 0;
+        let startX, startY, endX, endY;
+        const minSwipeDistance = 50;
+        
+        // ===============================================
+        // EDIT YOUR PROJECT DESCRIPTION HERE: 
+        // ===============================================
+        const additionalContent = `
+        <p>Working on this made me realize, once again, how easy it is to get in our own way. By focusing on things that we erroneously conclude deserve more energy and consideration than is truly warranted, the joy inherent in making gets watered down. I\'m not sure when this clicked for me, but it did. If I needed to stop and learn the "proper" way of doing something before I was comfortable giving it a go, I would become discouraged. After being reminded of my inadequacies (imagined or otherwise), I wouldn\'t want to continue.</p>
+		<p>Failing to live up to the preconceptions I have about what I should be able to do (it can\'t be that hard, can it?), before looking at similar projects online and getting a whiff of that insidious disappointment hidden within comparison... that doesn\'t sound fun at all! Learning the proper way to [enter esoteric skill here] just to feel adequate enough to start in the first place… will destroy any momentum you have!</p>
+		<p>I constantly remind myself to be graceful with my expectations, and to remember why I\'m doing this thing in the first place… Not to win, or for bragging rights, but to explore, learn, expand, or help! Striving for excellence in all things is admirable, this is true. But allowing your inability to do something right the first time to stop you from starting in the first place... that\'s just a bummer.</p>
+		<p>So, the next time you are thinking about sewing a patch onto a backpack, painting a picture, or making a grilled cheese, and you feel overwhelmed, remember that something is better than nothing, and you will be better for it!</p>
+        `;
+        
+        // ===============================================
+        // EDIT YOUR MATERIALS & TOOLS HERE:
+        // ===============================================
+        const materialsAndTools = `
+            <h3>What I Used:</h3>
+            <ul>
+                <li>An old, neat, Canon strap from the 80s. </li>
+                <li>Red Shoelace</li>
+                <li>Pilobond</li>
+                <li>Needle and Thread</li>
+                <li>Superglue</li>
+                <li>Gloves/Mask/Eye Protection</li>
+                <li>Scissors</li>
+                <li>Two afternoons and a ventilated area</li>
+            </ul>
+        `;
+        
+        // ===============================================
+        // ADD YOUR LIGHTBOX CAPTIONS HERE:
+        // Copy this format and add your own captions
+        // ===============================================
+        const imageCaptions = {
+            'slrphotos/Canonstrap001.jpg': 'Its the same era as my AV-1, as you can see here.',
+            'slrphotos/Canonstrap002.jpg': 'The strap I got with my Rebel is fine, but I wanted this one! too bad it doesn\'t fit, But I had an idea 8)',
+            'slrphotos/Canonstrap003.jpg': 'I got some Pilobond for another project I did, I\'m glad I had it, as its just what I needed. Flexible yet strong.',
+            'slrphotos/Canonstrap004.jpg': 'I Channeled Adam Savage here and masked masked MASKED',
+            'slrphotos/Canonstrap005.jpg': 'I didn\'t think this part through.. but it was fine 8) Just sat for a bit and thought about my next steps.',
+            'slrphotos/Canonstrap006.jpg': 'That thinking ahead didn\'t help much, and this took two attemps. The first time I glued the loops before lacing them in the eyeholes!',
+            'slrphotos/Canonstrap007.jpg': 'The next day I peeled off the tape and was not surprised at the result. But that\'s okay, the visible glue isn\'t going to be a problem',
+            'slrphotos/Canonstrap008.jpg': 'I wanted to be sure the added straps would hold fast. so I spent some time sewing them to the best of my ability. This was fun, I didn\'t know what I was doing and that was fine. It dried white, after applying superglue to the threads, this was expected.',
+            'slrphotos/Canonstrap009.jpg': 'I looked my paints and pens, and scored with this Gunpla marker, this was PERFECT, check that out! Inside that pen, is a thin, semitranslucent paint, so it soaked into the shoelace instead of laying on top of the fabric, and intereacted with the microscopic (I think that\'s what happening anyway) airbubles in the dried glue in a very satisfyingly-invisible way.',
+            'slrphotos/Canonstrap010.jpg': 'Not too Shabby',
+            'slrphotos/Canonstrap011.jpg': 'Yeah this was great! I\'m glad I got to do some new things with this little project. It took about 4 hours all told.'
+        };
+        // ===============================================
+        
+        // Collect all image sources when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load the editable content
+            document.getElementById('materials-tools').innerHTML = materialsAndTools;
+            document.getElementById('additional-content').innerHTML = additionalContent;
+            
+            // Initialize gallery
+            collectAllImages();
+        });
+        
+        function collectAllImages() {
+            const photoItems = document.querySelectorAll('.photo-item');
+            allImages = [];  // Reset the array
+            
+            photoItems.forEach(item => {
+                const img = item.querySelector('img');
+                const onclickAttr = img.getAttribute('onclick');
+                if (onclickAttr) {
+                    const match = onclickAttr.match(/openLightbox\('([^']+)',\s*(\d+)\)/);
+                    if (match && match[1]) {
+                        allImages.push({
+                            src: match[1],
+                            index: parseInt(match[2])
+                        });
+                    }
+                }
+            });
+            
+            // Sort the images by their index
+            allImages.sort((a, b) => a.index - b.index);
+            
+            // Extract just the sources
+            allImages = allImages.map(item => item.src);
+            console.log('Collected images:', allImages);
+        }
+        
+        function openLightbox(imageSrc, index) {
+            // Make sure we have collected all images
+            if (allImages.length === 0) {
+                collectAllImages();
+            }
+            
+            // Find the index of this image in our array
+            currentImageIndex = allImages.indexOf(imageSrc);
+            if (currentImageIndex === -1) currentImageIndex = 0;
+            
+            document.getElementById('lightbox-img').src = imageSrc;
+            document.getElementById('lightbox').style.display = 'block';
+            document.body.style.overflow = 'hidden'; // Prevent scrolling
+            updateImageCounter();
+            
+            console.log('Opened lightbox:', imageSrc, 'Index:', currentImageIndex);
+        }
+        
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+            document.body.style.overflow = 'auto'; // Restore scrolling
+        }
+        
+        function nextImage() {
+            if (allImages.length === 0) return;
+            
+            currentImageIndex = (currentImageIndex + 1) % allImages.length;
+            document.getElementById('lightbox-img').src = allImages[currentImageIndex];
+            updateImageCounter();
+            console.log('Next image:', currentImageIndex, allImages[currentImageIndex]);
+        }
+        
+        function prevImage() {
+            if (allImages.length === 0) return;
+            
+            currentImageIndex = (currentImageIndex - 1 + allImages.length) % allImages.length;
+            document.getElementById('lightbox-img').src = allImages[currentImageIndex];
+            updateImageCounter();
+            console.log('Previous image:', currentImageIndex, allImages[currentImageIndex]);
+        }
+        
+        function updateImageCounter() {
+            document.getElementById('image-counter').textContent = `${currentImageIndex + 1} / ${allImages.length}`;
+            
+            // Update caption in lightbox
+            const currentImage = allImages[currentImageIndex];
+            const captionElement = document.getElementById('image-caption');
+            if (imageCaptions[currentImage]) {
+                captionElement.innerHTML = imageCaptions[currentImage];
+                captionElement.style.display = 'block';
+            } else {
+                captionElement.style.display = 'none';
+            }
+        }
+        
+        // Close lightbox when clicking outside the image
+        document.getElementById('lightbox').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeLightbox();
+            }
+        });
+        
+        // Close lightbox with ESC key and arrow navigation
+        document.addEventListener('keydown', function(e) {
+            if (document.getElementById('lightbox').style.display === 'block') {
+                if (e.key === 'Escape') {
+                    closeLightbox();
+                } else if (e.key === 'ArrowRight') {
+                    nextImage();
+                } else if (e.key === 'ArrowLeft') {
+                    prevImage();
+                }
+            }
+        });
+        
+        // Touch swipe detection
+        const lightbox = document.getElementById('lightbox');
+        
+        lightbox.addEventListener('touchstart', function(e) {
+            startX = e.touches[0].clientX;
+            startY = e.touches[0].clientY;
+        });
+        
+        lightbox.addEventListener('touchend', function(e) {
+            if (!startX || !startY) return;
+            
+            endX = e.changedTouches[0].clientX;
+            endY = e.changedTouches[0].clientY;
+            
+            const diffX = startX - endX;
+            const diffY = startY - endY;
+            
+            // If horizontal swipe is greater than vertical swipe
+            if (Math.abs(diffX) > Math.abs(diffY)) {
+                if (Math.abs(diffX) > minSwipeDistance) {
+                    if (diffX > 0) {
+                        // Swipe left, go to next
+                        nextImage();
+                    } else {
+                        // Swipe right, go to previous
+                        prevImage();
+                    }
+                }
+            }
+            
+            // Reset values
+            startX = null;
+            startY = null;
+        });
+        
+        // Make sure the navigation buttons in lightbox don't trigger the click event of the lightbox
+        document.querySelector('.prev-btn').addEventListener('click', function(e) {
+            e.stopPropagation();
+            prevImage();
+        });
+        
+        document.querySelector('.next-btn').addEventListener('click', function(e) {
+            e.stopPropagation();
+            nextImage();
+        });
+    </script>
 </body>
 </html>
