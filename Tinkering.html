@@ -80,6 +80,30 @@
             margin-bottom: 30px;
         }
         
+        /* Quote box styling */
+        .quote-box {
+            background-color: #333;
+            padding: 25px;
+            border-radius: 8px;
+            margin: 30px auto;
+            max-width: 800px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+        
+        .quote-text {
+            font-style: italic;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #f0f0f0;
+            margin-bottom: 10px;
+        }
+        
+        .quote-author {
+            font-size: 1rem;
+            color: #b0b0b0;
+            text-align: right;
+        }
+        
         h2 {
             font-size: 1.6rem;
             margin-bottom: 30px;
@@ -90,6 +114,11 @@
             font-size: 1rem;
             margin-bottom: 20px;
             line-height: 1.8;
+        }
+        
+        .small-italic {
+            font-style: italic;
+            font-size: 0.9rem;
         }
         
         /* Project Grid Layout */
@@ -138,41 +167,19 @@
             line-height: 1.5;
         }
         
-        .project-status {
-            display: inline-block;
-            padding: 4px 12px;
-            border-radius: 15px;
-            font-size: 0.8rem;
-            font-weight: bold;
-            margin-top: 10px;
-        }
-        
-        .status-completed {
-            background-color: #28a745;
-            color: white;
-        }
-        
-        .status-in-progress {
-            background-color: #ffc107;
-            color: #333;
-        }
-        
-        .status-planned {
-            background-color: #6c757d;
-            color: white;
-        }
-        
         .copyright {
             font-size: 0.9rem;
             color: #888;
             margin-top: 40px;
             margin-bottom: 10px;
+            text-align: center;
         }
         
         /* Contact link */
         .contact {
             font-size: 1rem;
             margin-bottom: 30px;
+            text-align: center;
         }
         
         .contact a {
@@ -204,8 +211,15 @@
         
         <div class="content-box">
             <h2>Tinkering & Restorations</h2>
-            <p>"Nobody will stop you from creating. Do it tonight. Do it tomorrow. That is the way to make your soul grow—whether there is a market for it or not! The kick of creation is the act of creating, not anything that happens afterward" - Kurt Vonnegut Jr.</p>
-			<p>"These DIY's are just things I'm happy to have made, I am not very good at this kind of stuff, but I'd like to show off some of the things I do. Why? so that if you are worried about your ability to make stuff, I want  to show that the hardest step (not really, but..) is starting in the first place! You are better than you think!  
+            
+            <div class="quote-box">
+                <div class="quote-text">
+                    "Nobody will stop you from creating. Do it tonight. Do it tomorrow. That is the way to make your soul grow-whether there is a market for it or not! The kick of creation is the act of creating, not anything that happens afterward"
+                </div>
+                <div class="quote-author">- Kurt Vonnegut Jr.</div>
+            </div>
+            
+            <p>These DIY's are just things I'm happy to have made, I am not very good at this kind of stuff, but I'd like to show off some of the things I do. Why? so that if you are worried about your ability to make stuff, I want to show that the hardest step <span class="small-italic">(not really, but..)</span> is starting in the first place! You are better than you think!</p>
             
             <!-- Projects grid -->
             <div class="projects-grid">
@@ -216,19 +230,6 @@
                         <div class="project-description">
                             A quick little project to make a vintage Canon strap work with a less-vintage camera.
                         </div>
-                        <span class="project-status status-completed">Completed</span>
-                    </div>
-                </div>
-                
-                <!-- Placeholder for future slrphotos -->
-                <!div class="project-item" style="opacity: 0.6; cursor: default;" onclick="return false;">
-                    <img src="slrphotos/placeholder-thumb.jpg" alt="Future Project" class="project-thumbnail" style="filter: grayscale(100%);">
-                    <div class="project-info">
-                        <div class="project-title">Coming Soon...</div>
-                        <div class="project-description">
-                            I've got a couple buns in the oven so to speak. BUT if you have a suggestion for a project or for some reason want me to do a commission for something... Contact@oneplusonecreatives.com 
-                        </div>
-                        <span class="project-status status-planned">Planned</span>
                     </div>
                 </div>
             </div>
