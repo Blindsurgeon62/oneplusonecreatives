@@ -695,14 +695,14 @@
             });
         });
 
-        // Font toggle functionality
+       // Font toggle functionality
         function toggleFont() {
             document.body.classList.toggle('dyslexic-font');
             const button = document.getElementById('fontToggle');
             if (document.body.classList.contains('dyslexic-font')) {
-                button.textContent = 'Regular Font';
+                button.textContent = 'Switch to Standard Font';
             } else {
-                button.textContent = 'Dyslexic Friendly Font Here!';
+                button.textContent = 'This button right here might help';
             }
         }
 
@@ -740,7 +740,7 @@
             items.forEach(item => {
                 const img = item.querySelector('img');
                 const height = img.offsetHeight;
-                const gridRowEnd = Math.ceil((height + 15) / 10);
+                const gridRowEnd = Math.ceil((height + 5) / 10);
                 item.style.gridRowEnd = `span ${gridRowEnd}`;
             });
         }
@@ -756,3 +756,6 @@
                 closeLightbox();
             }
         });
+    </script>
+</body>
+</html>
