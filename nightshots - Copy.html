@@ -12,6 +12,30 @@
             font-style: normal;
         }
         
+        /* Font toggle */
+        .font-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #2a2a2a;
+            color: #e0e0e0;
+            border: 1px solid #444;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: background-color 0.3s;
+            z-index: 100;
+        }
+        
+        .font-toggle:hover {
+            background-color: #444;
+        }
+        
+        .dyslexic-font * {
+            font-family: 'OpenDyslexic', 'Comic Sans MS', 'Trebuchet MS', Arial, sans-serif !important;
+        }
+        
         body {
             font-family: Arial, sans-serif;
             line-height: 1.6;
@@ -96,6 +120,7 @@
         p {
             font-size: 1rem;
             margin-bottom: 20px;
+            line-height: 1.8;
         }
         
         /* Photography styles */
@@ -121,7 +146,7 @@
             bottom: 0;
             left: 0;
             right: 0;
-            background-color: rgba(0, 0, 0, 0.7);
+            background-color: rgba(0, 0, 0, 0.5);
             color: white;
             padding: 10px;
             font-size: 12px;
@@ -176,6 +201,12 @@
             }
         }
         
+        .photo-description {
+            font-style: italic;
+            color: #b0b0b0;
+            margin-bottom: 30px;
+        }
+        
         .copyright {
             font-size: 0.9rem;
             color: #888;
@@ -183,7 +214,6 @@
             margin-bottom: 10px;
         }
         
-        /* Contact link */
         .contact {
             font-size: 1rem;
             margin-bottom: 30px;
@@ -352,41 +382,17 @@
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
             grid-auto-rows: 10px;
-            grid-gap: 15px;
-        }
-        
-        /* Font toggle */
-        .font-toggle {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background-color: #2a2a2a;
-            color: #e0e0e0;
-            border: 1px solid #444;
-            padding: 8px 16px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 0.9rem;
-            transition: background-color 0.3s;
-            z-index: 100;
-        }
-        
-        .font-toggle:hover {
-            background-color: #444;
-        }
-        
-        .dyslexic-font * {
-            font-family: 'OpenDyslexic', 'Comic Sans MS', 'Trebuchet MS', Arial, sans-serif !important;
+            grid-gap: 5px;
         }
     </style>
 </head>
 <body>
-    <button class="font-toggle" onclick="toggleFont()" id="fontToggle">Dyslexic Friendly Font Here!</button>
+    <button class="font-toggle" onclick="toggleFont()" id="fontToggle">Are yah dyslexic? This button right here might help!</button>
+    
     <div class="container">
         <h1>One Plus One Creatives</h1>
         <div class="tagline">Let's do things our future selves will thank us for</div>
         
-        <!-- Navigation with links -->
         <div class="nav">
             <a href="index.html">Home</a>
             <a href="general-shots.html">General Shots (35mm Film)</a>
@@ -700,9 +706,9 @@
             document.body.classList.toggle('dyslexic-font');
             const button = document.getElementById('fontToggle');
             if (document.body.classList.contains('dyslexic-font')) {
-                button.textContent = 'Regular Font';
+                button.textContent = 'Switch to Standard Font';
             } else {
-                button.textContent = 'Dyslexic Friendly Font Here!';
+                button.textContent = 'Are yah dyslexic? This button right here might help!';
             }
         }
 
@@ -740,7 +746,7 @@
             items.forEach(item => {
                 const img = item.querySelector('img');
                 const height = img.offsetHeight;
-                const gridRowEnd = Math.ceil((height + 15) / 10);
+                const gridRowEnd = Math.ceil((height + 5) / 10);
                 item.style.gridRowEnd = `span ${gridRowEnd}`;
             });
         }
@@ -756,3 +762,6 @@
                 closeLightbox();
             }
         });
+    </script>
+</body>
+</html>
