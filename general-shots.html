@@ -382,12 +382,12 @@
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
             grid-auto-rows: 10px;
-            grid-gap: 15px;
+            grid-gap: 5px;
         }
     </style>
 </head>
 <body>
-    <button class="font-toggle" onclick="toggleFont()" id="fontToggle">This button right here might help</button>
+    <button class="font-toggle" onclick="toggleFont()" id="fontToggle">Are yah dyslexic? This button right here might help!</button>
     
     <div class="container">
         <h1>One Plus One Creatives</h1>
@@ -806,7 +806,7 @@
             items.forEach(item => {
                 const img = item.querySelector('img');
                 const height = img.offsetHeight;
-                const gridRowEnd = Math.ceil((height + 15) / 10);
+                const gridRowEnd = Math.ceil((height + 5) / 10);
                 item.style.gridRowEnd = `span ${gridRowEnd}`;
             });
         }
