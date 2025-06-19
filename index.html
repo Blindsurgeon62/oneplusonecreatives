@@ -5,6 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>One Plus One Creatives</title>
     <style>
+        @font-face {
+            font-family: 'OpenDyslexic';
+            src: url('https://cdn.jsdelivr.net/npm/open-dyslexic@1.0.3/otf/OpenDyslexic-Regular.otf') format('opentype');
+            font-weight: normal;
+            font-style: normal;
+        }
+        
         body {
             font-family: Arial, sans-serif;
             line-height: 1.6;
@@ -237,9 +244,35 @@
             overflow: hidden;
             border-radius: 4px;
         }
+        
+        /* Font toggle */
+        .font-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #2a2a2a;
+            color: #e0e0e0;
+            border: 1px solid #444;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: background-color 0.3s;
+            z-index: 100;
+        }
+        
+        .font-toggle:hover {
+            background-color: #444;
+        }
+        
+        .dyslexic-font * {
+            font-family: 'OpenDyslexic', 'Comic Sans MS', 'Trebuchet MS', Arial, sans-serif !important;
+        }
     </style>
 </head>
 <body>
+    <button class="font-toggle" onclick="toggleFont()" id="fontToggle">Dyslexic? This button might help!</button>
+    
     <div class="container">
         <h1>One Plus One Creatives</h1>
         <div class="tagline">Let's do things our future selves will thank us for</div>
@@ -271,5 +304,20 @@
             © 2025 One Plus One Creatives. All Rights Reserved.
         </div>
     </div>
+
+    <script>
+        function toggleFont() {
+            const body = document.body;
+            const button = document.getElementById('fontToggle');
+            
+            if (body.classList.contains('dyslexic-font')) {
+                body.classList.remove('dyslexic-font');
+                button.textContent = 'Dyslexic? Friendly Font Here!';
+            } else {
+                body.classList.add('dyslexic-font');
+                button.textContent = 'Standard Font';
+            }
+        }
+    </script>
 </body>
 </html>

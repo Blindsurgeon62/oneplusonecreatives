@@ -5,6 +5,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>General Shots (35mm Film) - One Plus One Creatives</title>
     <style>
+        @font-face {
+            font-family: 'OpenDyslexic';
+            src: url('https://cdn.jsdelivr.net/npm/open-dyslexic@1.0.3/otf/OpenDyslexic-Regular.otf') format('opentype');
+            font-weight: normal;
+            font-style: normal;
+        }
+        
+        /* Font toggle */
+        .font-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #2a2a2a;
+            color: #e0e0e0;
+            border: 1px solid #444;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: background-color 0.3s;
+            z-index: 100;
+        }
+        
+        .font-toggle:hover {
+            background-color: #444;
+        }
+        
+        .dyslexic-font * {
+            font-family: 'OpenDyslexic', 'Comic Sans MS', 'Trebuchet MS', Arial, sans-serif !important;
+        }
+        
         body {
             font-family: Arial, sans-serif;
             line-height: 1.6;
@@ -360,6 +391,8 @@
     </style>
 </head>
 <body>
+    <button class="font-toggle" onclick="toggleFont()" id="fontToggle">This button right here might help</button>
+    
     <div class="container">
         <h1>One Plus One Creatives</h1>
         <div class="tagline">Let's do things our future selves will thank us for</div>
@@ -595,297 +628,3 @@
         // Global variables for navigation
         let allImages = [];
         let currentImageIndex = 0;
-        let startX, startY, endX, endY;
-        const minSwipeDistance = 50;
-        let captionVisible = false;
-        
-        // Image captions for specific photos
-        const imageCaptions = {
-            'slrphotos/Friday009.jpg': 'Harman Red 125 - A neat film that exposes light in reverse order than standard, starting with red instead of blue',
-            'slrphotos/Friday010.jpg': 'Harman Red 125',
-            'slrphotos/Friday011.jpg': 'Harman Red 125',
-            'slrphotos/Friday012.jpg': 'Harman Red 125',
-            'slrphotos/Friday013.jpg': 'Harman Red 125',
-			'slrphotos/Friday003.jpg': 'Here a CPL filter was used',
-            'slrphotos/IRtest001.jpg': 'Rollei InfraRed 400 with an infared R72 filter',
-            'slrphotos/IRtest002.jpg': 'Rollei InfraRed 400, no IR filter used in this shot!',
-            'slrphotos/IRtest003.jpg': 'Rollei InfraRed 400 & R72 filter',
-            'slrphotos/IRtest004.jpg': 'Rollei InfraRed 400 & R72 filter',
-            'slrphotos/IRtest005.jpg': 'Rollei InfraRed 400 & R72 filter',
-            'slrphotos/IRtest006.jpg': 'Rollei InfraRed 400 & R72 filter'
-        };
-        
-        // Mobile caption toggle functionality
-        function setupMobileCaptions() {
-            const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
-            
-            if (isTouchDevice) {
-                const photoItems = document.querySelectorAll('.photo-item');
-                
-                photoItems.forEach(item => {
-                    item.addEventListener('click', function(e) {
-                        // Check if the click is intended for lightbox
-                        const img = e.target.closest('img');
-                        if (img) {
-                            // Small delay to separate caption toggle from lightbox open
-                            setTimeout(() => {
-                                this.classList.toggle('caption-visible');
-                            }, 10);
-                        }
-                    });
-                });
-                
-                // Hide caption when clicking outside
-                document.addEventListener('click', function(e) {
-                    if (!e.target.closest('.photo-item')) {
-                        document.querySelectorAll('.photo-item.caption-visible').forEach(item => {
-                            item.classList.remove('caption-visible');
-                        });
-                    }
-                });
-            }
-        }
-        
-        // Collect all image sources when DOM is loaded
-        document.addEventListener('DOMContentLoaded', function() {
-            collectAllImages();
-            setupMobileCaptions();
-        });
-        
-        function collectAllImages() {
-            const photoItems = document.querySelectorAll('.photo-item');
-            allImages = [];  // Reset the array
-            
-            photoItems.forEach(item => {
-                if (item.style.display !== 'none') {  // Only collect visible images
-                    const img = item.querySelector('img');
-                    const onclickAttr = img.getAttribute('onclick');
-                    if (onclickAttr) {
-                        const match = onclickAttr.match(/openLightbox\('([^']+)',\s*(\d+)\)/);
-                        if (match && match[1]) {
-                            allImages.push({
-                                src: match[1],
-                                index: parseInt(match[2])
-                            });
-                        }
-                    }
-                }
-            });
-            
-            // Sort the images by their index
-            allImages.sort((a, b) => a.index - b.index);
-            
-            // Extract just the sources
-            allImages = allImages.map(item => item.src);
-            console.log('Collected images:', allImages);
-        }
-        
-        function openLightbox(imageSrc, index) {
-            // Make sure we have collected all images
-            if (allImages.length === 0) {
-                collectAllImages();
-            }
-            
-            // Find the index of this image in our array
-            currentImageIndex = allImages.indexOf(imageSrc);
-            if (currentImageIndex === -1) currentImageIndex = 0;
-            
-            document.getElementById('lightbox-img').src = imageSrc;
-            document.getElementById('lightbox').style.display = 'block';
-            document.body.style.overflow = 'hidden'; // Prevent scrolling
-            
-            // Reset caption visibility
-            captionVisible = false;
-            document.getElementById('image-caption').classList.remove('visible');
-            document.getElementById('info-btn').classList.remove('active');
-            
-            updateImageCounter();
-            
-            console.log('Opened lightbox:', imageSrc, 'Index:', currentImageIndex);
-        }
-        
-        function closeLightbox() {
-            document.getElementById('lightbox').style.display = 'none';
-            document.body.style.overflow = 'auto'; // Restore scrolling
-        }
-        
-        function nextImage() {
-            if (allImages.length === 0) return;
-            
-            currentImageIndex = (currentImageIndex + 1) % allImages.length;
-            document.getElementById('lightbox-img').src = allImages[currentImageIndex];
-            updateImageCounter();
-            
-            // Maintain caption visibility if it was visible
-            if (captionVisible) {
-                const captionElement = document.getElementById('image-caption');
-                captionElement.classList.add('visible');
-            }
-            
-            console.log('Next image:', currentImageIndex, allImages[currentImageIndex]);
-        }
-        
-        function prevImage() {
-            if (allImages.length === 0) return;
-            
-            currentImageIndex = (currentImageIndex - 1 + allImages.length) % allImages.length;
-            document.getElementById('lightbox-img').src = allImages[currentImageIndex];
-            updateImageCounter();
-            
-            // Maintain caption visibility if it was visible
-            if (captionVisible) {
-                const captionElement = document.getElementById('image-caption');
-                captionElement.classList.add('visible');
-            }
-            
-            console.log('Previous image:', currentImageIndex, allImages[currentImageIndex]);
-        }
-        
-        function updateImageCounter() {
-            document.getElementById('image-counter').textContent = `${currentImageIndex + 1} / ${allImages.length}`;
-            
-            // Update caption content (but don't show it)
-            const currentImage = allImages[currentImageIndex];
-            const captionElement = document.getElementById('image-caption');
-            const infoBtn = document.getElementById('info-btn');
-            
-            if (imageCaptions[currentImage]) {
-                captionElement.innerHTML = imageCaptions[currentImage];
-                infoBtn.style.display = 'flex';
-            } else {
-                captionElement.innerHTML = '';
-                infoBtn.style.display = 'none';
-            }
-        }
-        
-        function toggleCaption() {
-            captionVisible = !captionVisible;
-            const captionElement = document.getElementById('image-caption');
-            const infoBtn = document.getElementById('info-btn');
-            
-            if (captionVisible) {
-                captionElement.classList.add('visible');
-                infoBtn.classList.add('active');
-            } else {
-                captionElement.classList.remove('visible');
-                infoBtn.classList.remove('active');
-            }
-        }
-        
-        // Close lightbox when clicking outside the image
-        document.getElementById('lightbox').addEventListener('click', function(e) {
-            if (e.target === this) {
-                closeLightbox();
-            }
-        });
-        
-        // Close lightbox with ESC key and arrow navigation
-        document.addEventListener('keydown', function(e) {
-            if (document.getElementById('lightbox').style.display === 'block') {
-                if (e.key === 'Escape') {
-                    closeLightbox();
-                } else if (e.key === 'ArrowRight') {
-                    nextImage();
-                } else if (e.key === 'ArrowLeft') {
-                    prevImage();
-                } else if (e.key === 'i' || e.key === 'I') {
-                    toggleCaption();
-                }
-            }
-        });
-        
-        // Touch swipe detection
-        const lightbox = document.getElementById('lightbox');
-        
-        lightbox.addEventListener('touchstart', function(e) {
-            startX = e.touches[0].clientX;
-            startY = e.touches[0].clientY;
-        });
-        
-        lightbox.addEventListener('touchend', function(e) {
-            if (!startX || !startY) return;
-            
-            endX = e.changedTouches[0].clientX;
-            endY = e.changedTouches[0].clientY;
-            
-            const diffX = startX - endX;
-            const diffY = startY - endY;
-            
-            // If horizontal swipe is greater than vertical swipe
-            if (Math.abs(diffX) > Math.abs(diffY)) {
-                if (Math.abs(diffX) > minSwipeDistance) {
-                    if (diffX > 0) {
-                        // Swipe left, go to next
-                        nextImage();
-                    } else {
-                        // Swipe right, go to previous
-                        prevImage();
-                    }
-                }
-            }
-            
-            // Reset values
-            startX = null;
-            startY = null;
-        });
-        
-        // Make sure the navigation buttons in lightbox don't trigger the click event of the lightbox
-        document.querySelector('.prev-btn').addEventListener('click', function(e) {
-            e.stopPropagation();
-            prevImage();
-        });
-        
-        document.querySelector('.next-btn').addEventListener('click', function(e) {
-            e.stopPropagation();
-            nextImage();
-        });
-        
-        document.getElementById('info-btn').addEventListener('click', function(e) {
-            e.stopPropagation();
-        });
-        
-        // Masonry layout implementation
-        function resizeGridItems() {
-            const grid = document.getElementById('gallery');
-            const rowHeight = parseInt(window.getComputedStyle(grid).getPropertyValue('grid-auto-rows'));
-            const rowGap = parseInt(window.getComputedStyle(grid).getPropertyValue('grid-row-gap'));
-            
-            const items = grid.querySelectorAll('.photo-item');
-            
-            items.forEach(item => {
-                const content = item.querySelector('img');
-                const contentHeight = content.getBoundingClientRect().height;
-                
-                const rowSpan = Math.ceil((contentHeight + rowGap) / (rowHeight + rowGap));
-                item.style.gridRowEnd = 'span ' + rowSpan;
-            });
-        }
-        
-        // Initialize layout
-        window.addEventListener('load', function() {
-            resizeGridItems();
-            collectAllImages();
-        });
-        window.addEventListener('resize', resizeGridItems);
-        
-        // Ensure images are loaded before calculating layout
-        const galleryImages = document.querySelectorAll('.photo-item img');
-        let imagesLoaded = 0;
-        
-        function imageLoaded() {
-            imagesLoaded++;
-            if (imagesLoaded === galleryImages.length) {
-                resizeGridItems();
-            }
-        }
-        
-        galleryImages.forEach(img => {
-            if (img.complete) {
-                imageLoaded();
-            } else {
-                img.addEventListener('load', imageLoaded);
-            }
-        });
-    </script>
-</body>
-</html>
