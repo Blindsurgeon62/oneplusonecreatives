@@ -557,144 +557,106 @@
         // Global variables for navigation
         let allImages = [];
         let currentImageIndex = 0;
-        let allCaptions = [];
-
-        // Initialize the gallery when page loads
-        document.addEventListener('DOMContentLoaded', function() {
-            initializeGallery();
-            initializeMasonryLayout();
-        });
-
-        // Initialize gallery data
-        function initializeGallery() {
-            const photoItems = document.querySelectorAll('.photo-item');
+        let startX, startY, endX, endY;
+        const minSwipeDistance = 50;
+        let captionVisible = false;
+        
+        // Image captions with proper mapping
+        const imageCaptions = {
+            'slrphotos/MayCFO001.jpg': 'Ektachrome 100 E100 Color reversal film, Pushed +2 to 400 ISO',
+            'slrphotos/MayCFO002.jpg': 'Ektachrome 100 E100 Color reversal film, Pushed +2 to 400 ISO<br>Exposure: 1/60 (I believe)',
+            'slrphotos/MayCFO003.jpg': 'Ektachrome 100 E100 Color reversal film, Pushed +2 to 400 ISO<br>Exposure: 30 seconds',
+            'slrphotos/MayCFO004.jpg': 'Ektachrome 100 E100 Color reversal film, Pushed +2 to 400 ISO',
+            'slrphotos/MayCFO005.jpg': 'Ektachrome 100 E100 Color reversal film, Pushed +2 to 400 ISO',
+            'slrphotos/MayCFO006.jpg': 'Ektachrome 100 E100 Color reversal film, Pushed +2 to 400 ISO',
+            'slrphotos/MayCFO007.jpg': 'Ektachrome 100 E100 Color reversal film, Pushed +2 to 400 ISO',
+            'slrphotos/MayCFO008.jpg': 'Ektachrome 100 E100 Color reversal film, Pushed +2 to 400 ISO',
+            'slrphotos/MayCFO013.jpg': 'Ektachrome 100 E100 Color reversal film, Pushed +2 to 400 ISO<br>Exposure: 40 seconds',
+            'slrphotos/MayCFO012.jpg': 'Ektachrome 100 E100 Color reversal film, Pushed +2 to 400 ISO<br>Exposure: 90 seconds',
+            'slrphotos/MayCFO011.jpg': 'Ektachrome 100 E100 Color reversal film, Pushed +2 to 400 ISO<br>Exposure: 240 seconds! The difference was startling',
+            'slrphotos/MayCFO014.jpg': 'Ektachrome 100 E100 Color reversal film, Pushed +2 to 400 ISO',
+            'slrphotos/MayCFO015.jpg': 'Ektachrome 100 E100 Color reversal film, Pushed +2 to 400 ISO<br>This shot is the longest exposure I\'ve done so far, at around 5 minutes! Its good to know My star tracker works',
+            'slrphotos/MayCFO016.jpg': 'Ektachrome 100 E100 Color reversal film, Pushed +2 to 400 ISO'
+        };
+        
+        // Collect all image sources when DOM is loaded
+        function collectAllImages() {
             allImages = [];
-            allCaptions = [];
-            
-            photoItems.forEach((item, index) => {
-                const img = item.querySelector('img');
-                const caption = item.querySelector('.gallery-caption');
-                
-                // Extract the full-size image URL from onclick attribute
-                const onclickAttr = img.getAttribute('onclick');
-                if (onclickAttr) {
-                    const urlMatch = onclickAttr.match(/openLightbox\('([^']+)'/);
-                    if (urlMatch) {
-                        allImages.push(urlMatch[1]);
-                        allCaptions.push(caption ? caption.innerHTML : '');
-                    }
-                }
+            const photoItems = document.querySelectorAll('.photo-item img');
+            photoItems.forEach(img => {
+                const fullSrc = img.getAttribute('onclick').match(/'([^']+)'/)[1];
+                allImages.push(fullSrc);
             });
-            
-            // Update counter
-            document.getElementById('image-counter').textContent = `1 / ${allImages.length}`;
         }
-
+        
         // Open lightbox
-        function openLightbox(imageSrc, index) {
+        function openLightbox(src, index) {
             currentImageIndex = index;
-            document.getElementById('lightbox-img').src = imageSrc;
+            document.getElementById('lightbox-img').src = src;
             document.getElementById('lightbox').style.display = 'block';
-            document.body.style.overflow = 'hidden'; // Prevent scrolling
-            
-            updateLightboxInfo();
-            
-            // Add keyboard navigation
-            document.addEventListener('keydown', handleKeyPress);
+            updateImageCounter();
+            updateImageCaption(src);
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
         }
-
+        
         // Close lightbox
         function closeLightbox() {
             document.getElementById('lightbox').style.display = 'none';
             document.body.style.overflow = 'auto'; // Restore scrolling
-            document.removeEventListener('keydown', handleKeyPress);
-            
-            // Hide caption if visible
-            const caption = document.getElementById('image-caption');
-            const infoBtn = document.getElementById('info-btn');
-            caption.classList.remove('visible');
-            infoBtn.classList.remove('active');
-        }
-
-        // Navigate to previous image
-        function prevImage() {
-            currentImageIndex = (currentImageIndex - 1 + allImages.length) % allImages.length;
-            document.getElementById('lightbox-img').src = allImages[currentImageIndex];
-            updateLightboxInfo();
-        }
-
-        // Navigate to next image
-        function nextImage() {
-            currentImageIndex = (currentImageIndex + 1) % allImages.length;
-            document.getElementById('lightbox-img').src = allImages[currentImageIndex];
-            updateLightboxInfo();
-        }
-
-        // Update lightbox counter and caption
-        function updateLightboxInfo() {
-            document.getElementById('image-counter').textContent = `${currentImageIndex + 1} / ${allImages.length}`;
-            
-            // Update caption content
-            const captionElement = document.getElementById('image-caption');
-            if (allCaptions[currentImageIndex]) {
-                captionElement.innerHTML = allCaptions[currentImageIndex];
-            } else {
-                captionElement.innerHTML = '';
-            }
-            
-            // Hide caption when switching images
-            captionElement.classList.remove('visible');
+            captionVisible = false;
+            document.getElementById('image-caption').classList.remove('visible');
             document.getElementById('info-btn').classList.remove('active');
         }
-
+        
+        // Navigate to previous image
+        function prevImage() {
+            currentImageIndex = currentImageIndex > 0 ? currentImageIndex - 1 : allImages.length - 1;
+            document.getElementById('lightbox-img').src = allImages[currentImageIndex];
+            updateImageCounter();
+            updateImageCaption(allImages[currentImageIndex]);
+        }
+        
+        // Navigate to next image
+        function nextImage() {
+            currentImageIndex = currentImageIndex < allImages.length - 1 ? currentImageIndex + 1 : 0;
+            document.getElementById('lightbox-img').src = allImages[currentImageIndex];
+            updateImageCounter();
+            updateImageCaption(allImages[currentImageIndex]);
+        }
+        
+        // Update image counter
+        function updateImageCounter() {
+    document.getElementById('image-counter').textContent = `${currentImageIndex + 1} / ${allImages.length}`;
+}
+        
+        // Update image caption
+        function updateImageCaption(src) {
+            const caption = imageCaptions[src] || '';
+            const captionElement = document.getElementById('image-caption');
+            captionElement.innerHTML = caption;
+            
+            if (captionVisible && caption) {
+                captionElement.classList.add('visible');
+            } else {
+                captionElement.classList.remove('visible');
+            }
+        }
+        
         // Toggle caption visibility
         function toggleCaption() {
-            const caption = document.getElementById('image-caption');
+            captionVisible = !captionVisible;
+            const captionElement = document.getElementById('image-caption');
             const infoBtn = document.getElementById('info-btn');
             
-            if (caption.classList.contains('visible')) {
-                caption.classList.remove('visible');
-                infoBtn.classList.remove('active');
+            if (captionVisible) {
+                captionElement.classList.add('visible');
+                infoBtn.classList.add('active');
             } else {
-                if (allCaptions[currentImageIndex]) {
-                    caption.classList.add('visible');
-                    infoBtn.classList.add('active');
-                }
+                captionElement.classList.remove('visible');
+                infoBtn.classList.remove('active');
             }
         }
-
-        // Handle keyboard navigation
-        function handleKeyPress(e) {
-            switch(e.key) {
-                case 'ArrowLeft':
-                    prevImage();
-                    break;
-                case 'ArrowRight':
-                    nextImage();
-                    break;
-                case 'Escape':
-                    closeLightbox();
-                    break;
-                case 'i':
-                case 'I':
-                    toggleCaption();
-                    break;
-            }
-        }
-
-        // Mobile caption toggle
-        document.addEventListener('DOMContentLoaded', function() {
-            const photoItems = document.querySelectorAll('.photo-item');
-            photoItems.forEach(item => {
-                item.addEventListener('touchstart', function(e) {
-                    // Only toggle caption if not opening lightbox
-                    if (e.target.tagName !== 'IMG') {
-                        this.classList.toggle('caption-visible');
-                    }
-                });
-            });
-        });
-
+        
         // Font toggle functionality
         function toggleFont() {
             document.body.classList.toggle('dyslexic-font');
@@ -705,54 +667,108 @@
                 button.textContent = 'Dyslexic Friendly Font Here!';
             }
         }
-
-        // Masonry layout initialization
-        function initializeMasonryLayout() {
-            const grid = document.getElementById('gallery');
-            const items = grid.querySelectorAll('.photo-item');
+        
+        // Mobile caption toggle functionality
+        function setupMobileCaptions() {
+            const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
             
-            // Wait for images to load before positioning
-            let loadedCount = 0;
-            const totalImages = items.length;
-            
-            items.forEach(item => {
-                const img = item.querySelector('img');
-                if (img.complete) {
-                    loadedCount++;
-                    if (loadedCount === totalImages) {
-                        positionMasonryItems();
-                    }
-                } else {
-                    img.addEventListener('load', () => {
-                        loadedCount++;
-                        if (loadedCount === totalImages) {
-                            positionMasonryItems();
+            if (isTouchDevice) {
+                const photoItems = document.querySelectorAll('.photo-item');
+                
+                photoItems.forEach(item => {
+                    item.addEventListener('click', function(e) {
+                        // Check if the click is intended for lightbox
+                        const img = e.target.closest('img');
+                        if (img) {
+                            // Small delay to separate caption toggle from lightbox open
+                            setTimeout(() => {
+                                this.classList.toggle('caption-visible');
+                            }, 10);
                         }
                     });
+                });
+                
+                // Hide caption when clicking outside
+                document.addEventListener('click', function(e) {
+                    if (!e.target.closest('.photo-item')) {
+                        document.querySelectorAll('.photo-item.caption-visible').forEach(item => {
+                            item.classList.remove('caption-visible');
+                        });
+                    }
+                });
+            }
+        }
+        
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            const lightbox = document.getElementById('lightbox');
+            if (lightbox.style.display === 'block') {
+                switch(e.key) {
+                    case 'Escape':
+                        closeLightbox();
+                        break;
+                    case 'ArrowLeft':
+                        prevImage();
+                        break;
+                    case 'ArrowRight':
+                        nextImage();
+                        break;
+                    case 'i':
+                    case 'I':
+                        toggleCaption();
+                        break;
                 }
-            });
-        }
-
-        function positionMasonryItems() {
-            const grid = document.getElementById('gallery');
-            const items = grid.querySelectorAll('.photo-item');
-            
-            items.forEach(item => {
-                const img = item.querySelector('img');
-                const height = img.offsetHeight;
-                const gridRowEnd = Math.ceil((height + 15) / 10);
-                item.style.gridRowEnd = `span ${gridRowEnd}`;
-            });
-        }
-
-        // Recalculate layout on window resize
-        window.addEventListener('resize', () => {
-            setTimeout(positionMasonryItems, 100);
+            }
         });
-
+        
+        // Touch/swipe navigation for mobile
+        let touchStartX = 0;
+        let touchStartY = 0;
+        
+        document.addEventListener('touchstart', function(e) {
+            touchStartX = e.touches[0].clientX;
+            touchStartY = e.touches[0].clientY;
+        });
+        
+        document.addEventListener('touchend', function(e) {
+            if (!touchStartX || !touchStartY) {
+                return;
+            }
+            
+            const touchEndX = e.changedTouches[0].clientX;
+            const touchEndY = e.changedTouches[0].clientY;
+            
+            const diffX = touchStartX - touchEndX;
+            const diffY = touchStartY - touchEndY;
+            
+            // Only handle horizontal swipes (avoid interference with vertical scrolling)
+            if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > minSwipeDistance) {
+                const lightbox = document.getElementById('lightbox');
+                if (lightbox.style.display === 'block') {
+                    if (diffX > 0) {
+                        nextImage(); // Swipe left = next image
+                    } else {
+                        prevImage(); // Swipe right = previous image
+                    }
+                }
+            }
+            
+            touchStartX = 0;
+            touchStartY = 0;
+        });
+        
+        // Initialize when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            collectAllImages();
+            setupMobileCaptions();
+        });
+        
         // Close lightbox when clicking outside the image
         document.getElementById('lightbox').addEventListener('click', function(e) {
             if (e.target === this) {
                 closeLightbox();
             }
         });
+    </script>
+</body>
+</html>
