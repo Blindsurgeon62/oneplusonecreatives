@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Musings - One Plus One Creatives</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            color: #e0e0e0;
+            background-color: #1a1a1a;
+        }
+        
+        .container {
+            width: 80%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            text-align: center;
+        }
+        
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+            color: #f0f0f0;
+        }
+        
+        .tagline {
+            font-size: 1.2rem;
+            color: #b0b0b0;
+            margin-bottom: 30px;
+        }
+        
+        /* Navigation */
+        .nav {
+            margin-bottom: 30px;
+            background-color: #2a2a2a;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+        
+        .nav span {
+            display: inline-block;
+            margin: 0 15px;
+            color: #888;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1rem;
+            cursor: default;
+        }
+        
+        .nav a {
+            display: inline-block;
+            margin: 0 15px;
+            color: #888;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1rem;
+            transition: color 0.3s;
+        }
+        
+        .nav a:hover {
+            color: #ffffff;
+        }
+        
+        .nav span.active, .nav a.active {
+            color: #ffffff;
+            border-bottom: 2px solid #ffffff;
+        }
+        
+        .content-box {
+            background-color: #2a2a2a;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            margin-bottom: 30px;
+        }
+        
+        h2 {
+            font-size: 1.6rem;
+            margin-bottom: 30px;
+            color: #f0f0f0;
+        }
+        
+        p {
+            font-size: 1rem;
+            margin-bottom: 20px;
+        }
+        
+        /* Essay styles */
+        .essay {
+            margin-bottom: 40px;
+            border-bottom: 1px solid #444;
+            padding-bottom: 30px;
+        }
+        
+        .essay:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+        
+        .essay-title {
+            font-size: 1.8rem;
+            color: #f0f0f0;
+            margin-bottom: 10px;
+            text-align: left;
+        }
+        
+        .essay-date {
+            font-size: 0.9rem;
+            color: #888;
+            font-style: italic;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        
+        .essay-summary {
+            font-size: 1rem;
+            color: #b0b0b0;
+            margin-bottom: 20px;
+            text-align: left;
+            line-height: 1.7;
+        }
+        
+        .read-more-btn {
+            background-color: #444;
+            color: #e0e0e0;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s;
+            margin-bottom: 20px;
+        }
+        
+        .read-more-btn:hover {
+            background-color: #555;
+        }
+        
+        .essay-content {
+            display: none;
+            text-align: left;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+        }
+        
+        .essay-content.expanded {
+            display: block;
+        }
+        
+        .essay-content p {
+            font-size: 1rem;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            color: #e0e0e0;
+        }
+        
+        /* Contact link */
+        .contact {
+            font-size: 1rem;
+            margin-bottom: 30px;
+        }
+        
+        .contact a {
+            color: #b0b0b0;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .contact a:hover {
+            color: #ffffff;
+            text-decoration: underline;
+        }
+        
+        .copyright {
+            font-size: 0.9rem;
+            color: #888;
+            margin-top: 40px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>One Plus One Creatives</h1>
+        <div class="tagline">Let's do things our future selves will thank us for</div>
+        
+        <!-- Navigation -->
+        <div class="nav">
+            <a href="index.html">Home</a>
+            <a href="general-shots.html">General Shots (35mm Film)</a>
+            <a href="nightshots.html">Astro/Night (35mm Film)</a>
+            <span>Digital</span>
+            <a href="tinkering.html">Tinkering/Restorations</a>
+            <span class="active">Musings</span>
+        </div>
+        
+        <div class="content-box">
+            <h2>Musings</h2>
+            <p>If something you read here provides a respite from your day to day, then I am grateful it helped!</p>
+            
+            <!-- Essay 1 -->
+            <div class="essay">
+                <h3 class="essay-title">The Space Between Experiences</h3>
+                <div class="essay-date">Published: January 18, 2025</div>
+                <div class="essay-summary">
+                    Over a decade ago, a Reddit comment altered how I see the world with a simple but profound insight: Everyone's worst experience is truly their worst, regardless of how it looks to others. This essay explores why the gravity of a situation doesn't determine the authenticity of the emotion it provokes, and how accepting our inability to fully understand others' experiences can actually deepen our connections with each other.
+                </div>
+                <button class="read-more-btn" onclick="toggleEssay('essay1')">Read More</button>
+                
+                <div class="essay-content" id="essay1">
+                    <p>We all have our own weights we carry.</p>
+                    
+                    <p>When I was around 23 years old, I read a comment on Reddit that planted a seed. It's been over a decade since then, but I still think about it. It helped shape a fundamental part of how I view the world—I am forever grateful for that internet stranger's thoughtful comment all those years ago. Let me tell you about that comment and why I love it so much. Over the years I have looked for this comment, but it has eluded me, so what I'm writing here is from my fallible memory, so I cannot attribute it properly. Be that as it may... It would be nice if, through writing this, I can pass on some insights to someone who has come across this. (Hi there!)</p>
+                    
+                    <p>The post in question was an "Ask me Anything" (AMA) post—these are posts where people can pose questions to an individual who, in one way or another, can illuminate the interwebs with their expertise or anecdotes. The title of this post was something along the lines of "I was a combat medic, AMA." The only exchange I remember was their reply to someone who expressed their thoughts on how difficult it must be to undergo such traumatic experiences as being in a firefight and, on top of that, being responsible for saving people's lives, facing the carnage of wounds... They mentioned how they couldn't imagine going through that, and how the combat medic was a braver and stronger person than themselves.</p>
+                    
+                    <p>Without downplaying their own actions, they offered up their belief that comparing one person's sufferings and experiences against others was not something worth doing. They wrote about how every individual has only their own experiences... how emotions are only truly felt singularly within each of us. Therefore, it's impossible to know what other people are actually feeling. It's unkind to discredit someone's pain, just because you went through something ostensibly worse.</p>
+                    
+                    <p>They acknowledged that as a soldier, yes, they had experienced traumatic events. But they wanted the commenter to know that comparing one person's traumas to another's is not helpful or healthy. It detracts from one's value and is something out of their control. They ended by explaining how the worst thing someone has felt is just that... the worst thing they have experienced... and that it doesn't matter what that experience involved.</p>
+                    
+                    <p>This concept was part of a feeling that I had felt often, yet had been unable to put into words before. Call me simple, but I still am blown away by the truth inherent in their comment.</p>
+                    
+                    <p>A person could describe their worst day ever as when they were snubbed socially... or had a bad experience with a dentist... or when they got food poisoning. While these may seem trivial to someone else, for them it was anything but that. These experiences are just as valid as any other.</p>
+                    
+                    <p>The gravity of a situation is irrelevant to the emotion it provokes. An emotion doesn't glean any more authenticity based on external factors. And even if, for the sake of argument, we decide that it does... So what? This does nothing for the person who is still experiencing the emotions. The feeling of an emotion is truly a singular experience, one which can only be understood by the individual and then described to others. Telling someone how you feel can be like playing the schoolyard game of telephone. And deciding how other people should feel is like forcing someone to read from a note rather than playing the game.</p>
+                    
+                    <p>Now, if given the choice between, say, your best friend telling you they don't want you around anymore or having a lingering illness, I am sure which one we all would choose. Yet, if the only thing you have been through was something like having a fallout with your friend, who am I to dictate how bad you should feel? I think of the movie "Shrink"—there is a line in it that goes: "It's grief. They want you to have some kind of normal response to grief, you know, so they don't have to watch. But it's mine." The truth of that statement is irrevocable. One's feelings are their own.</p>
+                    
+                    <p>I think it's important to meditate on this!</p>
+                    
+                    <p>Accepting my inability to truly understand others gives me pause. There are still many ways to connect with others, and I would argue that the gravity of their situation is beside the point.</p>
+                    
+                    <p>Thinking someone's experience is too far beyond your scope of understanding can prevent you from even attempting to understand. Similarly, if by your own estimation a problem doesn't seem important, it can be written off. These conclusions can rob us of opportunities to connect!</p>
+                    
+                    <p>If someone is going through something you cannot understand, starting from that place of honest limitation can be a good thing. Pretending to understand others only does a disservice to everyone. Having the intention to simply be there will create a foundation that can hold whatever comes later. Furthermore, accepting our inability to comprehend others does not close a door, but opens one that will bridge the chasm between your experiences.</p>
+                    
+                    <p>Ask questions, listen, don't be afraid of what you can't feel, bravely take yourself out of the picture, leave them their shoes, live with your eyes and ears open. The future is unknown, and it's not about knowing where to look—it's about looking in the first place.</p>
+                    
+                    <p>The best thing we can do for each other is understand this and act accordingly. Instead of assuming someone should catch up to you, try to meet them halfway.</p>
+                    
+                    <p>We all have our own weights we carry.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="contact">
+            <p>Reach out if you have any questions or comments!</p>
+            <p><a href="mailto:contact@oneplusonecreatives.com">contact@oneplusonecreatives.com</a></p>
+        </div>
+        
+        <div class="copyright">
+            © 2025 One Plus One Creatives. All Rights Reserved.
+        </div>
+    </div>
+
+    <script>
+        function toggleEssay(essayId) {
+            const content = document.getElementById(essayId);
+            const button = content.previousElementSibling;
+            
+            if (content.classList.contains('expanded')) {
+                content.classList.remove('expanded');
+                button.textContent = 'Read More';
+            } else {
+                content.classList.add('expanded');
+                button.textContent = 'Read Less';
+            }
+        }
+    </script>
+</body>
+</html>
