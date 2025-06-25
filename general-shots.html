@@ -11,6 +11,20 @@
             font-weight: normal;
             font-style: normal;
         }
+.random-photo-btn {
+    background-color: #444;
+    color: #e0e0e0;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-bottom: 20px;
+    transition: background-color 0.3s;
+}
+.random-photo-btn:hover {
+    background-color: #555;
+}
         
         /* Font toggle */
         .font-toggle {
@@ -406,6 +420,7 @@
         column-count: 1;
     }
 }
+
     </style>
 </head>
 <body>
@@ -423,6 +438,8 @@
             <a href="tinkering.html">Tinkering/Restorations</a>
             <a href="musings.html">Musings</a>
         </div>
+        /div>
+		    <button class="random-photo-btn" onclick="openRandomPhoto()">🎲 Random Photo</button>
         
         <div class="content-box">
             <h2>35mm Film Photography</h2>
@@ -853,7 +870,19 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
       
-
+// Open a random photo
+function openRandomPhoto() {
+    // Make sure gallery is initialized first
+    if (allImages.length === 0) {
+        initializeGallery();
+    }
+    
+    // Generate random index
+    const randomIndex = Math.floor(Math.random() * allImages.length);
+    
+    // Open the lightbox with random image
+    openLightbox(allImages[randomIndex], randomIndex);
+}
      
 
         // Close lightbox when clicking outside the image
