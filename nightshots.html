@@ -347,14 +347,35 @@
             }
         }
         
-        /* Masonry Grid Layout */
-        .photo-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            grid-auto-rows: 14px;
-            grid-gap: 7px;
-			cssgrid-auto-flow: dense;
-        }
+  /* CSS Columns Layout */
+.photo-grid {
+    column-count: 4;
+    column-gap: 5px;
+}
+
+.photo-item {
+    break-inside: avoid;
+    margin-bottom: 5px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+    .photo-grid {
+        column-count: 3;
+    }
+}
+
+@media (max-width: 768px) {
+    .photo-grid {
+        column-count: 2;
+    }
+}
+
+@media (max-width: 480px) {
+    .photo-grid {
+        column-count: 1;
+    }
+}
         
         /* Font toggle */
         .font-toggle {
@@ -560,11 +581,6 @@
         let currentImageIndex = 0;
         let allCaptions = [];
 
-        // Initialize the gallery when page loads
-        document.addEventListener('DOMContentLoaded', function() {
-            initializeGallery();
-            initializeMasonryLayout();
-        });
 
         // Initialize gallery data
         function initializeGallery() {
@@ -683,18 +699,20 @@
             }
         }
 
-        // Mobile caption toggle
-        document.addEventListener('DOMContentLoaded', function() {
-            const photoItems = document.querySelectorAll('.photo-item');
-            photoItems.forEach(item => {
-                item.addEventListener('touchstart', function(e) {
-                    // Only toggle caption if not opening lightbox
-                    if (e.target.tagName !== 'IMG') {
-                        this.classList.toggle('caption-visible');
-                    }
-                });
-            });
+// Mobile caption toggle AND initialize gallery
+document.addEventListener('DOMContentLoaded', function() {
+    initializeGallery(); // Add this line
+    
+    const photoItems = document.querySelectorAll('.photo-item');
+    photoItems.forEach(item => {
+        item.addEventListener('touchstart', function(e) {
+            // Only toggle caption if not opening lightbox
+            if (e.target.tagName !== 'IMG') {
+                this.classList.toggle('caption-visible');
+            }
         });
+    });
+});
 
        // Font toggle functionality
         function toggleFont() {
@@ -707,49 +725,6 @@
             }
         }
 
-        // Masonry layout initialization
-        function initializeMasonryLayout() {
-            const grid = document.getElementById('gallery');
-            const items = grid.querySelectorAll('.photo-item');
-            
-            // Wait for images to load before positioning
-            let loadedCount = 0;
-            const totalImages = items.length;
-            
-            items.forEach(item => {
-                const img = item.querySelector('img');
-                if (img.complete) {
-                    loadedCount++;
-                    if (loadedCount === totalImages) {
-                        positionMasonryItems();
-                    }
-                } else {
-                    img.addEventListener('load', () => {
-                        loadedCount++;
-                        if (loadedCount === totalImages) {
-                            positionMasonryItems();
-                        }
-                    });
-                }
-            });
-        }
-
-        function positionMasonryItems() {
-            const grid = document.getElementById('gallery');
-            const items = grid.querySelectorAll('.photo-item');
-            
-            items.forEach(item => {
-                const img = item.querySelector('img');
-                const height = img.offsetHeight;
-                const gridRowEnd = Math.ceil((height + 5) / 10);
-                item.style.gridRowEnd = `span ${gridRowEnd}`;
-            });
-        }
-
-        // Recalculate layout on window resize
-        window.addEventListener('resize', () => {
-            setTimeout(positionMasonryItems, 100);
-        });
 
         // Close lightbox when clicking outside the image
         document.getElementById('lightbox').addEventListener('click', function(e) {
