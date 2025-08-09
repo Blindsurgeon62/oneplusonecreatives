@@ -540,8 +540,8 @@
             
             <!-- View Toggle -->
             <div class="view-toggle">
-                <button class="view-btn active" onclick="setViewMode('paginated')">Paginated View</button>
-                <button class="view-btn" onclick="setViewMode('all')">Load All Photos</button>
+                <button class="view-btn active" onclick="setViewMode('paginated', this)">Paginated View</button>
+                <button class="view-btn" onclick="setViewMode('all', this)">Load All Photos</button>
             </div>
             
             <!-- Pagination Controls (shown only in paginated mode) -->
@@ -589,13 +589,24 @@
         <img id="lightbox-img" src="">
         <div class="lightbox-nav next-btn" onclick="nextImage()">&rsaquo;</div>
         <div class="image-caption" id="image-caption"></div>
-        <div class="image-counter" id="image-counter">1 / 42</div>
+        <div class="image-counter" id="image-counter">1 / 51</div>
         <div class="info-btn" id="info-btn" onclick="toggleCaption()">ⓘ</div>
     </div>
     
     <script>
         // Photo data - store all your night photo information here
         const photoData = [
+            // NEW Yosemite photos - FIRST (excluding 006, 009, 010 which go to general)
+            { thumb: 'slrphotos/Yosmethumb001.jpg', full: 'slrphotos/Yosme001.jpg', alt: 'Yosemite Photo 1', caption: '' },
+            { thumb: 'slrphotos/Yosmethumb002.jpg', full: 'slrphotos/Yosme002.jpg', alt: 'Yosemite Photo 2', caption: '' },
+            { thumb: 'slrphotos/Yosmethumb003.jpg', full: 'slrphotos/Yosme003.jpg', alt: 'Yosemite Photo 3', caption: '' },
+            { thumb: 'slrphotos/Yosmethumb004.jpg', full: 'slrphotos/Yosme004.jpg', alt: 'Yosemite Photo 4', caption: '' },
+            { thumb: 'slrphotos/Yosmethumb005.jpg', full: 'slrphotos/Yosme005.jpg', alt: 'Yosemite Photo 5', caption: '' },
+            { thumb: 'slrphotos/Yosmethumb007.jpg', full: 'slrphotos/Yosme007.jpg', alt: 'Yosemite Photo 7', caption: '' },
+            { thumb: 'slrphotos/Yosmethumb008.jpg', full: 'slrphotos/Yosme008.jpg', alt: 'Yosemite Photo 8', caption: '' },
+            { thumb: 'slrphotos/Yosmethumb011.jpg', full: 'slrphotos/Yosme011.jpg', alt: 'Yosemite Photo 11', caption: '' },
+            { thumb: 'slrphotos/Yosmethumb012.jpg', full: 'slrphotos/Yosme012.jpg', alt: 'Yosemite Photo 12', caption: '' },
+            
             // KG Photos
             { thumb: 'slrphotos/KGThumb002.jpg', full: 'slrphotos/KG002.jpg', alt: 'KG Photo 2', caption: 'Kodak Gold 400, this stuff handled much better than I was expecting, once again I learned something!' },
             { thumb: 'slrphotos/KGThumb005.jpg', full: 'slrphotos/KG005.jpg', alt: 'KG Photo 5', caption: 'Kodak Gold 400, this stuff handled much better than I was expecting, once again I learned something!' },
@@ -655,6 +666,19 @@
         let allCaptions = [];
         let currentImageIndex = 0;
 
+        // Initialize the gallery when page loads
+        window.addEventListener('DOMContentLoaded', function() {
+            initializeGallery();
+            
+            // Add touch event listener for mobile captions
+            document.addEventListener('touchstart', function(e) {
+                if (e.target.closest('.photo-item') && e.target.tagName !== 'IMG') {
+                    const photoItem = e.target.closest('.photo-item');
+                    photoItem.classList.toggle('caption-visible');
+                }
+            });
+        });
+
         // Initialize the gallery
         function initializeGallery() {
             if (viewMode === 'paginated') {
@@ -666,7 +690,7 @@
         }
 
         // Set view mode (paginated or all)
-        function setViewMode(mode) {
+        function setViewMode(mode, button) {
             viewMode = mode;
             currentPage = 1;
             
@@ -674,7 +698,7 @@
             document.querySelectorAll('.view-btn').forEach(btn => {
                 btn.classList.remove('active');
             });
-            event.target.classList.add('active');
+            button.classList.add('active');
             
             // Show/hide pagination controls
             const paginationControls = document.querySelectorAll('.pagination-controls');
@@ -914,22 +938,12 @@
             }
         }
 
-        // Mobile caption toggle
-        document.addEventListener('DOMContentLoaded', function() {
-            initializeGallery();
-            
-            // Add touch event listener for mobile captions
-            document.addEventListener('touchstart', function(e) {
-                if (e.target.closest('.photo-item') && e.target.tagName !== 'IMG') {
-                    const photoItem = e.target.closest('.photo-item');
-                    photoItem.classList.toggle('caption-visible');
-                }
-            });
-        });
-
         // Close lightbox when clicking outside the image
         document.getElementById('lightbox').addEventListener('click', function(e) {
             if (e.target === this) {
                 closeLightbox();
             }
         });
+    </script>
+</body>
+</html>
