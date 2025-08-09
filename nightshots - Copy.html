@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Astro/Night (35mm Film) - One Plus One Creatives</title>
+    <style>
+        @font-face {
+            font-family: 'OpenDyslexic';
+            src: url('https://cdn.jsdelivr.net/npm/open-dyslexic@1.0.3/otf/OpenDyslexic-Regular.otf') format('opentype');
+            font-weight: normal;
+            font-style: normal;
+        }
+		.random-photo-btn {
+    background-color: #444;
+    color: #e0e0e0;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-bottom: 20px;
+    transition: background-color 0.3s;
+}
+
+.random-photo-btn:hover {
+    background-color: #555;
+}
+        
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            color: #e0e0e0;
+            background-color: #1a1a1a;
+        }
+        
+        .container {
+            width: 80%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            text-align: center;
+        }
+        
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+            color: #f0f0f0;
+        }
+        
+        .tagline {
+            font-size: 1.2rem;
+            color: #b0b0b0;
+            margin-bottom: 30px;
+        }
+        
+        /* Navigation */
+        .nav {
+            margin-bottom: 30px;
+            background-color: #2a2a2a;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+        
+        .nav span {
+            display: inline-block;
+            margin: 0 15px;
+            color: #888;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1rem;
+            cursor: default;
+        }
+        
+        .nav a {
+            display: inline-block;
+            margin: 0 15px;
+            color: #888;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1rem;
+            transition: color 0.3s;
+        }
+        
+        .nav a:hover {
+            color: #ffffff;
+        }
+        
+        .nav span.active, .nav a.active {
+            color: #ffffff;
+            border-bottom: 2px solid #ffffff;
+        }
+        
+        .content-box {
+            background-color: #2a2a2a;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            margin-bottom: 30px;
+        }
+        
+        h2 {
+            font-size: 1.6rem;
+            margin-bottom: 30px;
+            color: #f0f0f0;
+        }
+        
+        p {
+            font-size: 1rem;
+            margin-bottom: 20px;
+        }
+        
+        /* Photography styles */
+        .photo-item {
+            margin-bottom: 0;
+            overflow: hidden;
+            border-radius: 4px;
+            position: relative;
+            cursor: pointer;
+        }
+        
+        .photo-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 4px;
+            transition: opacity 0.3s, transform 0.3s;
+        }
+        
+        /* Gallery caption overlay */
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 10px;
+            font-size: 12px;
+            line-height: 1.4;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+            text-align: left;
+        }
+        
+        /* Desktop hover effect */
+        @media (hover: hover) and (pointer: fine) {
+            .photo-item:hover img {
+                opacity: 0.9;
+                transform: scale(1.02);
+            }
+            
+            .photo-item:hover .gallery-caption {
+                transform: translateY(0);
+            }
+        }
+        
+        /* Mobile/tablet tap effect */
+        @media (hover: none) or (pointer: coarse) {
+            .photo-item.caption-visible .gallery-caption {
+                transform: translateY(0);
+            }
+            
+            .photo-item.caption-visible img {
+                opacity: 0.9;
+            }
+            
+            .photo-item::after {
+                content: "ⓘ";
+                position: absolute;
+                top: 10px;
+                right: 10px;
+                background-color: rgba(255, 255, 255, 0.9);
+                color: #333;
+                width: 24px;
+                height: 24px;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 16px;
+                opacity: 0.8;
+                transition: opacity 0.3s;
+            }
+            
+            .photo-item.caption-visible::after {
+                opacity: 0.3;
+            }
+        }
+        
+        .copyright {
+            font-size: 0.9rem;
+            color: #888;
+            margin-top: 40px;
+            margin-bottom: 10px;
+        }
+        
+        /* Contact link */
+        .contact {
+            font-size: 1rem;
+            margin-bottom: 30px;
+        }
+        
+        .contact a {
+            color: #b0b0b0;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .contact a:hover {
+            color: #ffffff;
+            text-decoration: underline;
+        }
+        
+        /* Lightbox styles */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            text-align: center;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .lightbox img {
+            max-width: 90%;
+            max-height: 90vh;
+            margin: auto;
+            position: relative;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1001;
+        }
+
+        .close-lightbox {
+            color: white;
+            font-size: 30px;
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            cursor: pointer;
+            z-index: 1002;
+        }
+        
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: white;
+            font-size: 50px;
+            cursor: pointer;
+            opacity: 0.7;
+            z-index: 1002;
+            transition: opacity 0.3s, background-color 0.3s;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.3);
+            border-radius: 5px;
+        }
+        
+        .lightbox-nav:hover {
+            opacity: 1;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        
+        .prev-btn {
+            left: 20px;
+        }
+        
+        .next-btn {
+            right: 20px;
+        }
+        
+        .image-counter {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 5px 15px;
+            border-radius: 15px;
+            font-size: 14px;
+            z-index: 1002;
+        }
+        
+        .image-caption {
+            position: absolute;
+            bottom: 60px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 14px;
+            z-index: 1002;
+            text-align: center;
+            max-width: 80%;
+            line-height: 1.4;
+            display: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .image-caption.visible {
+            display: block;
+            opacity: 1;
+        }
+        
+        .info-btn {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 20px;
+            z-index: 1002;
+            transition: background-color 0.3s;
+            border: 2px solid transparent;
+        }
+        
+        .info-btn:hover {
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+        
+        .info-btn.active {
+            background-color: rgba(255, 255, 255, 0.2);
+            border-color: white;
+        }
+        
+        .keyboard-hint {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 12px;
+            z-index: 1002;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 5px 10px;
+            border-radius: 5px;
+            display: none;
+        }
+        
+        @media (hover: hover) and (pointer: fine) {
+            .keyboard-hint {
+                display: block;
+            }
+        }
+        
+  /* CSS Columns Layout */
+.photo-grid {
+    column-count: 4;
+    column-gap: 5px;
+}
+
+.photo-item {
+    break-inside: avoid;
+    margin-bottom: 5px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+    .photo-grid {
+        column-count: 3;
+    }
+}
+
+@media (max-width: 768px) {
+    .photo-grid {
+        column-count: 2;
+    }
+}
+
+@media (max-width: 480px) {
+    .photo-grid {
+        column-count: 1;
+    }
+}
+        
+        /* Font toggle */
+        .font-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #2a2a2a;
+            color: #e0e0e0;
+            border: 1px solid #444;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: background-color 0.3s;
+            z-index: 100;
+        }
+        
+        .font-toggle:hover {
+            background-color: #444;
+        }
+        
+        .dyslexic-font * {
+            font-family: 'OpenDyslexic', 'Comic Sans MS', 'Trebuchet MS', Arial, sans-serif !important;
+        }
+    </style>
+</head>
+<body>
+    <button class="font-toggle" onclick="toggleFont()" id="fontToggle">Dyslexic Friendly Font Here!</button>
+    <div class="container">
+        <h1>One Plus One Creatives</h1>
+        <div class="tagline">Let's do things our future selves will thank us for</div>
+        
+        <!-- Navigation with links -->
+    <div class="nav">
+    <a href="index.html">Home</a>
+    <a href="general-shots.html">General Shots (35mm Film)</a>
+    <span class="active">Astro/Night (35mm Film)</span>
+    <span>Digital</span>
+    <a href="tinkering.html">Tinkering/Restorations</a>
+    <a href="musings.html">Musings</a>
+    <a href="makersshowcase.html">Makers Showcase</a>
+</div>
+		    <button class="random-photo-btn" onclick="openRandomPhoto()">🎲 Random Photo</button>
+        
+        <div class="content-box">
+            <h2>Astro/Night (35mm Film)</h2>
+            <p>For some of these shots, I used my StarAdventure 2i which keeps the camera moving with the stars. Unless stated on the picture itself, these were taken with my Canon Rebel 2000 using the Canon EF 28-70mm II.</p>
+            
+            <!-- Photo grid for all night images -->
+            <div class="photo-grid" id="gallery">
+                <!-- New KG Photos - FIRST -->
+                <div class="photo-item">
+                    <img src="slrphotos/KGThumb002.jpg" alt="KD Photo 2" onclick="openLightbox('slrphotos/KG002.jpg', 0)">
+                    <div class="gallery-caption">Kodak Gold 400, this stuff handled much better than I was expecting, once again I learned something!</div>
+                </div>
+                <div class="photo-item">
+                    <img src="slrphotos/KGThumb005.jpg" alt="KD Photo 5" onclick="openLightbox('slrphotos/KG005.jpg', 1)">
+                    <div class="gallery-caption">Kodak Gold 400, this stuff handled much better than I was expecting, once again I learned something!</div>
+                </div>
+                
+                <!-- n1yose photos (new) -->
+                      <div class="photo-item">
+                    <img src="slrphotos/n1yosethumb001.jpg" alt="Night Yosemite Photo 1" onclick="openLightbox('slrphotos/n1yose001.jpg', 2)">
+                    <div class="gallery-caption">Cinestill 800T surprised me (not in a good way!) but I think campfire smoke during these long exposures was the real issue. Great learning moment, and I got some neat photos anyway!</div>
+                </div>
+                <div class="photo-item">
+                    <img src="slrphotos/n1yosethumb002.jpg" alt="Night Yosemite Photo 2" onclick="openLightbox('slrphotos/n1yose002.jpg', 3)">
+                    <div class="gallery-caption">Cinestill 800T surprised me (not in a good way!) but I think campfire smoke during these long exposures was the real issue. Great learning moment, and I got some neat photos anyway!</div>
+                </div>
+                <div class="photo-item">
+                    <img src="slrphotos/n1yosethumb003.jpg" alt="Night Yosemite Photo 3" onclick="openLightbox('slrphotos/n1yose003.jpg', 4)">
+                    <div class="gallery-caption">Cinestill 800T surprised me (not in a good way!) but I think campfire smoke during these long exposures was the real issue. Great learning moment, and I got some neat photos anyway!</div>
+                </div>
+                <div class="photo-item">
+                    <img src="slrphotos/n1yosethumb004.jpg" alt="Night Yosemite Photo 4" onclick="openLightbox('slrphotos/n1yose004.jpg', 5)">
+                    <div class="gallery-caption">Cinestill 800T surprised me (not in a good way!) but I think campfire smoke during these long exposures was the real issue. Great learning moment, and I got some neat photos anyway!</div>
+                </div>
+                <div class="photo-item">
+                    <img src="slrphotos/n1yosethumb005.jpg" alt="Night Yosemite Photo 5" onclick="openLightbox('slrphotos/n1yose005.jpg', 6)">
+                    <div class="gallery-caption">Cinestill 800T surprised me (not in a good way!) but I think campfire smoke during these long exposures was the real issue. Great learning moment, and I got some neat photos anyway!</div>
+                </div>
+                <div class="photo-item">
+                    <img src="slrphotos/n1yosethumb006.jpg" alt="Night Yosemite Photo 6" onclick="openLightbox('slrphotos/n1yose006.jpg', 7)">
+                    <div class="gallery-caption">Cinestill 800T surprised me (not in a good way!) but I think campfire smoke during these long exposures was the real issue. Great learning moment, and I got some neat photos anyway!</div>
+                </div>
+                <div class="photo-item">
+                    <img src="slrphotos/n1yosethumb007.jpg" alt="Night Yosemite Photo 7" onclick="openLightbox('slrphotos/n1yose007.jpg', 8)">
+                    <div class="gallery-caption">Cinestill 800T surprised me (not in a good way!) but I think campfire smoke during these long exposures was the real issue. Great learning moment, and I got some neat photos anyway!</div>
+                </div>
+                <div class="photo-item">
+                    <img src="slrphotos/n1yosethumb008.jpg" alt="Night Yosemite Photo 8" onclick="openLightbox('slrphotos/n1yose008.jpg', 9)">
+                    <div class="gallery-caption">Cinestill 800T surprised me (not in a good way!) but I think campfire smoke during these long exposures was the real issue. Great learning moment, and I got some neat photos anyway!</div>
+                </div>
+                
+                <!-- MayCFO photos (excluding MayCFO001, adding MayCFO010 and MayCFO009) -->
+                <div class="photo-item">
+                    <img src="slrphotos/MayCFOThumb002.jpg" alt="May CFO Photo 2" onclick="openLightbox('slrphotos/MayCFO002.jpg', 10)">
+                    <div class="gallery-caption">Ektachrome 100 E100 Color reversal film, Pushed +2 to 400 ISO<br>Exposure: 1/60 (I believe)</div>
+                </div>
+                <div class="photo-item">
+                    <img src="slrphotos/MayCFOThumb003.jpg" alt="May CFO Photo 3" onclick="openLightbox('slrphotos/MayCFO003.jpg', 11)">
+                    <div class="gallery-caption">Ektachrome 100 E100 Color reversal film, Pushed +2 to 400 ISO<br>Exposure: 30 seconds</div>
+                </div>
+                <div class="photo-item">
+                    <img src="slrphotos/MayCFOThumb004.jpg" alt="May CFO Photo 4" onclick="openLightbox('slrphotos/MayCFO004.jpg', 12)">
+                    <div class="gallery-caption">Ektachrome 100 E100 Color reversal film, Pushed +2 to 400 ISO</div>
+                </div>
+                <div class="photo-item">
+                    <img src="slrphotos/MayCFOThumb005.jpg" alt="May CFO Photo 5" onclick="openLightbox('slrphotos/MayCFO005.jpg', 13)">
+                    <div class="gallery-caption">Ektachrome 100 E100 Color reversal film, Pushed +2 to 400 ISO</div>
+                </div>
+                <div class="photo-item">
+                    <img src="slrphotos/MayCFOThumb006.jpg" alt="May CFO Photo 6" onclick="openLightbox('slrphotos/MayCFO006.jpg', 14)">
+                    <div class="gallery-caption">Ektachrome 100 E100 Color reversal film, Pushed +2 to 400 ISO</div>
+                </div>
+                <div class="photo-item">
+                    <img src="slrphotos/MayCFOThumb007.jpg" alt="May CFO Photo 7" onclick="openLightbox('slrphotos/MayCFO007.jpg', 15)">
+                    <div class="gallery-caption">Ektachrome 100 E100 Color reversal film, Pushed +2 to 400 ISO</div>
+                </div>
+                <div class="photo-item">
+                    <img src="slrphotos/MayCFOThumb008.jpg" alt="May CFO Photo 8" onclick="openLightbox('slrphotos/MayCFO008.jpg', 16)">
+                    <div class="gallery-caption">Ektachrome 100 E100 Color reversal film, Pushed +2 to 400 ISO</div>
+                </div>
+                <div class="photo-item">
+                    <img src="slrphotos/MayCFOThumb010.jpg" alt="May CFO Photo 10" onclick="openLightbox('slrphotos/MayCFO010.jpg', 17)">
+                    <div class="gallery-caption">Ektachrome 100 E100 Color reversal film, Pushed +2 to 400 ISO</div>
+                </div>
+                <div class="photo-item">
+                    <img src="slrphotos/MayCFOThumb009.jpg" alt="May CFO Photo 9" onclick="openLightbox('slrphotos/MayCFO009.jpg', 18)">
+                    <div class="gallery-caption">Ektachrome 100 E100 Color reversal film, Pushed +2 to 400 ISO</div>
+                </div>
+                <div class="photo-item">
+                    <img src="slrphotos/MayCFOThumb013.jpg" alt="May CFO Photo 13" onclick="openLightbox('slrphotos/MayCFO013.jpg', 19)">
+                    <div class="gallery-caption">Ektachrome 100 E100 Color reversal film, Pushed +2 to 400 ISO<br>Exposure: 40 seconds</div>
+                </div>
+                <div class="photo-item">
+                    <img src="slrphotos/MayCFOThumb012.jpg" alt="May CFO Photo 12" onclick="openLightbox('slrphotos/MayCFO012.jpg', 20)">
+                    <div class="gallery-caption">Ektachrome 100 E100 Color reversal film, Pushed +2 to 400 ISO<br>Exposure: 90 seconds</div>
+                </div>
+                <div class="photo-item">
+                    <img src="slrphotos/MayCFOThumb011.jpg" alt="May CFO Photo 11" onclick="openLightbox('slrphotos/MayCFO011.jpg', 21)">
+                    <div class="gallery-caption">Ektachrome 100 E100 Color reversal film, Pushed +2 to 400 ISO<br>Exposure: 240 seconds!</div>
+                </div>
+                <div class="photo-item">
+                    <img src="slrphotos/MayCFOThumb014.jpg" alt="May CFO Photo 14" onclick="openLightbox('slrphotos/MayCFO014.jpg', 22)">
+                    <div class="gallery-caption">Ektachrome 100 E100 Color reversal film, Pushed +2 to 400 ISO</div>
+                </div>
+                <div class="photo-item">
+                    <img src="slrphotos/MayCFOThumb015.jpg" alt="May CFO Photo 15" onclick="openLightbox('slrphotos/MayCFO015.jpg', 23)">
+                    <div class="gallery-caption">Ektachrome 100 E100 Color reversal film, Pushed +2 to 400 ISO<br>This shot is the longest exposure I've done so far, at around 5 minutes! Its good to know My star tracker works</div>
+                </div>
+                <div class="photo-item">
+                    <img src="slrphotos/MayCFOThumb016.jpg" alt="May CFO Photo 16" onclick="openLightbox('slrphotos/MayCFO016.jpg', 24)">
+                    <div class="gallery-caption">Ektachrome 100 E100 Color reversal film, Pushed +2 to 400 ISO</div>
+                </div>
+                
+                <!-- Friday photos -->
+                <div class="photo-item">
+                    <img src="slrphotos/FridayThumb001.jpg" alt="Night Photo 1" onclick="openLightbox('slrphotos/Friday001.jpg', 25)">
+                    <div class="gallery-caption">Night photography with Canon Rebel 2000</div>
+                </div>
+                <div class="photo-item">
+                    <img src="slrphotos/FridayThumb002.jpg" alt="Night Photo 2" onclick="openLightbox('slrphotos/Friday002.jpg', 26)">
+                    <div class="gallery-caption">Night photography with Canon Rebel 2000</div>
+                </div>
+                <div class="photo-item">
+                    <img src="slrphotos/TestsThumb006.jpg" alt="Film Photo 6" onclick="openLightbox('slrphotos/Tests006.jpg', 27)">
+                    <div class="gallery-caption">35mm film test shot</div>
+                </div>
+                <div class="photo-item">
+                    <img src="slrphotos/FridayThumb006.jpg" alt="Night Photo 6" onclick="openLightbox('slrphotos/Friday006.jpg', 28)">
+                    <div class="gallery-caption">Night photography with Canon Rebel 2000</div>
+                </div>
+                <div class="photo-item">
+                    <img src="slrphotos/FridayThumb007.jpg" alt="Night Photo 7" onclick="openLightbox('slrphotos/Friday007.jpg', 29)">
+                    <div class="gallery-caption">Night photography with Canon Rebel 2000</div>
+                </div>
+                <div class="photo-item">
+                    <img src="slrphotos/TestsThumb007.jpg" alt="Film Photo 7" onclick="openLightbox('slrphotos/Tests007.jpg', 30)">
+                    <div class="gallery-caption">35mm film test shot</div>
+                </div>
+                <div class="photo-item">
+                    <img src="slrphotos/FridayThumb014.jpg" alt="Night Photo 14" onclick="openLightbox('slrphotos/Friday014.jpg', 31)">
+                    <div class="gallery-caption">Night photography with Canon Rebel 2000</div>
+                </div>
+                <div class="photo-item">
+                    <img src="slrphotos/FridayThumb015.jpg" alt="Night Photo 15" onclick="openLightbox('slrphotos/Friday015.jpg', 32)">
+                    <div class="gallery-caption">Night photography with Canon Rebel 2000</div>
+                </div>
+                <div class="photo-item">
+                    <img src="slrphotos/FridayThumb016.jpg" alt="Night Photo 16" onclick="openLightbox('slrphotos/Friday016.jpg', 33)">
+                    <div class="gallery-caption">Night photography with Canon Rebel 2000</div>
+                </div>
+                <div class="photo-item">
+                    <img src="slrphotos/FridayThumb017.jpg" alt="Night Photo 17" onclick="openLightbox('slrphotos/Friday017.jpg', 34)">
+                    <div class="gallery-caption">Night photography with Canon Rebel 2000</div>
+                </div>
+                <div class="photo-item">
+                    <img src="slrphotos/FridayThumb018.jpg" alt="Night Photo 18" onclick="openLightbox('slrphotos/Friday018.jpg', 35)">
+                    <div class="gallery-caption">Night photography with Canon Rebel 2000</div>
+                </div>
+                <div class="photo-item">
+                    <img src="slrphotos/FridayThumb019.jpg" alt="Night Photo 19" onclick="openLightbox('slrphotos/Friday019.jpg', 36)">
+                    <div class="gallery-caption">Night photography with Canon Rebel 2000</div>
+                </div>
+                <div class="photo-item">
+                    <img src="slrphotos/FridayThumb020.jpg" alt="Night Photo 20" onclick="openLightbox('slrphotos/Friday020.jpg', 37)">
+                    <div class="gallery-caption">Night photography with Canon Rebel 2000</div>
+                </div>
+                <div class="photo-item">
+                    <img src="slrphotos/FridayThumb021.jpg" alt="Night Photo 21" onclick="openLightbox('slrphotos/Friday021.jpg', 38)">
+                    <div class="gallery-caption">Night photography with Canon Rebel 2000</div>
+                </div>
+                <div class="photo-item">
+                    <img src="slrphotos/FridayThumb022.jpg" alt="Night Photo 22" onclick="openLightbox('slrphotos/Friday022.jpg', 39)">
+                    <div class="gallery-caption">Night photography with Canon Rebel 2000</div>
+                </div>
+                <div class="photo-item">
+                    <img src="slrphotos/FridayThumb023.jpg" alt="Night Photo 23" onclick="openLightbox('slrphotos/Friday023.jpg', 40)">
+                    <div class="gallery-caption">Night photography with Canon Rebel 2000</div>
+                </div>
+                <div class="photo-item">
+                    <img src="slrphotos/TestsThumb001.jpg" alt="Film Photo 1" onclick="openLightbox('slrphotos/Tests001.jpg', 41)">
+                    <div class="gallery-caption">35mm film test shot</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            © 2025 One Plus One Creatives. All Rights Reserved.
+        </div>
+        
+        <div class="contact">
+            <a href="mailto:contact@oneplusonecreatives.com">Contact Me</a>
+        </div>
+    </div>
+    
+    <!-- Lightbox container -->
+    <div id="lightbox" class="lightbox">
+        <span class="close-lightbox" onclick="closeLightbox()">&times;</span>
+        <div class="keyboard-hint">Press 'i' for info</div>
+        <div class="lightbox-nav prev-btn" onclick="prevImage()">&lsaquo;</div>
+        <img id="lightbox-img" src="">
+        <div class="lightbox-nav next-btn" onclick="nextImage()">&rsaquo;</div>
+        <div class="image-caption" id="image-caption"></div>
+        <div class="image-counter" id="image-counter">1 / 42</div>
+        <div class="info-btn" id="info-btn" onclick="toggleCaption()">ⓘ</div>
+    </div>
+    
+    <script>
+        // Global variables for navigation
+        let allImages = [];
+        let currentImageIndex = 0;
+        let allCaptions = [];
+
+        // Initialize gallery data
+        function initializeGallery() {
+            const photoItems = document.querySelectorAll('.photo-item');
+            allImages = [];
+            allCaptions = [];
+            
+            photoItems.forEach((item, index) => {
+                const img = item.querySelector('img');
+                const caption = item.querySelector('.gallery-caption');
+                
+                // Extract the full-size image URL from onclick attribute
+                const onclickAttr = img.getAttribute('onclick');
+                if (onclickAttr) {
+                    const urlMatch = onclickAttr.match(/openLightbox\('([^']+)'/);
+                    if (urlMatch) {
+                        allImages.push(urlMatch[1]);
+                        allCaptions.push(caption ? caption.innerHTML : '');
+                    }
+                }
+            });
+            
+            // Update counter
+            document.getElementById('image-counter').textContent = `1 / ${allImages.length}`;
+        }
+
+        // Open lightbox
+        function openLightbox(imageSrc, index) {
+            currentImageIndex = index;
+            document.getElementById('lightbox-img').src = imageSrc;
+            document.getElementById('lightbox').style.display = 'block';
+            document.body.style.overflow = 'hidden'; // Prevent scrolling
+            
+            updateLightboxInfo();
+            
+            // Add keyboard navigation
+            document.addEventListener('keydown', handleKeyPress);
+        }
+
+        // Close lightbox
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+            document.body.style.overflow = 'auto'; // Restore scrolling
+            document.removeEventListener('keydown', handleKeyPress);
+            
+            // Hide caption if visible
+            const caption = document.getElementById('image-caption');
+            const infoBtn = document.getElementById('info-btn');
+            caption.classList.remove('visible');
+            infoBtn.classList.remove('active');
+        }
+
+        // Navigate to previous image
+        function prevImage() {
+            currentImageIndex = (currentImageIndex - 1 + allImages.length) % allImages.length;
+            document.getElementById('lightbox-img').src = allImages[currentImageIndex];
+            updateLightboxInfo();
+        }
+
+        // Navigate to next image
+        function nextImage() {
+            currentImageIndex = (currentImageIndex + 1) % allImages.length;
+            document.getElementById('lightbox-img').src = allImages[currentImageIndex];
+            updateLightboxInfo();
+        }
+
+        // Update lightbox counter and caption
+        function updateLightboxInfo() {
+            document.getElementById('image-counter').textContent = `${currentImageIndex + 1} / ${allImages.length}`;
+            
+            // Update caption content
+            const captionElement = document.getElementById('image-caption');
+            if (allCaptions[currentImageIndex]) {
+                captionElement.innerHTML = allCaptions[currentImageIndex];
+            } else {
+                captionElement.innerHTML = '';
+            }
+            
+            // Hide caption when switching images
+            captionElement.classList.remove('visible');
+            document.getElementById('info-btn').classList.remove('active');
+        }
+
+        // Toggle caption visibility
+        function toggleCaption() {
+            const caption = document.getElementById('image-caption');
+            const infoBtn = document.getElementById('info-btn');
+            
+            if (caption.classList.contains('visible')) {
+                caption.classList.remove('visible');
+                infoBtn.classList.remove('active');
+            } else {
+                if (allCaptions[currentImageIndex]) {
+                    caption.classList.add('visible');
+                    infoBtn.classList.add('active');
+                }
+            }
+        }
+
+        // Handle keyboard navigation
+        function handleKeyPress(e) {
+            switch(e.key) {
+                case 'ArrowLeft':
+                    prevImage();
+                    break;
+                case 'ArrowRight':
+                    nextImage();
+                    break;
+                case 'Escape':
+                    closeLightbox();
+                    break;
+                case 'i':
+                case 'I':
+                    toggleCaption();
+                    break;
+            }
+        }
+
+// Mobile caption toggle AND initialize gallery
+document.addEventListener('DOMContentLoaded', function() {
+    initializeGallery(); // Add this line
+    
+    const photoItems = document.querySelectorAll('.photo-item');
+    photoItems.forEach(item => {
+        item.addEventListener('touchstart', function(e) {
+            // Only toggle caption if not opening lightbox
+            if (e.target.tagName !== 'IMG') {
+                this.classList.toggle('caption-visible');
+            }
+        });
+    });
+});
+
+       // Font toggle functionality
+        function toggleFont() {
+            document.body.classList.toggle('dyslexic-font');
+            const button = document.getElementById('fontToggle');
+            if (document.body.classList.contains('dyslexic-font')) {
+                button.textContent = 'Switch to Standard Font';
+            } else {
+                button.textContent = 'This button right here might help';
+            }
+        }
+// Open a random photo
+function openRandomPhoto() {
+    // Make sure gallery is initialized first
+    if (allImages.length === 0) {
+        initializeGallery();
+    }
+    
+    // Generate random index
+    const randomIndex = Math.floor(Math.random() * allImages.length);
+    
+    // Open the lightbox with random image
+    openLightbox(allImages[randomIndex], randomIndex);
+}
+
+        // Close lightbox when clicking outside the image
+        document.getElementById('lightbox').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeLightbox();
+            }
+        });
+    </script>
+</body>
+</html>
