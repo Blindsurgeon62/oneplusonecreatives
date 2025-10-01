@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>General Shots (35mm Film) - One Plus One Creatives</title>
+    <title>Astro/Night (35mm Film) - One Plus One Creatives</title>
     <style>
         @font-face {
             font-family: 'OpenDyslexic';
@@ -11,7 +11,7 @@
             font-weight: normal;
             font-style: normal;
         }
-
+        
         .random-photo-btn {
             background-color: #444;
             color: #e0e0e0;
@@ -23,33 +23,9 @@
             margin-bottom: 20px;
             transition: background-color 0.3s;
         }
-        
+
         .random-photo-btn:hover {
             background-color: #555;
-        }
-        
-        /* Font toggle */
-        .font-toggle {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background-color: #2a2a2a;
-            color: #e0e0e0;
-            border: 1px solid #444;
-            padding: 8px 16px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 0.9rem;
-            transition: background-color 0.3s;
-            z-index: 100;
-        }
-        
-        .font-toggle:hover {
-            background-color: #444;
-        }
-        
-        .dyslexic-font * {
-            font-family: 'OpenDyslexic', 'Comic Sans MS', 'Trebuchet MS', Arial, sans-serif !important;
         }
         
         body {
@@ -180,7 +156,7 @@
             bottom: 0;
             left: 0;
             right: 0;
-            background-color: rgba(0, 0, 0, 0.5);
+            background-color: rgba(0, 0, 0, 0.7);
             color: white;
             padding: 10px;
             font-size: 12px;
@@ -319,6 +295,7 @@
             margin-bottom: 10px;
         }
         
+        /* Contact link */
         .contact {
             font-size: 1rem;
             margin-bottom: 30px;
@@ -511,19 +488,44 @@
                 column-count: 1;
             }
         }
+        
+        /* Font toggle */
+        .font-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #2a2a2a;
+            color: #e0e0e0;
+            border: 1px solid #444;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: background-color 0.3s;
+            z-index: 100;
+        }
+        
+        .font-toggle:hover {
+            background-color: #444;
+        }
+        
+        .dyslexic-font * {
+            font-family: 'OpenDyslexic', 'Comic Sans MS', 'Trebuchet MS', Arial, sans-serif !important;
+        }
     </style>
 </head>
 <body>
-    <button class="font-toggle" onclick="toggleFont()" id="fontToggle">Are yah dyslexic? This button right here might help!</button>
+    <button class="font-toggle" onclick="toggleFont()" id="fontToggle">Dyslexic Friendly Font Here!</button>
     
     <div class="container">
         <h1>One Plus One Creatives</h1>
         <div class="tagline">Let's do things our future selves will thank us for</div>
         
+        <!-- Navigation with links -->
         <div class="nav">
             <a href="index.html">Home</a>
-            <span class="active">General Shots (35mm Film)</span>
-            <a href="nightshots.html">Astro/Night (35mm Film)</a>
+            <a href="general-shots.html">General Shots (35mm Film)</a>
+            <span class="active">Astro/Night (35mm Film)</span>
             <span>Digital</span>
             <a href="tinkering.html">Tinkering/Restorations</a>
             <a href="musings.html">Musings</a>
@@ -533,8 +535,8 @@
         <button class="random-photo-btn" onclick="openRandomPhoto()">🎲 Random Photo</button>
         
         <div class="content-box">
-            <h2>35mm Film Photography</h2>
-            <p>I shot these using two cameras: my Canon Rebel 2000 paired with either a Canon EF 28-70mm II or Vivitar Series 1 100-400mm F4.5-6.7, and my cherished Canon AV-1 with the FD 50mm 1:1.8</p>
+            <h2>Astro/Night (35mm Film)</h2>
+            <p>For some of these shots, I used my StarAdventure 2i which keeps the camera moving with the stars. Unless stated on the picture itself, these were taken with my Canon Rebel 2000 using the Canon EF 28-70mm II.</p>
             
             <!-- View Toggle -->
             <div class="view-toggle">
@@ -551,9 +553,9 @@
                 <button class="pagination-btn" onclick="goToLastPage()">Last »</button>
                 <select class="photos-per-page" id="photosPerPage" onchange="changePhotosPerPage()">
                     <option value="12">12 per page</option>
-                    <option value="24" selected>24 per page</option>
-                    <option value="36">36 per page</option>
-                    <option value="48">48 per page</option>
+                    <option value="16" selected>16 per page</option>
+                    <option value="24">24 per page</option>
+                    <option value="32">32 per page</option>
                 </select>
             </div>
             
@@ -587,132 +589,84 @@
         <img id="lightbox-img" src="">
         <div class="lightbox-nav next-btn" onclick="nextImage()">&rsaquo;</div>
         <div class="image-caption" id="image-caption"></div>
-        <div class="image-counter" id="image-counter">1 / 80</div>
+        <div class="image-counter" id="image-counter">1 / 51</div>
         <div class="info-btn" id="info-btn" onclick="toggleCaption()">ⓘ</div>
     </div>
     
     <script>
-        // Photo data - store all your photo information here
+        // Photo data - store all your night photo information here
         const photoData = [
-		// New September 29 photos
-{ thumb: 'slrphotos/29septhumb001.jpg', full: 'slrphotos/29sep001.jpg', alt: '29sep Photo 1', caption: 'Harman Red 125 pushed one time to 250, only post processing done was imagesize/watermark, I love it when that happens! the whole roll was pretty stellar.' },
-{ thumb: 'slrphotos/29septhumb002.jpg', full: 'slrphotos/29sep002.jpg', alt: '29sep Photo 2', caption: 'Harman Red 125 pushed one time to 250, only post processing done was imagesize/watermark, I love it when that happens! the whole roll was pretty stellar.' },
-{ thumb: 'slrphotos/29septhumb003.jpg', full: 'slrphotos/29sep003.jpg', alt: '29sep Photo 3', caption: 'I cant recall what I shot this with, it was couple years back.' },
-{ thumb: 'slrphotos/29septhumb004.jpg', full: 'slrphotos/29sep004.jpg', alt: '29sep Photo 4', caption: 'Kodak Ektachrome pushed two times, up to 400' },
-{ thumb: 'slrphotos/29septhumb005.jpg', full: 'slrphotos/29sep005.jpg', alt: '29sep Photo 5', caption: 'Same roll as the tree a couple back, E100 +2' },
-{ thumb: 'slrphotos/29septhumb006.jpg', full: 'slrphotos/29sep006.jpg', alt: '29sep Photo 6', caption: 'Kodak Ektachrome pushed two times, up to 400' },
-{ thumb: 'slrphotos/29septhumb007.jpg', full: 'slrphotos/29sep007.jpg', alt: '29sep Photo 7', caption: 'Same roll of Harman Red +1 as the other 5 I\'ve just uploaded, except I bumped the contrast and vibrance up a bit, vibrance. Someday I\'ll figure out to predict how the hue will turn out, but I\'ll Bob Ross it in the meantime.' },
-{ thumb: 'slrphotos/29septhumb008.jpg', full: 'slrphotos/29sep008.jpg', alt: '29sep Photo 8', caption: 'Harman Red 125 pushed one time to 250, only post processing done was imagesize/watermark, I love it when that happens! the whole roll was pretty stellar.' },
-{ thumb: 'slrphotos/29septhumb009.jpg', full: 'slrphotos/29sep009.jpg', alt: '29sep Photo 9', caption: 'Harman Red 125 pushed one time to 250, only post processing done was imagesize/watermark, I love it when that happens! the whole roll was pretty stellar.' },
-{ thumb: 'slrphotos/29septhumb010.jpg', full: 'slrphotos/29sep010.jpg', alt: '29sep Photo 10', caption: 'Harman Red 125 pushed one time to 250, only post processing done was imagesize/watermark, I love it when that happens! the whole roll was pretty stellar.' },
-{ thumb: 'slrphotos/ProI100thumb.001.jpg', full: 'slrphotos/ProI100.001.jpg', alt: 'ProI100 Photo 1', caption: 'Kodak Ektar 100' },
-			// Kodak ultramax 
- 	{ thumb: 'slrphotos/KodakGCthumb003.jpg', full: 'slrphotos/KodakGC003.jpg', alt: 'cow', caption: 'Kodak ultramax 400' }, 
-{ thumb: 'slrphotos/KodakGCthumb004.jpg', full: 'slrphotos/KodakGC004.jpg', alt: 'spin', caption: 'Kodak ultramax 400' }, 
-{ thumb: 'slrphotos/KodakGCthumb002.jpg', full: 'slrphotos/KodakGC002.jpg', alt: 'bird', caption: 'Kodak ultramax 400' },
-            // Yosemite photos 
-			{ thumb: 'slrphotos/ektacrthumb001.jpg', 			full: 'slrphotos/ektacr001.jpg', 			alt: 'Yosemite Ekta1', caption: 'Ektachrome E100, this is a neat filmstock, the negatives are..not' },
-			{ thumb: 'slrphotos/ektacrthumb002.jpg', 			full: 'slrphotos/ektacr002.jpg', 			alt: 'Yosemite Ekta2', caption: 'Ektachrome E100, This was the first time I used this film in the daytime' },
-			{ thumb: 'slrphotos/ektacrthumb003.jpg', 			full: 'slrphotos/ektacr003.jpg', 			alt: 'Yosemite Ekta3', caption: 'Ektachrome E100, ' },
-            { thumb: 'slrphotos/Yosmethumb006.jpg', full: 'slrphotos/Yosme006.jpg', alt: 'Yosemite Photo 6', caption: 'Kodak Ultramax 400' },
-            { thumb: 'slrphotos/Yosmethumb009.jpg', full: 'slrphotos/Yosme009.jpg', alt: 'Yosemite Photo 9', caption: 'Harman Red 125 pushed to 250' },
-            { thumb: 'slrphotos/Yosmethumb010.jpg', full: 'slrphotos/Yosme010.jpg', alt: 'Yosemite Photo 10', caption: 'Harman Red 125 pushed to 250' },
+		// CineStill 800T fireworks photos
+{ thumb: 'slrphotos/Cinstill800thumb.002.jpg', full: 'slrphotos/Cinstill800t.002.jpg', alt: 'CineStill 800T Photo 2', caption: 'CineStill 800T, July 4th, 25. that is 9 out of 10 of those are "privately owned" fireworks, hahaa!' },
+{ thumb: 'slrphotos/Cinstill800thumb.003.jpg', full: 'slrphotos/Cinstill800t.003.jpg', alt: 'CineStill 800T Photo 3', caption: 'CineStill 800T, July 4th, 25. that is 9 out of 10 of those are "privately owned" fireworks, hahaa! The firefighters where busy that night.' },
+{ thumb: 'slrphotos/Cinstill800thumb.004.jpg', full: 'slrphotos/Cinstill800t.004.jpg', alt: 'CineStill 800T Photo 4', caption: 'CineStill 800T, July 4th, 25. that is 9 out of 10 of those are "privately owned" fireworks, hahaa!' },
+{ thumb: 'slrphotos/Cinstill800thumb.005.jpg', full: 'slrphotos/Cinstill800t.005.jpg', alt: 'CineStill 800T Photo 5', caption: 'CineStill 800T, July 4th, 25. that is 9 out of 10 of those are "privately owned" fireworks, hahaa!' },
+		{ thumb: 'slrphotos/Kporta160thumb.001.jpg', full: 'slrphotos/Kporta160.001.jpg', alt: 'fluffy trees', caption: 'Kodak porta 160! while I wont be sharing the photos I took of my family on the rest of the roll, they look... 160 looks like it would feel soft.. if that makes sense, apt that these trees look so fluffy after a 30 second exposure!' }, 
+            // NEW Yosemite photos - FIRST (excluding 006, 009, 010 which go to general)
+			{ thumb: 'slrphotos/Yosmethumb001.jpg', full: 'slrphotos/Yosme001.jpg', alt: 'Yosemite Photo 1', caption: 'Cinestill 800T surprised me (not in a good way!) but I think campfire smoke during these long exposures was the real issue. Great learning moment, and I got some neat photos anyway!' },
+			{ thumb: 'slrphotos/Yosmethumb002.jpg', full: 'slrphotos/Yosme002.jpg', alt: 'Yosemite Photo 2', caption: "Cinestill 800T, I'm going to have to try again but without the campfires!" },
+			{ thumb: 'slrphotos/n1yosethumb007.jpg', full: 'slrphotos/n1yose007.jpg', alt: 'Night Yosemite Photo 7', caption: "Cinestill 800T, I'm waiting for a chance to do some truly long exposures, I'm curious how this stuff will hold up." },
+			{ thumb: 'slrphotos/Yosmethumb004.jpg', full: 'slrphotos/Yosme004.jpg', alt: 'Yosemite Photo 4', caption: 'Kodak Ultramax 400 was king this trip' },
+			{ thumb: 'slrphotos/Yosmethumb005.jpg', full: 'slrphotos/Yosme005.jpg', alt: 'Yosemite Photo 5', caption: 'Kodak Ultramax 400 handling >15 seconds perfectly' },
+			{ thumb: 'slrphotos/Yosmethumb007.jpg', full: 'slrphotos/Yosme007.jpg', alt: 'Yosemite Photo 7', caption: 'Harman Red 125 pushed to 250' },
+			{ thumb: 'slrphotos/Yosmethumb008.jpg', full: 'slrphotos/Yosme008.jpg', alt: 'Yosemite Photo 8', caption: 'Harman Red 125 pushed to 250, I love seeing what will come of the shots I take with this film.' },
+			{ thumb: 'slrphotos/Yosmethumb011.jpg', full: 'slrphotos/Yosme011.jpg', alt: 'Yosemite Photo 11', caption: 'Harman Red 125 pushed to 250, So far I have had the most success with this film!' },
+			{ thumb: 'slrphotos/Yosmethumb012.jpg', full: 'slrphotos/Yosme012.jpg', alt: 'Yosemite Photo 12', caption: "Harman Red 125 pushed to 250, When getting these photos ready to publish, I don't adjust the color or try to make any adjustments really, at all, with Harman Red" },
+			{ thumb: 'slrphotos/Yosmethumb013.jpg', full: 'slrphotos/Yosme013.jpg', alt: 'Yosemite Photo 13', caption: "Harman Red 125 pushed to 250, The tone is simply the chemicals doing their thing! I'll bump up the blacks a bit, or fix the exposure, but I don't have to often! very surprising!" },
+			{ thumb: 'slrphotos/Yosmethumb014.jpg', full: 'slrphotos/Yosme014.jpg', alt: 'Yosemite Photo 14', caption: 'Harman Red 125 pushed to 250, Happy Accident with this shot' },
+
+			// KG Photos
+			{ thumb: 'slrphotos/KGThumb002.jpg', full: 'slrphotos/KG002.jpg', alt: 'KG Photo 2', caption: 'Kodak Ultramax 400, this stuff handled much better than I was expecting, once again I learned something!' },
+			{ thumb: 'slrphotos/KGThumb005.jpg', full: 'slrphotos/KG005.jpg', alt: 'KG Photo 5', caption: "Kodak Ultramax 400 proved that if something's not broke.." },
+            // n1yose photos
+            { thumb: 'slrphotos/n1yosethumb001.jpg', full: 'slrphotos/n1yose001.jpg', alt: 'Night Yosemite Photo 1', caption: 'Cinestill 800T surprised me (not in a good way!) but I think campfire smoke during these long exposures was the real issue. Great learning moment, and I got some neat photos anyway!' },
+            { thumb: 'slrphotos/n1yosethumb002.jpg', full: 'slrphotos/n1yose002.jpg', alt: 'Night Yosemite Photo 2', caption: 'Cinestill 800T surprised me (not in a good way!) but I think campfire smoke during these long exposures was the real issue. Great learning moment, and I got some neat photos anyway!' },
+            { thumb: 'slrphotos/n1yosethumb003.jpg', full: 'slrphotos/n1yose003.jpg', alt: 'Night Yosemite Photo 3', caption: 'Cinestill 800T surprised me (not in a good way!) but I think campfire smoke during these long exposures was the real issue. Great learning moment, and I got some neat photos anyway!' },
+            { thumb: 'slrphotos/n1yosethumb004.jpg', full: 'slrphotos/n1yose004.jpg', alt: 'Night Yosemite Photo 4', caption: 'Cinestill 800T surprised me (not in a good way!) but I think campfire smoke during these long exposures was the real issue. Great learning moment, and I got some neat photos anyway!' },
+            { thumb: 'slrphotos/n1yosethumb005.jpg', full: 'slrphotos/n1yose005.jpg', alt: 'Night Yosemite Photo 5', caption: 'Cinestill 800T surprised me (not in a good way!) but I think campfire smoke during these long exposures was the real issue. Great learning moment, and I got some neat photos anyway!' },
+            { thumb: 'slrphotos/n1yosethumb006.jpg', full: 'slrphotos/n1yose006.jpg', alt: 'Night Yosemite Photo 6', caption: 'Cinestill 800T surprised me (not in a good way!) but I think campfire smoke during these long exposures was the real issue. Great learning moment, and I got some neat photos anyway!' },
+            { thumb: 'slrphotos/n1yosethumb008.jpg', full: 'slrphotos/n1yose008.jpg', alt: 'Night Yosemite Photo 8', caption: 'Cinestill 800T surprised me (not in a good way!) but I think campfire smoke during these long exposures was the real issue. Great learning moment, and I got some neat photos anyway!' },
             
-            // Kodak Gold Photos
-            { thumb: 'slrphotos/KGThumb001.jpg', full: 'slrphotos/KG001.jpg', alt: 'Kodak Gold Photo 1', caption: 'Kodak Gold 400, this roll taught me that there isnt always a need for fancy film stock!' },
-            { thumb: 'slrphotos/KGThumb003.jpg', full: 'slrphotos/KG003.jpg', alt: 'Kodak Gold Photo 3', caption: 'Kodak Gold 400, this roll taught me that there isnt always a need for fancy film stock!' },
-            { thumb: 'slrphotos/KGThumb004.jpg', full: 'slrphotos/KG004.jpg', alt: 'Kodak Gold Photo 4', caption: 'Kodak Gold 400, this roll taught me that there isnt always a need for fancy film stock!' },
-            { thumb: 'slrphotos/KGThumb006.jpg', full: 'slrphotos/KG006.jpg', alt: 'Kodak Gold Photo 6', caption: 'Kodak Gold 400, this roll taught me that there isnt always a need for fancy film stock!' },
+            // MayCFO photos
+            { thumb: 'slrphotos/MayCFOThumb002.jpg', full: 'slrphotos/MayCFO002.jpg', alt: 'May CFO Photo 2', caption: 'Ektachrome 100 E100 Color reversal film, Pushed +2 to 400 ISO<br>Exposure: 1/60 (I believe)' },
+            { thumb: 'slrphotos/MayCFOThumb003.jpg', full: 'slrphotos/MayCFO003.jpg', alt: 'May CFO Photo 3', caption: 'Ektachrome 100 E100 Color reversal film, Pushed +2 to 400 ISO<br>Exposure: 30 seconds' },
+            { thumb: 'slrphotos/MayCFOThumb004.jpg', full: 'slrphotos/MayCFO004.jpg', alt: 'May CFO Photo 4', caption: 'Ektachrome 100 E100 Color reversal film, Pushed +2 to 400 ISO' },
+            { thumb: 'slrphotos/MayCFOThumb005.jpg', full: 'slrphotos/MayCFO005.jpg', alt: 'May CFO Photo 5', caption: 'Ektachrome 100 E100 Color reversal film, Pushed +2 to 400 ISO' },
+            { thumb: 'slrphotos/MayCFOThumb006.jpg', full: 'slrphotos/MayCFO006.jpg', alt: 'May CFO Photo 6', caption: 'Ektachrome 100 E100 Color reversal film, Pushed +2 to 400 ISO' },
+            { thumb: 'slrphotos/MayCFOThumb007.jpg', full: 'slrphotos/MayCFO007.jpg', alt: 'May CFO Photo 7', caption: 'Ektachrome 100 E100 Color reversal film, Pushed +2 to 400 ISO' },
+            { thumb: 'slrphotos/MayCFOThumb008.jpg', full: 'slrphotos/MayCFO008.jpg', alt: 'May CFO Photo 8', caption: 'Ektachrome 100 E100 Color reversal film, Pushed +2 to 400 ISO' },
+            { thumb: 'slrphotos/MayCFOThumb010.jpg', full: 'slrphotos/MayCFO010.jpg', alt: 'May CFO Photo 10', caption: 'Ektachrome 100 E100 Color reversal film, Pushed +2 to 400 ISO' },
+            { thumb: 'slrphotos/MayCFOThumb009.jpg', full: 'slrphotos/MayCFO009.jpg', alt: 'May CFO Photo 9', caption: 'Ektachrome 100 E100 Color reversal film, Pushed +2 to 400 ISO' },
+            { thumb: 'slrphotos/MayCFOThumb013.jpg', full: 'slrphotos/MayCFO013.jpg', alt: 'May CFO Photo 13', caption: 'Ektachrome 100 E100 Color reversal film, Pushed +2 to 400 ISO<br>Exposure: 40 seconds' },
+            { thumb: 'slrphotos/MayCFOThumb012.jpg', full: 'slrphotos/MayCFO012.jpg', alt: 'May CFO Photo 12', caption: 'Ektachrome 100 E100 Color reversal film, Pushed +2 to 400 ISO<br>Exposure: 90 seconds' },
+            { thumb: 'slrphotos/MayCFOThumb011.jpg', full: 'slrphotos/MayCFO011.jpg', alt: 'May CFO Photo 11', caption: 'Ektachrome 100 E100 Color reversal film, Pushed +2 to 400 ISO<br>Exposure: 240 seconds!' },
+            { thumb: 'slrphotos/MayCFOThumb014.jpg', full: 'slrphotos/MayCFO014.jpg', alt: 'May CFO Photo 14', caption: 'Ektachrome 100 E100 Color reversal film, Pushed +2 to 400 ISO' },
+            { thumb: 'slrphotos/MayCFOThumb015.jpg', full: 'slrphotos/MayCFO015.jpg', alt: 'May CFO Photo 15', caption: 'Ektachrome 100 E100 Color reversal film, Pushed +2 to 400 ISO<br>This shot is the longest exposure I\'ve done so far, at around 5 minutes! Its good to know My star tracker works' },
+            { thumb: 'slrphotos/MayCFOThumb016.jpg', full: 'slrphotos/MayCFO016.jpg', alt: 'May CFO Photo 16', caption: 'Ektachrome 100 E100 Color reversal film, Pushed +2 to 400 ISO' },
             
-            // Website photos
-            { thumb: 'slrphotos/websitethumb001.jpg', full: 'slrphotos/website001.jpg', alt: 'Website Photo 1', caption: '' },
-            { thumb: 'slrphotos/websitethumb002.jpg', full: 'slrphotos/website002.jpg', alt: 'Website Photo 2', caption: '' },
-            { thumb: 'slrphotos/websitethumb003.jpg', full: 'slrphotos/website003.jpg', alt: 'Website Photo 3', caption: '' },
-            { thumb: 'slrphotos/websitethumb004.jpg', full: 'slrphotos/website004.jpg', alt: 'Website Photo 4', caption: '' },
-            { thumb: 'slrphotos/websitethumb005.jpg', full: 'slrphotos/website005.jpg', alt: 'Website Photo 5', caption: '' },
-            { thumb: 'slrphotos/websitethumb006.jpg', full: 'slrphotos/website006.jpg', alt: 'Website Photo 6', caption: '' },
-            { thumb: 'slrphotos/websitethumb007.jpg', full: 'slrphotos/website007.jpg', alt: 'Website Photo 7', caption: '' },
-            { thumb: 'slrphotos/websitethumb008.jpg', full: 'slrphotos/website008.jpg', alt: 'Website Photo 8', caption: '' },
-            { thumb: 'slrphotos/websitethumb009.jpg', full: 'slrphotos/website009.jpg', alt: 'Website Photo 9', caption: '' },
-            { thumb: 'slrphotos/websitethumb012.jpg', full: 'slrphotos/website012.jpg', alt: 'Website Photo 12', caption: '' },
-            { thumb: 'slrphotos/websitethumb013.jpg', full: 'slrphotos/website013.jpg', alt: 'Website Photo 13', caption: '' },
-            { thumb: 'slrphotos/websitethumb015.jpg', full: 'slrphotos/website015.jpg', alt: 'Website Photo 15', caption: '' },
-            { thumb: 'slrphotos/websitethumb019.jpg', full: 'slrphotos/website019.jpg', alt: 'Website Photo 19', caption: '' },
-            { thumb: 'slrphotos/websitethumb020.jpg', full: 'slrphotos/website020.jpg', alt: 'Website Photo 20', caption: '' },
-            { thumb: 'slrphotos/websitethumb022.jpg', full: 'slrphotos/website022.jpg', alt: 'Website Photo 22', caption: '' },
-            { thumb: 'slrphotos/websitethumb023.jpg', full: 'slrphotos/website023.jpg', alt: 'Website Photo 23', caption: '' },
-            { thumb: 'slrphotos/websitethumb024.jpg', full: 'slrphotos/website024.jpg', alt: 'Website Photo 24', caption: '' },
-            { thumb: 'slrphotos/websitethumb025.jpg', full: 'slrphotos/website025.jpg', alt: 'Website Photo 25', caption: '' },
-            { thumb: 'slrphotos/websitethumb027.jpg', full: 'slrphotos/website027.jpg', alt: 'Website Photo 27', caption: '' },
-            
-            // Harman Red photos
-            { thumb: 'slrphotos/FridayThumb009.jpg', full: 'slrphotos/Friday009.jpg', alt: 'Night Photo 9', caption: 'Harman Red 125 - A neat film that exposes light in reverse order than standard, starting with red instead of blue' },
-            { thumb: 'slrphotos/FridayThumb010.jpg', full: 'slrphotos/Friday010.jpg', alt: 'Night Photo 10', caption: 'Harman Red 125 - A neat film that exposes light in reverse order than standard, starting with red instead of blue' },
-            { thumb: 'slrphotos/FridayThumb011.jpg', full: 'slrphotos/Friday011.jpg', alt: 'Night Photo 11', caption: 'Harman Red 125 - A neat film that exposes light in reverse order than standard, starting with red instead of blue' },
-            { thumb: 'slrphotos/FridayThumb012.jpg', full: 'slrphotos/Friday012.jpg', alt: 'Night Photo 12', caption: 'Harman Red 125 - A neat film that exposes light in reverse order than standard, starting with red instead of blue' },
-            { thumb: 'slrphotos/FridayThumb013.jpg', full: 'slrphotos/Friday013.jpg', alt: 'Night Photo 13', caption: 'Harman Red 125 - A neat film that exposes light in reverse order than standard, starting with red instead of blue' },
-            
-            // Test Images
-            { thumb: 'slrphotos/TestsThumb002.jpg', full: 'slrphotos/Tests002.jpg', alt: 'Film Photo 2', caption: '' },
-            { thumb: 'slrphotos/FridayThumb003.jpg', full: 'slrphotos/Friday003.jpg', alt: 'Night Photo 3', caption: 'Here a CPL filter was used' },
-            { thumb: 'slrphotos/TestsThumb003.jpg', full: 'slrphotos/Tests003.jpg', alt: 'Film Photo 3', caption: '' },
-            { thumb: 'slrphotos/FridayThumb004.jpg', full: 'slrphotos/Friday004.jpg', alt: 'Night Photo 4', caption: '' },
-            { thumb: 'slrphotos/TestsThumb004.jpg', full: 'slrphotos/Tests004.jpg', alt: 'Film Photo 4', caption: '' },
-            { thumb: 'slrphotos/FridayThumb005.jpg', full: 'slrphotos/Friday005.jpg', alt: 'Night Photo 5', caption: '' },
-            { thumb: 'slrphotos/TestsThumb005.jpg', full: 'slrphotos/Tests005.jpg', alt: 'Film Photo 5', caption: '' },
-            { thumb: 'slrphotos/Misc004Thumb.jpg', full: 'slrphotos/Misc004.jpg', alt: 'Photo move', caption: '' },
-            { thumb: 'slrphotos/FridayThumb008.jpg', full: 'slrphotos/Friday008.jpg', alt: 'Night Photo 8', caption: '' },
-            { thumb: 'slrphotos/TestsThumb008.jpg', full: 'slrphotos/Tests008.jpg', alt: 'Film Photo 8', caption: '' },
-            { thumb: 'slrphotos/TestsThumb009.jpg', full: 'slrphotos/Tests009.jpg', alt: 'Film Photo 9', caption: '' },
-            { thumb: 'slrphotos/TestsThumb010.jpg', full: 'slrphotos/Tests010.jpg', alt: 'Film Photo 10', caption: '' },
-            { thumb: 'slrphotos/TestsThumb011.jpg', full: 'slrphotos/Tests011.jpg', alt: 'Film Photo 11', caption: '' },
-            
-            // IR Test Images
-            { thumb: 'slrphotos/IRtestThumb001.jpg', full: 'slrphotos/IRtest001.jpg', alt: 'IR Test Photo 1', caption: 'Rollei InfraRed 400 with an infared R72 filter' },
-            { thumb: 'slrphotos/IRtestThumb002.jpg', full: 'slrphotos/IRtest002.jpg', alt: 'IR Test Photo 2', caption: 'Rollei InfraRed 400, no IR filter with this one!' },
-            { thumb: 'slrphotos/IRtestThumb003.jpg', full: 'slrphotos/IRtest003.jpg', alt: 'IR Test Photo 3', caption: 'Rollei InfraRed 400 & IR filter' },
-            { thumb: 'slrphotos/IRtestThumb004.jpg', full: 'slrphotos/IRtest004.jpg', alt: 'IR Test Photo 4', caption: 'Rollei InfraRed 400 & IR filter' },
-            { thumb: 'slrphotos/IRtestThumb005.jpg', full: 'slrphotos/IRtest005.jpg', alt: 'IR Test Photo 5', caption: 'Rollei InfraRed 400 & IR filter' },
-            { thumb: 'slrphotos/IRtestThumb006.jpg', full: 'slrphotos/IRtest006.jpg', alt: 'IR Test Photo 6', caption: 'Rollei InfraRed 400 & IR filter' },
-            
-            // Camping 2023 Images
-            { thumb: 'slrphotos/Camping2023Thumb001.jpg', full: 'slrphotos/Camping2023 001.jpg', alt: 'Camping 2023 Photo 1', caption: '' },
-            { thumb: 'slrphotos/Camping2023Thumb002.jpg', full: 'slrphotos/Camping2023 002.jpg', alt: 'Camping 2023 Photo 2', caption: '' },
-            { thumb: 'slrphotos/Camping2023Thumb003.jpg', full: 'slrphotos/Camping2023 003.jpg', alt: 'Camping 2023 Photo 3', caption: '' },
-            { thumb: 'slrphotos/Camping2023Thumb004.jpg', full: 'slrphotos/Camping2023 004.jpg', alt: 'Camping 2023 Photo 4', caption: '' },
-            { thumb: 'slrphotos/Camping2023Thumb005.jpg', full: 'slrphotos/Camping2023 005.jpg', alt: 'Camping 2023 Photo 5', caption: '' },
-            { thumb: 'slrphotos/Camping2023Thumb006.jpg', full: 'slrphotos/Camping2023 006.jpg', alt: 'Camping 2023 Photo 6', caption: '' },
-            { thumb: 'slrphotos/Camping2023Thumb007.jpg', full: 'slrphotos/Camping2023 007.jpg', alt: 'Camping 2023 Photo 7', caption: '' },
-            { thumb: 'slrphotos/Camping2023Thumb008.jpg', full: 'slrphotos/Camping2023 008.jpg', alt: 'Camping 2023 Photo 8', caption: '' },
-            { thumb: 'slrphotos/Camping2023Thumb009.jpg', full: 'slrphotos/Camping2023 009.jpg', alt: 'Camping 2023 Photo 9', caption: '' },
-            { thumb: 'slrphotos/Camping2023Thumb010.jpg', full: 'slrphotos/Camping2023 010.jpg', alt: 'Camping 2023 Photo 10', caption: '' },
-            { thumb: 'slrphotos/Camping2023Thumb011.jpg', full: 'slrphotos/Camping2023 011.jpg', alt: 'Camping 2023 Photo 11', caption: '' },
-            { thumb: 'slrphotos/Misc003Thumb.jpg', full: 'slrphotos/Misc003.jpg', alt: 'Photo 3', caption: '' },
-            { thumb: 'slrphotos/Camping2023Thumb012.jpg', full: 'slrphotos/Camping2023 012.jpg', alt: 'Camping 2023 Photo 12', caption: '' },
-            { thumb: 'slrphotos/Camping2023Thumb013.jpg', full: 'slrphotos/Camping2023 013.jpg', alt: 'Camping 2023 Photo 13', caption: '' },
-            
-            // Photos moved from index page
-            { thumb: 'slrphotos/Misc001Thumb.jpg', full: 'slrphotos/Misc001.jpg', alt: 'Photo 1', caption: '' },
-            { thumb: 'slrphotos/Misc002Thumb.jpg', full: 'slrphotos/Misc002.jpg', alt: 'Photo 2', caption: '' },
-            { thumb: 'slrphotos/Misc005Thumb.jpg', full: 'slrphotos/Misc005.jpg', alt: 'Photo 5', caption: '' },
-            { thumb: 'slrphotos/Misc006Thumb.jpg', full: 'slrphotos/Misc006.jpg', alt: 'Photo 6', caption: '' },
-            { thumb: 'slrphotos/Misc007Thumb.jpg', full: 'slrphotos/Misc007.jpg', alt: 'Photo 7', caption: '' },
-            { thumb: 'slrphotos/Misc008Thumb.jpg', full: 'slrphotos/Misc008.jpg', alt: 'Photo 8', caption: '' },
-            { thumb: 'slrphotos/Misc009Thumb.jpg', full: 'slrphotos/Misc009.jpg', alt: 'Photo 9', caption: '' },
-            { thumb: 'slrphotos/Misc010Thumb.jpg', full: 'slrphotos/Misc010.jpg', alt: 'Photo 10', caption: '' },
-            { thumb: 'slrphotos/Misc011Thumb.jpg', full: 'slrphotos/Misc011.jpg', alt: 'Photo 11', caption: '' },
-            { thumb: 'slrphotos/Misc012Thumb.jpg', full: 'slrphotos/Misc012.jpg', alt: 'Photo 12', caption: '' },
-            { thumb: 'slrphotos/Misc013Thumb.jpg', full: 'slrphotos/Misc013.jpg', alt: 'Photo 13', caption: '' },
-            { thumb: 'slrphotos/Misc014Thumb.jpg', full: 'slrphotos/Misc014.jpg', alt: 'Photo 14', caption: '' },
-            { thumb: 'slrphotos/Misc015Thumb.jpg', full: 'slrphotos/Misc015.jpg', alt: 'Photo 15', caption: '' },
-            { thumb: 'slrphotos/Misc016Thumb.jpg', full: 'slrphotos/Misc016.jpg', alt: 'Photo 16', caption: '' },
-            { thumb: 'slrphotos/Misc017Thumb.jpg', full: 'slrphotos/Misc017.jpg', alt: 'Photo 17', caption: '' },
-            { thumb: 'slrphotos/Misc018Thumb.jpg', full: 'slrphotos/Misc018.jpg', alt: 'Photo 18', caption: '' }
+            // Friday photos
+            { thumb: 'slrphotos/FridayThumb001.jpg', full: 'slrphotos/Friday001.jpg', alt: 'Night Photo 1', caption: 'Night photography with Canon Rebel 2000' },
+            { thumb: 'slrphotos/FridayThumb002.jpg', full: 'slrphotos/Friday002.jpg', alt: 'Night Photo 2', caption: 'Night photography with Canon Rebel 2000' },
+            { thumb: 'slrphotos/TestsThumb006.jpg', full: 'slrphotos/Tests006.jpg', alt: 'Film Photo 6', caption: '35mm film test shot' },
+            { thumb: 'slrphotos/FridayThumb006.jpg', full: 'slrphotos/Friday006.jpg', alt: 'Night Photo 6', caption: 'Night photography with Canon Rebel 2000' },
+            { thumb: 'slrphotos/FridayThumb007.jpg', full: 'slrphotos/Friday007.jpg', alt: 'Night Photo 7', caption: 'Night photography with Canon Rebel 2000' },
+            { thumb: 'slrphotos/TestsThumb007.jpg', full: 'slrphotos/Tests007.jpg', alt: 'Film Photo 7', caption: '35mm film test shot' },
+            { thumb: 'slrphotos/FridayThumb014.jpg', full: 'slrphotos/Friday014.jpg', alt: 'Night Photo 14', caption: 'Night photography with Canon Rebel 2000' },
+            { thumb: 'slrphotos/FridayThumb015.jpg', full: 'slrphotos/Friday015.jpg', alt: 'Night Photo 15', caption: 'Night photography with Canon Rebel 2000' },
+            { thumb: 'slrphotos/FridayThumb016.jpg', full: 'slrphotos/Friday016.jpg', alt: 'Night Photo 16', caption: 'Night photography with Canon Rebel 2000' },
+            { thumb: 'slrphotos/FridayThumb017.jpg', full: 'slrphotos/Friday017.jpg', alt: 'Night Photo 17', caption: 'Night photography with Canon Rebel 2000' },
+            { thumb: 'slrphotos/FridayThumb018.jpg', full: 'slrphotos/Friday018.jpg', alt: 'Night Photo 18', caption: 'Night photography with Canon Rebel 2000' },
+            { thumb: 'slrphotos/FridayThumb019.jpg', full: 'slrphotos/Friday019.jpg', alt: 'Night Photo 19', caption: 'Night photography with Canon Rebel 2000' },
+            { thumb: 'slrphotos/FridayThumb020.jpg', full: 'slrphotos/Friday020.jpg', alt: 'Night Photo 20', caption: 'Night photography with Canon Rebel 2000' },
+            { thumb: 'slrphotos/FridayThumb021.jpg', full: 'slrphotos/Friday021.jpg', alt: 'Night Photo 21', caption: 'Night photography with Canon Rebel 2000' },
+            { thumb: 'slrphotos/FridayThumb022.jpg', full: 'slrphotos/Friday022.jpg', alt: 'Night Photo 22', caption: 'Night photography with Canon Rebel 2000' },
+            { thumb: 'slrphotos/FridayThumb023.jpg', full: 'slrphotos/Friday023.jpg', alt: 'Night Photo 23', caption: 'Night photography with Canon Rebel 2000' },
+            { thumb: 'slrphotos/TestsThumb001.jpg', full: 'slrphotos/Tests001.jpg', alt: 'Film Photo 1', caption: '35mm film test shot' }
         ];
 
         // Pagination variables
         let currentPage = 1;
-        let photosPerPage = 24;
+        let photosPerPage = 16;
         let viewMode = 'paginated';
         let allImages = [];
         let allCaptions = [];
@@ -986,7 +940,7 @@
             if (document.body.classList.contains('dyslexic-font')) {
                 button.textContent = 'Switch to Standard Font';
             } else {
-                button.textContent = 'Are yah dyslexic? This button right here might help!';
+                button.textContent = 'Dyslexic Friendly Font Here!';
             }
         }
 

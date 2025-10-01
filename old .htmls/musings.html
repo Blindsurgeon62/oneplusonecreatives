@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Musings - One Plus One Creatives</title>
+    <style>
+        @font-face {
+            font-family: 'OpenDyslexic';
+            src: url('https://cdn.jsdelivr.net/npm/open-dyslexic@1.0.3/otf/OpenDyslexic-Regular.otf') format('opentype');
+            font-weight: normal;
+            font-style: normal;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            color: #e0e0e0;
+            background-color: #1a1a1a;
+        }
+        
+        .container {
+            width: 80%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            text-align: center;
+        }
+        
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+            color: #f0f0f0;
+        }
+        
+        .tagline {
+            font-size: 1.2rem;
+            color: #b0b0b0;
+            margin-bottom: 30px;
+        }
+        
+        /* Navigation */
+        .nav {
+            margin-bottom: 30px;
+            background-color: #2a2a2a;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+        
+        .nav span {
+            display: inline-block;
+            margin: 0 15px;
+            color: #888;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1rem;
+            cursor: default;
+        }
+        
+        .nav a {
+            display: inline-block;
+            margin: 0 15px;
+            color: #888;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1rem;
+            transition: color 0.3s;
+        }
+        
+        .nav a:hover {
+            color: #ffffff;
+        }
+        
+        .nav span.active, .nav a.active {
+            color: #ffffff;
+            border-bottom: 2px solid #ffffff;
+        }
+        
+        .content-box {
+            background-color: #2a2a2a;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            margin-bottom: 30px;
+        }
+        
+        h2 {
+            font-size: 1.6rem;
+            margin-bottom: 30px;
+            color: #f0f0f0;
+        }
+        
+        p {
+            font-size: 1rem;
+            margin-bottom: 20px;
+        }
+        
+        /* Essay styles */
+        .essay {
+            background-color: #2a2a2a;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            margin-bottom: 30px;
+        }
+        
+        .essay-title {
+            font-size: 1.8rem;
+            color: #f0f0f0;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        
+        .essay-date {
+            font-size: 0.9rem;
+            color: #888;
+            font-style: italic;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .essay-summary {
+            font-size: 1rem;
+            color: #b0b0b0;
+            margin-bottom: 20px;
+            text-align: left;
+            line-height: 1.7;
+        }
+        
+        .read-more-btn {
+            background-color: #444;
+            color: #e0e0e0;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s;
+            margin-bottom: 20px;
+        }
+        
+        .read-more-btn:hover {
+            background-color: #555;
+        }
+        
+        .essay-content {
+            display: none;
+            text-align: left;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+        }
+        
+        .essay-content.expanded {
+            display: block;
+        }
+        
+        .essay-content p {
+            font-size: 1rem;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            color: #e0e0e0;
+        }
+        
+        /* Contact link */
+        .contact {
+            font-size: 1rem;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .contact a {
+            color: #b0b0b0;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .contact a:hover {
+            color: #ffffff;
+            text-decoration: underline;
+        }
+        
+        .copyright {
+            font-size: 0.9rem;
+            color: #888;
+            margin-top: 40px;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        
+        /* Font toggle */
+        .font-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #2a2a2a;
+            color: #e0e0e0;
+            border: 1px solid #444;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: background-color 0.3s;
+            z-index: 100;
+        }
+        
+        .font-toggle:hover {
+            background-color: #444;
+        }
+        
+        .dyslexic-font * {
+            font-family: 'OpenDyslexic', 'Comic Sans MS', 'Trebuchet MS', Arial, sans-serif !important;
+        }
+    </style>
+</head>
+<body>
+    <button class="font-toggle" onclick="toggleFont()" id="fontToggle">This button is a Dyslexic Font Option</button>
+    
+    <div class="container">
+        <h1>One Plus One Creatives</h1>
+        <div class="tagline">Let's do things our future selves will thank us for</div>
+        
+        <!-- Navigation -->
+        <div class="nav">
+            <a href="index.html">Home</a>
+            <a href="general-shots.html">General Shots (35mm Film)</a>
+            <a href="nightshots.html">Astro/Night (35mm Film)</a>
+            <span>Digital</span>
+            <a href="tinkering.html">Tinkering/Restorations</a>
+            <span class="active">Musings</span>
+            <a href="makersshowcase.html">Makers Showcase</a>
+        </div>
+        
+        <!-- Essay 3 -->
+        <div class="essay">
+            <h3 class="essay-title">Apperceptions</h3>
+            <div class="essay-date">Published: September 29, 2025</div>
+            <div class="essay-summary" id="summary3">
+                Just because you think something, doesn't make it true.
+            </div>
+            <button class="read-more-btn" onclick="toggleEssay('essay3', 'summary3')">Read More</button>
+            
+            <div class="essay-content" id="essay3">
+                <p>I recently submitted some of my shots to a photography competition. This, in and of itself, is not something deserving of praise, an attaboy, or any notice at all; there was no barrier to entry, it was open to all.</p>
+                
+                <p>Still, it gave rise to a thought that really made me smile. It was the realization that the things I've been doing these past few years are quite out of character for who I thought I was. Who I used to be. It's hard to explain.</p>
+                
+                <p>Looking over your shoulder to take in, with sweet vindication all the things you have overcome in the past, is a lovely balm for the bruises received while navigating the rough trail life is composed of. It's a great feeling, being able to say "If only childhood me could see me now!" but that is not exactly what I felt, nor is it what I want to meditate on with this soliloquy.</p>
+                
+                <p>The balm I hope to bring attention to is harder to grasp, but just as substantial in its own way. To me, it brings to mind something more along the lines of a desire-path. One I hope to illuminate, so that you could perhaps avoid similar detours I meandered through, taking the better part of 3 decades before I felt comfortable in my skin.</p>
+                
+                <p>The thoughts I stumbled upon, while I was working on entering the photography competition were surprising. Before I go on, please allow me this digression.</p>
+                
+                <p>I've been shooting film photography since I was 17 years old. It was the first hobby that I had which truly was my own. Growing up, for all intents and purposes, all my interests were hand-me-downs. I was a younger brother and we shared a large group of friends. The concept of liking things of my own accord felt like a non sequitur. That is until I chose Photography as my elective in junior year. After hearing about this, my fantastic uncle gifted me his Canon AV-1. Which remains the best gift I've ever received. I still shoot with that, 18 years later.</p>
+                
+                <p>I love being able to capture moments that would be overlooked, the ability to share my perspective through photography was the first time I had a voice. It was something I could call my own. My first aspiration, I remember, was to publish a book of photography. I thought about that for years.</p>
+                
+                <p>What I realized while struggling to find my way through these unbidden thoughts, was how greedily I had taken for granted a blindingly obvious fact. That being the prerogative of, and my ability to, actually work towards a goal.</p>
+                
+                <p>Out of a malformed sense of self-preservation which I believed to be some weird virtue, I would not allow myself the thought of reaching beyond myself. It was not fear of failure, as that would imply I regarded myself a person even capable of trying.</p>
+                
+                <p>Like the blind spot from your optic nerve that your brain doesn't let you notice, I refused to notice entire aspects of my personality. In addition to this, I believed that the paralyzing fear and other unsavory emotions I was defending against were normal. So my reactions simply reinforced the belief that I was a coward, incapable of being as good as anyone else. Living was always something other people did.</p>
+                
+                <p>Allow me to renege on my earlier statement and, in fact, wax poetic for a moment! If younger me was told what he would be doing at 35, I think he would believe it, it would totally resonate with him, my interests are largely the same as they have been for as long as I remember. He would smile, and be excited! He would think something along the lines of "neat! Things will work out!"</p>
+                
+                <p>The joy I would feel would be real, but it would be a vapid understanding of the idea, and not something that would actually affect or encourage me. It would simply be a story about somebody else. The comprehension would have been utterly lost in translation. Why? Because I had hatefully annihilated the very concepts of impetus and development from the scope of my understanding.</p>
+                
+                <p>I would be embarrassed if asked to explain the book I would be reading, or caught watching music videos, singing, liking things of my own accord. I was living life and could enjoy things, but only because I didn't let myself think about being an individual. I realize this is not uncommon, I'm writing about this not to bring attention to myself, but with hope that another may find solace in the similarities found in suffering despite the chasm caused by our irrefutable individuality we all possess.</p>
+                
+                <p>With all that being said, I am forever grateful, because a quiet understanding that things could be okay remained and refused to play my games. I remember talking with my mom around the age of 19 during a time of lethargic inaction. Not having a job, and recently flunking out of community college, already drinking and doing drugs, I expressed with certainty, an understanding of possibilities and a hope of change. I told her something along the lines of "I understand it seems like I'm a screw up, but I know that this won't be forever, and that I will be okay someday. I just need time."</p>
+                
+                <p>Earlier this year I got together with my oldest friend. Our paths cross less than when we were kids, so it was fantastic to realize that our fellowship remained intact. It was as if no time had passed. He reminded me of the shared joy we had in our conversations over the years. Which in turn, reminded me that I did have some outlets, unbeholden to the pall I enveloped myself with. I believe that these moments of unconscious inhibition were boons. Footholds that kept me from utterly tumbling into the chasms that divide all persons, where I would lay broken, without hope of recovery. I'm greatful for those friends, many who are still in my life today.</p>
+                
+                <p>This sounds contrary to the claim of my inconsequence, but I would disagree. This is a distinction I hope to illuminate, and one of the feelings that I hoped to touch on with this essay. While knowing that I was capable of things, and wanted to not fail at life, this desire stopped at work, duty and friendship.</p>
+                
+                <p>I moved to China at 21, and worked there for the better part of a decade. And for many years I believed myself to have gotten over the rough patches in the trail behind me, and made it. In some ways I did, I had many good years, well-paying jobs, friends, I met my wife there! But through all this there was awful amounts of self-destructive behavior, including one half hearted suicide attempt, and another, much more earnest attempt 2 years later, which was waylaid by my drunken ineptitude. The mental anguish from my warped idea of selflessness was becoming unbearable. Maybe I had never found that path I was looking for. Uh, oh.</p>
+                
+                <p>I understood that things needed to change, and they did! About 4 years later.</p>
+                
+                <p>Can you guess what prompted this change?</p>
+                
+                <p>My Canon AV-1.</p>
+                
+                <p>I would often wish I had brought it with me to China, but it had stopped working about a year before the move. I had tried to repair it then, but I was afraid of mistakes, so I wrote it off as a loss, and quite frankly forgot about it by the time I left for China.</p>
+                
+                <p>So imagine my surprise, when I walked into my family home years later, there it was, untouched among my old things! After getting my hands on it, I simply knew I had to try and fix it. Over the course of several days I took it apart to find the problem. The issue, once found, was a simple fix. I put everything back where it should be and could hardly believe it. For the first time ever, in my 30s, I tasted this new fruit from a novel labor, a task undertaken of my own volition, and completed with my own hands and for its own sake.</p>
+                
+                <p>There was no life changing moment of clarity or any discernible change in my life. But unbeknownst to me, things were different. Over time, I found less and less reasons to need my tried and true methods of rationalizations for my ultimate unhappiness. Not only had I repaired an object, I had done something that proved my old understanding of myself to be false. There was more than one way to think about my life. Without knowing it, I created a desire path for my life.</p>
+                
+                <p>The more I walked it, the easier it became to see. Submitting my photography to a competition, made me stop, think, and turn around. What came to mind was not validation, satisfaction, or something arising from impetus. But rather the understanding that no matter what is going on in my life, or how commonplace things seem, there will always be ways to have novel experiences. </p>
+				
+				<p>As I looked back, Instead of seeing all the hardships I overcame to get where I am now, I saw the ways I let myself make things better.</p>
+				
+				<P> Thank you D.F. for reading the first draft of this, invaluable feedback. </p>
+            </div>
+        </div>
+        
+        <!-- Essay 2 -->
+        <div class="essay">
+            <h3 class="essay-title">Kindness Is</h3>
+            <div class="essay-date">Published: July 13, 2025</div>
+            <div class="essay-summary" id="summary2">
+                This is a write up about a dude I worked with years and years ago, and how he showed me what kindness is.
+            </div>
+            <button class="read-more-btn" onclick="toggleEssay('essay2', 'summary2')">Read More</button>
+            
+            <div class="essay-content" id="essay2">
+                <p>When I was a teenager, I worked at a theme park in the games department. I was the fellow who provided everyone's till in the morning and gave them change throughout the day, a cashier basically. I would come in the morning and prepare tills for all the games attendants in order to provide change, 5s, 10s, and ones if memory serves.</p>
+                
+                <p>I would be in the cash office and hand out the aprons with the cash prepared inside. Throughout the day, as their singles ebbed and their crisp stack thinned, replaced with grungy yet more desirable dubs and such, they would return. Leaving with their bankroll renewed, ready to exchange these bills for those of larger denominations from people hoping today would be their lucky day.</p>
+                
+                <p>I liked this job, I liked the people, I liked that since we were out of the public eye, us employees could relax around peers rather than patrons. Looking back on these days was one of my first lessons in appreciation of the mundane.</p>
+                
+                <p>So that summer there was a work program going on where individuals who were in a halfway house for (if I'm remembering correctly... this was 19 years ago) non violent crime worked at the theme park.</p>
+                
+                <p>They were great folks, I bet that most of these guys just hoped that we could understand something, that past mistakes don't always need to decide one's future. One's perception of others shouldn't be decided based on things that have no bearing on your shared experiences now. I would bet that some of the people we all interact with daily, have done things that would have put them into that halfway house, or worse, had things happened differently. But the intention of this essay isn't one involving a cautionary tale, or even one of kumbaya. I want to share a couple weeks of my past that taught me about something I was not aware I had been lacking. Grace.</p>
+                
+                <p>There was this older dude, well, older than my 16ish years of age, he was probably in his 40s... I wish I remembered his name! Yet I can clearly remember his face and what I learned from him. He was a weathered, short stocky guy, he reminded me of Mario from Super Mario Bros, but instead of having Mario's playful Italian timbre, he spoke with a warm, cheerful baritone that fit well with the musical rhythm of his Hispanic accent.</p>
+                
+                <p>Since I was the cash dude, I interacted with everyone each morning and throughout the day. Exchanging those aforementioned stacks... I remember during the first month or so of that group's employment, he would rib me a bit, totally appropriate stuff, not mean, just normal, friendly banter and jokes. I was just an awkward kid who lacked confidence, so I wouldn't know how to respond. Internally I would get pretty upset. I knew he wasn't trying to be rude, but I always left the interactions feeling as if I had missed out. I started dreading the interactions. One day I let my feelings show on my face, it got to me... I was just pissed. Being the brat that I was, I remember being sulky. Pretty quickly, he noticed but of course, I didn't.</p>
+                
+                <p>The next day, I thought it was business as usual, so when he came to get his till, my stomach started to hurt and my palms started to sweat. "Here we go again... how should my face look? Is this normal? Hrrmmmm."</p>
+                
+                <p>When I saw his face, I realized I was completely off-base. He, without an ounce of condescension, and plenty of grace, apologized to me.</p>
+                
+                <p>He genuinely wanted me to know he never wanted to try and get a rise out of me or upset me, and that he wanted me to know he was sorry if he caused me to be uncomfortable.</p>
+                
+                <p>He followed this up by saying that he only messed with me because I was funny and he liked talking to me.</p>
+                
+                <p>I don't remember my response, I hope it was adequate. It probably wasn't.</p>
+                
+                <p>I think that was the first time someone in the "real" world, went out of their way to make things right. It took true humility and courage, combined with a desire to have a good impact on those around you. He was being real. Giving somebody more than they really deserve. I'm very grateful for that kindness.</p>
+                
+                <p>The rest of that summer was cool. We had lunch often. (this dude would use so much sugar in his coffee!) He told me a bit about what got him to where he was, and talked about how he wanted to see other younger folks do better. He wasn't gaining anything from this, it wasn't preachy, it was nice. He gave thoughtful companionship and advice freely to an awkward kid who could barely look at people in the eyes.</p>
+                
+                <p>While he still was intimidating, I saw it for what it was. It came from years. He owned his mistakes, had been through stuff, and was able to come out with his head on straight. What's more, if I could go back quickly to the ribbing, he really wasn't doing anything wrong, I was just soft. Most other people would have continued the jokes, or just stopped, and wrote me off as beneath them, others did.</p>
+                
+                <p>He didn't.</p>
+                
+                <p>It showed me many things, like the futility of trying to assume other people's intents, and the value of real communication.</p>
+                <p>I think about this summer often, about the impact little gestures can have on those around us, and what fundamental kindness can be. Thanks for reading 8)</p>
+            </div>
+        </div>
+        
+        <!-- Essay 1 -->
+        <div class="essay">
+            <h3 class="essay-title">The Space Between Experiences</h3>
+            <div class="essay-date">Published: June 18, 2025</div>
+            <div class="essay-summary" id="summary1">
+                Over a decade ago, a Reddit comment altered how I see the world with a simple but profound insight: Everyone's worst experience is truly their worst, regardless of how it looks to others. This essay explores why the gravity of a situation doesn't determine the authenticity of the emotion it provokes, and how accepting our inability to fully understand others' experiences can actually deepen our connections with each other.
+            </div>
+            <button class="read-more-btn" onclick="toggleEssay('essay1', 'summary1')">Read More</button>
+            
+            <div class="essay-content" id="essay1">
+                <p>We all have our own weights we carry.</p>
+                
+                <p>When I was around 23 years old, I read a comment on Reddit that planted a seed. It's been over a decade since then, but I still think about it. It helped shape a fundamental part of how I view the world. I am forever grateful for that internet stranger's thoughtful comment all those years ago. I want to try and express why I still remember this one comment in particular. I have tried finding the original post several times over the years.. but it has eluded me! So what I'm writing here comes from my own, fallible memory, and while their original sentiment is the root of this, I am sure that it has been befuddled with my own interpretations.</p>
+                
+                <p>I am also sure that if I never came across their comment in the first place, That I would not be as...whole, of a person as I am today. In a way, It gave me permission to believe that my expieriences were just as valid as everyone else. The insights I gained over the years, am still gaining.. would not have been possible had I continued taking myself for granted. It would be nice if, through writing this (and other stuff), that some insights may grow in your mind, and that you might become better from it.</p>
+                
+                <p>The post in question was an "Ask me Anything" (AMA) post. These are posts where people can pose questions to an individual who, in one way or another, can illuminate the interwebs with their expertise or anecdotes. The title of this post was something along the lines of "I was a combat medic, AMA." The only exchange I remember was their reply to someone who expressed their thoughts on how difficult it must be to undergo such traumatic experiences as being in a firefight and, on top of that, being responsible for saving people's lives, facing the carnage of wounds... They mentioned how they couldn't imagine going through that, and how the combat medic was a braver and stronger person than themselves.</p>
+                
+                <p>Without downplaying their own actions, they offered up their belief that comparing one person's sufferings and experiences against others was not something worth doing. They wrote about how every individual has only their own experiences... how emotions are only truly felt singularly within each of us. Therefore, it's impossible to know what other people are actually feeling. It's unkind to discredit someone's pain, just because you went through something ostensibly worse.</p>
+                
+                <p>They acknowledged that as a soldier, yes, they had experienced traumatic events. But they wanted the commenter to know that comparing one person's traumas to another's is not helpful or healthy. It detracts from one's value and is something out of their control. They ended by explaining how the worst thing someone has felt is just that... the worst thing they have experienced... and that it doesn't matter what that experience involved.</p>
+                
+                <p>This concept was part of a feeling that I had felt often, yet had been unable to put into words before. Call me simple, but I still am blown away by the truth inherent in their comment.</p>
+                
+                <p>A person could describe their worst day ever as when they were snubbed socially... or had a bad experience with a dentist... or when they got food poisoning. While these may seem trivial to someone else, for them it was anything but that. These experiences are just as valid as any other.</p>
+                
+                <p>The gravity of a situation is irrelevant to the emotion it provokes. An emotion doesn't glean any more authenticity based on external factors. And even if, for the sake of argument, we decide that it does... So what? This does nothing for the person who is still experiencing the emotions. The feeling of an emotion is truly a singular experience, one which can only be understood by the individual and then described to others. Telling someone how you feel can be like playing the schoolyard game of telephone. And deciding how other people should feel is like forcing someone to read from a note rather than playing the game.</p>
+                
+                <p>Now, if given the choice between, say, your best friend telling you they don't want you around anymore or having a lingering illness, I am sure which one we all would choose. Yet, if the only thing you have been through was something like having a fallout with your friend, who am I to dictate how bad you should feel? I think of the movie "Shrink"—there is a line in it that goes: "It's grief. They want you to have some kind of normal response to grief, you know, so they don't have to watch. But it's mine." The truth of that statement is irrevocable. One's feelings are their own.</p>
+                
+                <p>I think it's important to meditate on this!</p>
+                
+                <p>Accepting my inability to truly understand others gives me pause. It's a bit upsetting to me. Yet, There are still many ways to connect with others, and I would argue that the gravity of their situation is beside the point.</p>
+                
+                <p>Believing that someone's experiences are too far beyond your scope of understanding is something that can prevent you from even attempting to understand. Similarly, if by your own estimation a problem doesn't seem important, it can be written off. These conclusions can rob us of opportunities to connect! It is not that you are incapable of experiencing what someone else has gone through. Simply that you have not been there yet, or, that you have forgotten what similar experiences felt like when they were new.</p>
+                
+                <p>If someone is going through something you cannot understand, starting from that place of honest limitation can be a good thing. Pretending to understand others only does a disservice to everyone. Having the intention to simply be there will create a foundation that can hold whatever comes later. Furthermore, accepting our inability to comprehend others does not close a door, but opens one that will bridge the chasm between your experiences. The best thing we can do for each other is understand this and act accordingly. Instead of assuming someone should catch up to you, try to meet them halfway.</p>
+                
+                <p>Ask questions, listen, don't be afraid of what you can't feel, bravely take yourself out of the picture, leave others with their own shoes, while you live in your own. Live with your eyes and ears open. There are many ways to find answers to the hard truths inherent in life. And as far as I can tell, it's not about knowing where to look.. It's about wanting to look in the first place.</p>
+                
+                <p>We all have our own weights we carry.</p>
+            </div>
+        </div>
+        
+        <div class="contact">
+            <p>Reach out if you have any questions or comments!</p>
+            <p><a href="mailto:contact@oneplusonecreatives.com">contact@oneplusonecreatives.com</a></p>
+        </div>
+        
+        <div class="copyright">
+            © 2025 One Plus One Creatives. All Rights Reserved.
+        </div>
+    </div>
+
+    <script>
+        function toggleEssay(essayId, summaryId) {
+            const content = document.getElementById(essayId);
+            const summary = document.getElementById(summaryId);
+            const button = content.previousElementSibling;
+            
+            if (content.classList.contains('expanded')) {
+                content.classList.remove('expanded');
+                summary.style.display = 'block';
+                button.textContent = 'Read More';
+            } else {
+                content.classList.add('expanded');
+                summary.style.display = 'none';
+                button.textContent = 'Read Less';
+            }
+        }
+        
+        function toggleFont() {
+            const body = document.body;
+            const button = document.getElementById('fontToggle');
+            
+            if (body.classList.contains('dyslexic-font')) {
+                body.classList.remove('dyslexic-font');
+                button.textContent = 'Dyslexic Font';
+            } else {
+                body.classList.add('dyslexic-font');
+                button.textContent = 'Standard Font';
+            }
+        }
+    </script>
+</body>
+</html>

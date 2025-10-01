@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tinkering/Restorations - One Plus One Creatives</title>
+    <style>
+	/* Font toggle button styles */
+.font-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #2a2a2a;
+    color: #e0e0e0;
+    border: 1px solid #444;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.3s;
+    z-index: 100;
+}
+
+.font-toggle:hover {
+    background-color: #444;
+}
+
+/* Font face declaration */
+@font-face {
+    font-family: 'OpenDyslexic';
+    src: url('https://cdn.jsdelivr.net/npm/open-dyslexic@1.0.3/otf/OpenDyslexic-Regular.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Apply dyslexic font to everything when class is active */
+.dyslexic-font * {
+    font-family: 'OpenDyslexic', 'Comic Sans MS', 'Trebuchet MS', Arial, sans-serif !important;
+}
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            color: #e0e0e0;
+            background-color: #1a1a1a;
+        }
+        
+        .container {
+            width: 80%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            text-align: center;
+        }
+        
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+            color: #f0f0f0;
+        }
+        
+        .tagline {
+            font-size: 1.2rem;
+            color: #b0b0b0;
+            margin-bottom: 30px;
+        }
+        
+        /* Navigation */
+        .nav {
+            margin-bottom: 30px;
+            background-color: #2a2a2a;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+        
+        .nav span {
+            display: inline-block;
+            margin: 0 15px;
+            color: #888;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1rem;
+            cursor: default;
+        }
+        
+        .nav a {
+            display: inline-block;
+            margin: 0 15px;
+            color: #888;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1rem;
+            transition: color 0.3s;
+        }
+        
+        .nav a:hover {
+            color: #ffffff;
+        }
+        
+        .nav span.active, .nav a.active {
+            color: #ffffff;
+            border-bottom: 2px solid #ffffff;
+        }
+        
+        .content-box {
+            background-color: #2a2a2a;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            margin-bottom: 30px;
+        }
+        
+        /* Quote box styling */
+        .quote-box {
+            background-color: #333;
+            padding: 25px;
+            border-radius: 8px;
+            margin: 30px auto;
+            max-width: 800px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+        
+        .quote-text {
+            font-style: italic;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #f0f0f0;
+            margin-bottom: 10px;
+        }
+        
+        .quote-author {
+            font-size: 1rem;
+            color: #b0b0b0;
+            text-align: right;
+        }
+        
+        h2 {
+            font-size: 1.6rem;
+            margin-bottom: 30px;
+            color: #f0f0f0;
+        }
+        
+        p {
+            font-size: 1rem;
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+        
+        .small-italic {
+            font-style: italic;
+            font-size: 0.9rem;
+        }
+        
+        /* Project Grid Layout */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .project-item {
+            background-color: #333;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+        
+        .project-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+        }
+        
+        .project-thumbnail {
+            width: 100%;
+            height: 300px;
+            object-fit: contain;
+            display: block;
+        }
+        
+        .project-info {
+            padding: 20px;
+            text-align: left;
+        }
+        
+        .project-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #f0f0f0;
+            margin-bottom: 10px;
+        }
+        
+        .project-description {
+            font-size: 0.95rem;
+            color: #b0b0b0;
+            line-height: 1.5;
+        }
+        
+        .copyright {
+            font-size: 0.9rem;
+            color: #888;
+            margin-top: 40px;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        
+        /* Contact link */
+        .contact {
+            font-size: 1rem;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .contact a {
+            color: #b0b0b0;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .contact a:hover {
+            color: #ffffff;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+<button class="font-toggle" onclick="toggleFont()" id="fontToggle">Dyslexic? This button will change the font</button>
+    <div class="container">
+        <h1>One Plus One Creatives</h1>
+        <div class="tagline">Let's do things our future selves will thank us for</div>
+        
+        <!-- Navigation with links -->
+<div class="nav">
+    <a href="index.html">Home</a>
+    <a href="general-shots.html">General Shots (35mm Film)</a>
+    <a href="nightshots.html">Astro/Night (35mm Film)</a>
+    <span>Digital</span>
+    <span class="active">Tinkering/Restorations</span>
+    <a href="musings.html">Musings</a>
+    <a href="makersshowcase.html">Makers Showcase</a>
+</div>
+
+        
+        <div class="content-box">
+            <h2>Tinkering & Restorations</h2>
+            
+            <div class="quote-box">
+                <div class="quote-text">
+                    "Nobody will stop you from creating. Do it tonight. Do it tomorrow. That is the way to make your soul grow-whether there is a market for it or not! The kick of creation is the act of creating, not anything that happens afterward"
+                </div>
+                <div class="quote-author">- Kurt Vonnegut Jr.</div>
+            </div>
+            
+            <p>These DIY's are just things I'm happy to have made, I am not very good at this kind of stuff, but I'd like to show off some of the things I do. Why? so that if you are worried about your ability to make stuff, I want to show that the hardest step <span class="small-italic">(not really, but..)</span> is starting in the first place! You are better than you think!</p>
+            
+            <!-- Projects grid -->
+            <div class="projects-grid">
+                <div class="project-item" onclick="window.location.href='shoulderstrapsewtime.html'">
+                    <img src="slrphotos/CanonstrapThumb011.jpg" alt="Shoulder Strap Project" class="project-thumbnail">
+                    <div class="project-info">
+                        <div class="project-title">Shoulder Strap Sew Time</div>
+                        <div class="project-description">
+                            A quick little project to make a vintage Canon strap work with a less-vintage camera.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            © 2025 One Plus One Creatives. All Rights Reserved.
+        </div>
+        
+        <div class="contact">
+       <p>Do you have questions, comments, or suggestions for what I could do next? Reach out!</p>
+            <p><a href="mailto:contact@oneplusonecreatives.com">contact@oneplusonecreatives.com</a></p>
+        </div>
+    </div>
+
+    <script>
+        function toggleFont() {
+            const body = document.body;
+            const button = document.getElementById('fontToggle');
+            
+            if (body.classList.contains('dyslexic-font')) {
+                body.classList.remove('dyslexic-font');
+                button.textContent = 'Tinkering with Fonts!';
+            } else {
+                body.classList.add('dyslexic-font');
+                button.textContent = 'Standard Font';
+            }
+        }
+    </script>
+</body>
+</html>
