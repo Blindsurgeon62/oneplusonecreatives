@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>One Plus One Creatives</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="general-photos.js"></script>
+    <script src="night-photos.js"></script>
 </head>
 <body>
     <button class="font-toggle" onclick="toggleFont()" id="fontToggle">Dyslexic? This button might help!</button>
@@ -62,24 +64,8 @@
     <script>
         // Combined photo data from both galleries
         const allPhotos = [
-            // General shots gallery
-            { thumb: 'slrphotos/29septhumb001.jpg', full: 'slrphotos/29sep001.jpg', caption: 'Harman Red 125 pushed one time to 250, only post processing done was imagesize/watermark, I love it when that happens! the whole roll was pretty stellar.', gallery: 'General Shots', galleryUrl: 'general-shots.html' },
-            { thumb: 'slrphotos/29septhumb002.jpg', full: 'slrphotos/29sep002.jpg', caption: 'Harman Red 125 pushed one time to 250, only post processing done was imagesize/watermark, I love it when that happens! the whole roll was pretty stellar.', gallery: 'General Shots', galleryUrl: 'general-shots.html' },
-            { thumb: 'slrphotos/ProI100thumb.001.jpg', full: 'slrphotos/ProI100.001.jpg', caption: 'Kodak Ektar 100', gallery: 'General Shots', galleryUrl: 'general-shots.html' },
-            { thumb: 'slrphotos/KodakGCthumb003.jpg', full: 'slrphotos/KodakGC003.jpg', caption: 'Kodak ultramax 400', gallery: 'General Shots', galleryUrl: 'general-shots.html' },
-            { thumb: 'slrphotos/ektacrthumb001.jpg', full: 'slrphotos/ektacr001.jpg', caption: 'Ektachrome E100, this is a neat filmstock, the negatives are..not negative, just teeny photos!', gallery: 'General Shots', galleryUrl: 'general-shots.html' },
-            { thumb: 'slrphotos/KGThumb001.jpg', full: 'slrphotos/KG001.jpg', caption: 'Kodak Gold 400, this roll taught me that there isnt always a need for fancy film stock!', gallery: 'General Shots', galleryUrl: 'general-shots.html' },
-            { thumb: 'slrphotos/IRtestThumb001.jpg', full: 'slrphotos/IRtest001.jpg', caption: 'Rollei InfraRed 400 with an infared R72 filter', gallery: 'General Shots', galleryUrl: 'general-shots.html' },
-            { thumb: 'slrphotos/Camping2023Thumb001.jpg', full: 'slrphotos/Camping2023 001.jpg', caption: '', gallery: 'General Shots', galleryUrl: 'general-shots.html' },
-            { thumb: 'slrphotos/websitethumb001.jpg', full: 'slrphotos/website001.jpg', caption: '', gallery: 'General Shots', galleryUrl: 'general-shots.html' },
-            
-            // Night shots gallery
-            { thumb: 'slrphotos/Cinstill800thumb.002.jpg', full: 'slrphotos/Cinstill800t.002.jpg', caption: 'CineStill 800T, July 4th, 25. that is 9 out of 10 of those are "privately owned" fireworks, hahaa!', gallery: 'Astro/Night', galleryUrl: 'nightshots.html' },
-            { thumb: 'slrphotos/Kporta160thumb.001.jpg', full: 'slrphotos/Kporta160.001.jpg', caption: 'Kodak porta 160! while I wont be sharing the photos I took of my family on the rest of the roll, they look... 160 looks like it would feel soft.. if that makes sense, apt that these trees look so fluffy after a 30 second exposure!', gallery: 'Astro/Night', galleryUrl: 'nightshots.html' },
-            { thumb: 'slrphotos/Yosmethumb001.jpg', full: 'slrphotos/Yosme001.jpg', caption: 'Cinestill 800T surprised me (not in a good way!) but I think campfire smoke during these long exposures was the real issue. Great learning moment, and I got some neat photos anyway!', gallery: 'Astro/Night', galleryUrl: 'nightshots.html' },
-            { thumb: 'slrphotos/MayCFOThumb002.jpg', full: 'slrphotos/MayCFO002.jpg', caption: 'Ektachrome 100 E100 Color reversal film, Pushed +2 to 400 ISO<br>Exposure: 1/60 (I believe)', gallery: 'Astro/Night', galleryUrl: 'nightshots.html' },
-            { thumb: 'slrphotos/FridayThumb001.jpg', full: 'slrphotos/Friday001.jpg', caption: 'Night photography with Canon Rebel 2000', gallery: 'Astro/Night', galleryUrl: 'nightshots.html' },
-            { thumb: 'slrphotos/n1yosethumb001.jpg', full: 'slrphotos/n1yose001.jpg', caption: 'Cinestill 800T surprised me (not in a good way!) but I think campfire smoke during these long exposures was the real issue. Great learning moment, and I got some neat photos anyway!', gallery: 'Astro/Night', galleryUrl: 'nightshots.html' }
+            ...generalPhotosData.map(p => ({...p, gallery: 'General Shots', galleryUrl: 'general-shots.html'})),
+            ...nightPhotosData.map(p => ({...p, gallery: 'Astro/Night', galleryUrl: 'nightshots.html'}))
         ];
 
         let currentPhoto = null;
