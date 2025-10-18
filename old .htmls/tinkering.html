@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tinkering/Restorations - One Plus One Creatives</title>
-<link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 <button class="font-toggle" onclick="toggleFont()" id="fontToggle">Dyslexic? This button will change the font</button>
@@ -13,16 +13,15 @@
         <div class="tagline">Let's do things our future selves will thank us for</div>
         
         <!-- Navigation with links -->
-<div class="nav">
-    <a href="index.html">Home</a>
-    <a href="general-shots.html">General Shots (35mm Film)</a>
-    <a href="nightshots.html">Astro/Night (35mm Film)</a>
-    <span>Digital</span>
-    <span class="active">Tinkering/Restorations</span>
-    <a href="musings.html">Musings</a>
-    <a href="makersshowcase.html">Makers Showcase</a>
-</div>
-
+        <div class="nav">
+            <a href="index.html">Home</a>
+            <a href="general-shots.html">General Shots (35mm Film)</a>
+            <a href="nightshots.html">Astro/Night (35mm Film)</a>
+            <span>Digital</span>
+            <span class="active">Tinkering/Restorations</span>
+            <a href="musings.html">Musings</a>
+            <a href="makersshowcase.html">Makers Showcase</a>
+        </div>
         
         <div class="content-box">
             <h2>Tinkering & Restorations</h2>
@@ -36,14 +35,33 @@
             
             <p>These DIY's are just things I'm happy to have made, I am not very good at this kind of stuff, but I'd like to show off some of the things I do. Why? so that if you are worried about your ability to make stuff, I want to show that the hardest step <span class="small-italic">(not really, but..)</span> is starting in the first place! You are better than you think!</p>
             
-            <!-- Projects grid -->
-            <div class="projects-grid">
-                <div class="project-item" onclick="window.location.href='shoulderstrapsewtime.html'">
-                    <img src="slrphotos/CanonstrapThumb011.jpg" alt="Shoulder Strap Project" class="project-thumbnail">
-                    <div class="project-info">
-                        <div class="project-title">Shoulder Strap Sew Time</div>
-                        <div class="project-description">
-                            A quick little project to make a vintage Canon strap work with a less-vintage camera.
+            <!-- Project: Fun with Scissors -->
+            <div class="essay">
+                <h3 class="essay-title">Fun with Scissors</h3>
+                <div class="essay-date">Published: October 17, 2025</div>
+                <div class="essay-summary">
+                    I was thinking about the negative guillotine I saw at my local lab when this fool-proof and totally safe idea came to me! Boy, tabletop vices are great.
+                </div>
+                
+                <div style="display: flex; justify-content: center; margin: 20px 0;">
+                    <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/reel/DP6YJ6HEfSh/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:540px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);"></blockquote>
+                    <script async src="//www.instagram.com/embed.js"></script>
+                </div>
+            </div>
+            
+            <!-- Project: Shoulder Strap Sew Time -->
+            <div class="essay">
+                <h3 class="essay-title">Shoulder Strap Sew Time!</h3>
+                <div class="essay-date">Published: June 11, 2025</div>
+                <div class="essay-summary">
+                    A quick little project to make a vintage Canon strap work with a less-vintage camera.
+                </div>
+                
+                <div style="margin: 20px 0;">
+                    <div class="project-item" onclick="window.location.href='shoulderstrapsewtime.html'" style="cursor: pointer;">
+                        <img src="slrphotos/CanonstrapThumb011.jpg" alt="Shoulder Strap Project" class="project-thumbnail">
+                        <div class="project-info">
+                            <div class="project-title">Click to view full project →</div>
                         </div>
                     </div>
                 </div>
@@ -55,11 +73,10 @@
         </div>
         
         <div class="contact">
-       <p>Do you have questions, comments, or suggestions for what I could do next? Reach out!</p>
+            <p>Do you have questions, comments, or suggestions for what I could do next? Reach out!</p>
             <p><a href="mailto:contact@oneplusonecreatives.com">contact@oneplusonecreatives.com</a></p>
         </div>
     </div>
-
     <script>
         function toggleFont() {
             const body = document.body;
@@ -67,7 +84,7 @@
             
             if (body.classList.contains('dyslexic-font')) {
                 body.classList.remove('dyslexic-font');
-                button.textContent = 'Tinkering with Fonts!';
+                button.textContent = 'Dyslexic? This button will change the font';
             } else {
                 body.classList.add('dyslexic-font');
                 button.textContent = 'Standard Font';
