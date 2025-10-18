@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shoulder Strap Sew Time - One Plus One Creatives</title>
-<link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 <button class="font-toggle" onclick="toggleFont()" id="fontToggle">Dyslexic? This button will change the font</button>
@@ -18,8 +18,9 @@
             <a href="general-shots.html">General Shots (35mm Film)</a>
             <a href="nightshots.html">Astro/Night (35mm Film)</a>
             <span>Digital</span>
-            <a href="tinkering.html">Tinkering/Restorations</a>
+            <span class="active">Tinkering/Restorations</span>
             <a href="musings.html">Musings</a>
+            <a href="makersshowcase.html">Makers Showcase</a>
         </div>
         
         <div class="content-box">
@@ -38,49 +39,49 @@
             
             <h2>Process Photos</h2>
             <div class="photo-grid" id="gallery">
-                <div class="photo-item">
-                    <img src="slrphotos/CanonstrapThumb001.jpg" alt="Canon strap modification 1" onclick="openLightbox('slrphotos/Canonstrap001.jpg', 0)">
-                    <div class="photo-caption">Its the same era as my AV-1, as you can see here.</div>
+                <div class="photo-item loading">
+                    <img data-src="slrphotos/CanonstrapThumb001.jpg" alt="Canon strap modification 1" onclick="openLightbox('slrphotos/Canonstrap001.jpg', 0)">
+                    <div class="gallery-caption">Its the same era as my AV-1, as you can see here.</div>
                 </div>
-                <div class="photo-item">
-                    <img src="slrphotos/CanonstrapThumb002.jpg" alt="Canon strap modification 2" onclick="openLightbox('slrphotos/Canonstrap002.jpg', 1)">
-                    <div class="photo-caption">The Strap for the Rebel is more functional and lighter, but I don't like it.. too bad this doesn't fit! But I had an idea 8)</div>
+                <div class="photo-item loading">
+                    <img data-src="slrphotos/CanonstrapThumb002.jpg" alt="Canon strap modification 2" onclick="openLightbox('slrphotos/Canonstrap002.jpg', 1)">
+                    <div class="gallery-caption">The Strap for the Rebel is more functional and lighter, but I don't like it.. too bad this doesn't fit! But I had an idea 8)</div>
                 </div>
-                <div class="photo-item">
-                    <img src="slrphotos/CanonstrapThumb003.jpg" alt="Canon strap modification 3" onclick="openLightbox('slrphotos/Canonstrap003.jpg', 2)">
-                    <div class="photo-caption">I got some Pilobond for another project I did, I'm glad I had it, as its just what I needed. Flexible yet strong.</div>
+                <div class="photo-item loading">
+                    <img data-src="slrphotos/CanonstrapThumb003.jpg" alt="Canon strap modification 3" onclick="openLightbox('slrphotos/Canonstrap003.jpg', 2)">
+                    <div class="gallery-caption">I got some Pilobond for another project I did, I'm glad I had it, as its just what I needed. Flexible yet strong.</div>
                 </div>
-                <div class="photo-item">
-                    <img src="slrphotos/CanonstrapThumb004.jpg" alt="Canon strap modification 4" onclick="openLightbox('slrphotos/Canonstrap004.jpg', 3)">
-                    <div class="photo-caption">I Channeled Adam Savage here and masked masked MASKED</div>
+                <div class="photo-item loading">
+                    <img data-src="slrphotos/CanonstrapThumb004.jpg" alt="Canon strap modification 4" onclick="openLightbox('slrphotos/Canonstrap004.jpg', 3)">
+                    <div class="gallery-caption">I Channeled Adam Savage here and masked masked MASKED</div>
                 </div>
-                <div class="photo-item">
-                    <img src="slrphotos/CanonstrapThumb005.jpg" alt="Canon strap modification 5" onclick="openLightbox('slrphotos/Canonstrap005.jpg', 4)">
-                    <div class="photo-caption">I didn't think this part through.. but it was fine 8) Just sat for a bit and thought about my next steps.</div>
+                <div class="photo-item loading">
+                    <img data-src="slrphotos/CanonstrapThumb005.jpg" alt="Canon strap modification 5" onclick="openLightbox('slrphotos/Canonstrap005.jpg', 4)">
+                    <div class="gallery-caption">I didn't think this part through.. but it was fine 8) Just sat for a bit and thought about my next steps.</div>
                 </div>
-                <div class="photo-item">
-                    <img src="slrphotos/CanonstrapThumb006.jpg" alt="Canon strap modification 6" onclick="openLightbox('slrphotos/Canonstrap006.jpg', 5)">
-                    <div class="photo-caption">I didn't think well enough though, as this was my second attempt. The first time I just glued loops, before trying to lace them in the eyeholes! </div>
+                <div class="photo-item loading">
+                    <img data-src="slrphotos/CanonstrapThumb006.jpg" alt="Canon strap modification 6" onclick="openLightbox('slrphotos/Canonstrap006.jpg', 5)">
+                    <div class="gallery-caption">I didn't think well enough though, as this was my second attempt. The first time I just glued loops, before trying to lace them in the eyeholes! </div>
                 </div>
-                <div class="photo-item">
-                    <img src="slrphotos/CanonstrapThumb007.jpg" alt="Canon strap modification 7" onclick="openLightbox('slrphotos/Canonstrap007.jpg', 6)">
-                    <div class="photo-caption">The next day I peeled off the tape and was not surprised at the result. But the visible glue isn't going to be a problem</div>
+                <div class="photo-item loading">
+                    <img data-src="slrphotos/CanonstrapThumb007.jpg" alt="Canon strap modification 7" onclick="openLightbox('slrphotos/Canonstrap007.jpg', 6)">
+                    <div class="gallery-caption">The next day I peeled off the tape and was not surprised at the result. But the visible glue isn't going to be a problem</div>
                 </div>
-                <div class="photo-item">
-                    <img src="slrphotos/CanonstrapThumb008.jpg" alt="Canon strap modification 8" onclick="openLightbox('slrphotos/Canonstrap008.jpg', 7)">
-                    <div class="photo-caption">I wanted to be sure the added straps would hold fast. so I spent some time sewing them to the best of my ability. This was fun, I didn't know what I was doing.. but that's okay.  I realized that the end of the string needed both stop and stay somewhere, so grabbed some superglue! </div>
+                <div class="photo-item loading">
+                    <img data-src="slrphotos/CanonstrapThumb008.jpg" alt="Canon strap modification 8" onclick="openLightbox('slrphotos/Canonstrap008.jpg', 7)">
+                    <div class="gallery-caption">I wanted to be sure the added straps would hold fast. so I spent some time sewing them to the best of my ability. This was fun, I didn't know what I was doing.. but that's okay.  I realized that the end of the string needed both stop and stay somewhere, so grabbed some superglue! </div>
                 </div>
-                <div class="photo-item">
-                    <img src="slrphotos/CanonstrapThumb009.jpg" alt="Canon strap modification 9" onclick="openLightbox('slrphotos/Canonstrap009.jpg', 8)">
-                    <div class="photo-caption">I looked my paints and pens, and scored with this Gunpla marker, this was PERFECT, check that out! Inside that pen, is a thin, semitranslucent paint, so it soaked into the shoelace instead of laying on top of the fabric, and intereacted with the microscopic (I think that's what happening anyway) airbubles in the dried glue in a very satisfyingly-invisible way.</div>
+                <div class="photo-item loading">
+                    <img data-src="slrphotos/CanonstrapThumb009.jpg" alt="Canon strap modification 9" onclick="openLightbox('slrphotos/Canonstrap009.jpg', 8)">
+                    <div class="gallery-caption">I looked my paints and pens, and scored with this Gunpla marker, this was PERFECT, check that out! Inside that pen, is a thin, semitranslucent paint, so it soaked into the shoelace instead of laying on top of the fabric, and intereacted with the microscopic (I think that's what happening anyway) airbubles in the dried glue in a very satisfyingly-invisible way.</div>
                 </div>
-                <div class="photo-item">
-                    <img src="slrphotos/CanonstrapThumb010.jpg" alt="Canon strap modification 10" onclick="openLightbox('slrphotos/Canonstrap010.jpg', 9)">
-                    <div class="photo-caption">Not too Shabby</div>
+                <div class="photo-item loading">
+                    <img data-src="slrphotos/CanonstrapThumb010.jpg" alt="Canon strap modification 10" onclick="openLightbox('slrphotos/Canonstrap010.jpg', 9)">
+                    <div class="gallery-caption">Not too Shabby</div>
                 </div>
-                <div class="photo-item">
-                    <img src="slrphotos/CanonstrapThumb011.jpg" alt="Canon strap modification 11" onclick="openLightbox('slrphotos/Canonstrap011.jpg', 10)">
-                    <div class="photo-caption">Yeah this was great! I'm glad I got to do some new things with this little project. It took about 4 hours all told.</div>
+                <div class="photo-item loading">
+                    <img data-src="slrphotos/CanonstrapThumb011.jpg" alt="Canon strap modification 11" onclick="openLightbox('slrphotos/Canonstrap011.jpg', 10)">
+                    <div class="gallery-caption">Yeah this was great! I'm glad I got to do some new things with this little project. It took about 4 hours all told.</div>
                 </div>
             </div>
             
@@ -94,7 +95,7 @@
         </div>
         
         <div class="contact">
-                  <p>Do you have questions, comments, or suggestions for what I could do next? Reach out!</p>
+            <p>Do you have questions, comments, or suggestions for what I could do next? Reach out!</p>
             <p><a href="mailto:contact@oneplusonecreatives.com">contact@oneplusonecreatives.com</a></p>
         </div>
     </div>
@@ -162,11 +163,31 @@
         };
         // ===============================================
         
+        // Lazy load an image
+        function lazyLoadImage(img, container) {
+            const imageLoader = new Image();
+            imageLoader.onload = function() {
+                img.src = this.src;
+                container.classList.remove('loading');
+                container.classList.add('loaded');
+            };
+            imageLoader.src = img.getAttribute('data-src');
+        }
+        
         // Collect all image sources when DOM is loaded
         document.addEventListener('DOMContentLoaded', function() {
             // Load the editable content
             document.getElementById('materials-tools').innerHTML = materialsAndTools;
             document.getElementById('additional-content').innerHTML = additionalContent;
+            
+            // Initialize lazy loading for all images
+            const photoItems = document.querySelectorAll('.photo-item');
+            photoItems.forEach(item => {
+                const img = item.querySelector('img');
+                if (img && img.getAttribute('data-src')) {
+                    lazyLoadImage(img, item);
+                }
+            });
             
             // Initialize gallery
             collectAllImages();
@@ -318,18 +339,19 @@
             e.stopPropagation();
             nextImage();
         });
-		function toggleFont() {
-    const body = document.body;
-    const button = document.getElementById('fontToggle');
-    
-    if (body.classList.contains('dyslexic-font')) {
-        body.classList.remove('dyslexic-font');
-        button.textContent = 'Dyslexic? This button will change the font';
-    } else {
-        body.classList.add('dyslexic-font');
-        button.textContent = 'Standard Font';
-    }
-}
+        
+        function toggleFont() {
+            const body = document.body;
+            const button = document.getElementById('fontToggle');
+            
+            if (body.classList.contains('dyslexic-font')) {
+                body.classList.remove('dyslexic-font');
+                button.textContent = 'Dyslexic? This button will change the font';
+            } else {
+                body.classList.add('dyslexic-font');
+                button.textContent = 'Standard Font';
+            }
+        }
     </script>
 </body>
 </html>
