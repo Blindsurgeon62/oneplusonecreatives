@@ -1,4 +1,11 @@
 const generalPhotosData = [
+// Mid2023 
+{ thumb: 'slrphotos/middle2023.thumb.008.jpg', full: 'slrphotos/middle2023.008.jpg', alt: 'Middle 2023 Photo 8', caption: 'Looks to kill, Kodak Porta 400, Taken in 2023' },
+{ thumb: 'slrphotos/middle2023.thumb.006.jpg', full: 'slrphotos/middle2023.006.jpg', alt: 'Middle 2023 Photo 6', caption: 'We've been there buddy, Kodak Gold 200, Taken back in '23' },
+{ thumb: 'slrphotos/middle2023.thumb.003.jpg', full: 'slrphotos/middle2023.003.jpg', alt: 'Middle 2023 Photo 3', caption: 'Seeing this one for the first time made me smile, it still does. Taken in 2023 with Fuji 200' },
+{ thumb: 'slrphotos/middle2023.thumb.004.jpg', full: 'slrphotos/middle2023.004.jpg', alt: 'Middle 2023 Photo 4', caption: 'Still my favorite gunpla kit to date. Fuji 200, from 2023' },
+{ thumb: 'slrphotos/middle2023.thumb.005.jpg', full: 'slrphotos/middle2023.005.jpg', alt: 'Middle 2023 Photo 5', caption: 'I cant put my finger on why I like this one so much. Fuji 200, from 2023' },
+
     // Porta 800
     { thumb: 'slrphotos/porta800aug.thumb001.jpg', full: 'slrphotos/porta800aug001.jpg', alt: 'Porta 800 Photo 1', caption: 'I believe this is from Kodak Gold 200 pushed to 400' },
     { thumb: 'slrphotos/porta800aug.thumb008.jpg', full: 'slrphotos/porta800aug008.jpg', alt: 'Porta 800 Photo 8', caption: 'Portra 800 - I made a wrong turn on my way to the park, and stumbled upon this nifty cul-de-sac, so I Bob Ross\'d it and grabbed a shot.' },
