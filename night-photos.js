@@ -1,5 +1,7 @@
 const nightPhotosData = [
-    // RFO September 
+   // Random
+   { thumb: 'Aurora800.001thumb.jpg', full: 'Aurora800.001.jpg', alt: 'Aurora800', caption: 'So apperently I shot this with Auroroa800. I stumbled upon this photo that was shot back in April. I have so many shots that I initially pass on, but when coming back  I realize they have something neat within them that I missed.  I love film.. so cool.' },
+   // RFO September 
     { thumb: 'slrphotos/porta800aug.thumb014.jpg', full: 'slrphotos/porta800aug014.jpg', alt: 'Porta 800 Photo 14', caption: 'Portra 800 - So far, this is the longest exposure I have done at 7 minutes! 28mm at F/3.5, Cygnus, or the Cygnus cluster, should be up there somewhere.' },
     { thumb: 'slrphotos/porta800aug.thumb009.jpg', full: 'slrphotos/porta800aug009.jpg', alt: 'Porta 800 Photo 9', caption: 'Portra 800 - I like how the nearby sodium lamps tinted the sky' },
     { thumb: 'slrphotos/porta800aug.thumb011.jpg', full: 'slrphotos/porta800aug011.jpg', alt: 'Porta 800 Photo 11', caption: 'Portra 800 - Aquila, 28mm at F/3.5 with a 4 minute exposure' },
