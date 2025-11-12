@@ -1,5 +1,5 @@
 const nightPhotosData = [
-\\ Lake Herman Oct.'25 
+// Lake Herman Oct.'25 
 { thumb: 'slrphotos/lakeherm.kodak400007.thumb.jpg', full: 'slrphotos/lakeherm.kodak400007.jpg', alt: 'Kodak GC 400 Photo 7', caption: 'Canon Rebel 2000 using Kodak GC 400 and shot through a Canon EF 50mm f/1.8' },
 { thumb: 'slrphotos/lakeherm.kodak400005.thumb.jpg', full: 'slrphotos/lakeherm.kodak400005.jpg', alt: 'Kodak GC 400 Photo 5', caption: 'Canon Rebel 2000 using Kodak GC 400 and shot through a Canon EF 50mm f/1.8' },
 { thumb: 'slrphotos/lakeherm.kodak400004.thumb.jpg', full: 'slrphotos/lakeherm.kodak400004.jpg', alt: 'Kodak GC 400 Photo 4', caption: 'Canon Rebel 2000 using Kodak GC 400 and shot through a Canon EF 50mm f/1.8' },
