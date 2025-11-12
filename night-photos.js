@@ -1,4 +1,11 @@
 const nightPhotosData = [
+\\ Lake Herman Oct.'25 
+{ thumb: 'slrphotos/lakeherm.kodak400007.thumb.jpg', full: 'slrphotos/lakeherm.kodak400007.jpg', alt: 'Kodak GC 400 Photo 7', caption: 'Canon Rebel 2000 using Kodak GC 400 and shot through a Canon EF 50mm f/1.8' },
+{ thumb: 'slrphotos/lakeherm.kodak400005.thumb.jpg', full: 'slrphotos/lakeherm.kodak400005.jpg', alt: 'Kodak GC 400 Photo 5', caption: 'Canon Rebel 2000 using Kodak GC 400 and shot through a Canon EF 50mm f/1.8' },
+{ thumb: 'slrphotos/lakeherm.kodak400004.thumb.jpg', full: 'slrphotos/lakeherm.kodak400004.jpg', alt: 'Kodak GC 400 Photo 4', caption: 'Canon Rebel 2000 using Kodak GC 400 and shot through a Canon EF 50mm f/1.8' },
+{ thumb: 'slrphotos/lakeherm.kodak400001.thumb.jpg', full: 'slrphotos/lakeherm.kodak400001.jpg', alt: 'Kodak GC 400 Photo 1', caption: 'Canon Rebel 2000 using Kodak GC 400 and shot through a Canon EF 50mm f/1.8' },
+{ thumb: 'slrphotos/lakeherm.kodak400006.thumb.jpg', full: 'slrphotos/lakeherm.kodak400006.jpg', alt: 'Kodak GC 400 Photo 6', caption: 'Canon Rebel 2000 using Kodak GC 400 and shot through a Canon EF 50mm f/1.8' },
+{ thumb: 'slrphotos/oct25.lakeh.k400006.thumb.jpg', full: 'slrphotos/oct25.lakeh.k400006.jpg', alt: 'Kodak GC 400 Photo 6', caption: 'Canon Rebel 2000 using Kodak GC 400 and shot through a Canon EF 50mm f/1.8' },
    // Random
    { thumb: 'Aurora800.001thumb.jpg', full: 'Aurora800.001.jpg', alt: 'Aurora800', caption: 'So apperently I shot this with Auroroa800. I stumbled upon this photo that was shot back in April. I have so many shots that I initially pass on, but when coming back  I realize they have something neat within them that I missed.  I love film.. so cool.' },
    // RFO September 
