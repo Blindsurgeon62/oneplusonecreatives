@@ -1,4 +1,9 @@
 const generalPhotosData = [
+//Kentwood bw
+{ thumb: "Kent400BWthumb.001.jpg", full: "Kent400BW.001.jpg", alt: "Kent 400 BW Photo 1", caption: "I love driving down this Freeway. Shot with Kentmere 400 through a Canon EF 50mm, f/1.4 behind an orange filter with a rebel 2000" },
+{ thumb: "Kent400BWthumb.002.jpg", full: "Kent400BW.002.jpg", alt: "Kent 400 BW Photo 2", caption: "I am glad I took this, I was waiting at a stoplight and was curious how a photo of my washers moving would look. Shot with Kentmere 400 through a Canon EF 50mm, f/1.4 behind an orange filter with a rebel 2000" },
+{ thumb: "Kent400BWthumb.003.jpg", full: "Kent400BW.003.jpg", alt: "Kent 400 BW Photo 3", caption: "Shot with Kentmere 400 through a Canon EF 50mm, f/1.4 behind an orange filter with a rebel 2000" },
+{ thumb: "Kent400BWthumb.004.jpg", full: "Kent400BW.004.jpg", alt: "Kent 400 BW Photo 4", caption: "Bob Ross made me love happy accidents. Shot with Kentmere 400 through a Canon EF 50mm, f/1.4 behind an orange filter with a rebel 2000" },
 //Oct2025Fuji400SntaRosa
 { thumb: "slrphotos/Fuji400.Oct25.SantaRsa001.thumb.jpg", full: "slrphotos/Fuji400.Oct25.SantaRsa001.jpg", alt: "Santa Rosa October 2025 Photo 1", caption: "This horse was super friendly and approached us as we walked by playing disc golf. Shot with my Canon Rebel2000 on Fuji400 with a Canon EF 28-70mm f/3.5-4.5 II through a CPL filter." },
 { thumb: "slrphotos/Fuji400.Oct25.SantaRsa002.thumb.jpg", full: "slrphotos/Fuji400.Oct25.SantaRsa002.jpg", alt: "Santa Rosa October 2025 Photo 2", caption: "We hung out with this fella for a nice moment. Shot with my Canon Rebel2000 on Fuji400 with a Canon EF 28-70mm f/3.5-4.5 II through a CPL filter." },

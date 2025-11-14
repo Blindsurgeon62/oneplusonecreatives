@@ -1,4 +1,12 @@
 const nightPhotosData = [
+// HansPark Astro 
+{ thumb: 'kgold200astrothumb.001.jpg', full: 'kgold200astro.001.jpg', alt: 'Kodak Gold 200 Astro Photo 1', caption: 'I'm glad I stopped to take this one. Kodak Gold 200' },
+{ thumb: 'kgold200astrothumb.002.jpg', full: 'kgold200astro.002.jpg', alt: 'Kodak Gold 200 Astro Photo 2', caption: 'This was a fun night to shoot. I am happy with the results also! Kodak Gold 200, 10 to 30 second exposure' },
+{ thumb: 'kgold200astrothumb.003.jpg', full: 'kgold200astro.003.jpg', alt: 'Kodak Gold 200 Astro Photo 3', caption: 'I forgot the attachment for my tripod, so I improvised and was glad I did! Kodak Gold 200, 10 to 30 second exposure' },
+{ thumb: 'kgold200astrothumb.004.jpg', full: 'kgold200astro.004.jpg', alt: 'Kodak Gold 200 Astro Photo 4', caption: 'Im gonna have to remember to shoot more from the ground like this. Kodak Gold 200, 10 to 30 second exposure' },
+{ thumb: 'kgold200astrothumb.005.jpg', full: 'kgold200astro.005.jpg', alt: 'Kodak Gold 200 Astro Photo 5', caption: 'Pretty colors. Kodak Gold 200, 10 to 30 second exposure' },
+{ thumb: 'kgold200astrothumb.006.jpg', full: 'kgold200astro.006.jpg', alt: 'Kodak Gold 200 Astro Photo 6', caption: 'I am unsure which I liked more, and so uploaded both. Kodak Gold 200, 10 to 30 second exposure' },
+{ thumb: 'kgold200astrothumb.007.jpg', full: 'kgold200astro.007.jpg', alt: 'Kodak Gold 200 Astro Photo 7', caption: 'Nothing special, I like these types of shots though. Kodak Gold 200, 10 to 30 second exposure' },
 // Lake Herman Oct.'25 
 { thumb: 'slrphotos/lakeherm.kodak400007.thumb.jpg', full: 'slrphotos/lakeherm.kodak400007.jpg', alt: 'Kodak GC 400 Photo 7', caption: 'Canon Rebel 2000 using Kodak GC 400 and shot through a Canon EF 50mm f/1.8' },
 { thumb: 'slrphotos/lakeherm.kodak400005.thumb.jpg', full: 'slrphotos/lakeherm.kodak400005.jpg', alt: 'Kodak GC 400 Photo 5', caption: 'Canon Rebel 2000 using Kodak GC 400 and shot through a Canon EF 50mm f/1.8' },
