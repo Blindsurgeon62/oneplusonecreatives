@@ -1,6 +1,6 @@
 const nightPhotosData = [
 // HansPark Astro 
-{ thumb: 'kgold200astrothumb.001.jpg', full: 'kgold200astro.001.jpg', alt: 'Kodak Gold 200 Astro Photo 1', caption: 'I'm glad I stopped to take this one. Kodak Gold 200' },
+{ thumb: 'kgold200astrothumb.001.jpg', full: 'kgold200astro.001.jpg', alt: 'Kodak Gold 200 Astro Photo 1', caption: 'I\'m glad I stopped to take this one. Kodak Gold 200' },
 { thumb: 'kgold200astrothumb.002.jpg', full: 'kgold200astro.002.jpg', alt: 'Kodak Gold 200 Astro Photo 2', caption: 'This was a fun night to shoot. I am happy with the results also! Kodak Gold 200, 10 to 30 second exposure' },
 { thumb: 'kgold200astrothumb.003.jpg', full: 'kgold200astro.003.jpg', alt: 'Kodak Gold 200 Astro Photo 3', caption: 'I forgot the attachment for my tripod, so I improvised and was glad I did! Kodak Gold 200, 10 to 30 second exposure' },
 { thumb: 'kgold200astrothumb.004.jpg', full: 'kgold200astro.004.jpg', alt: 'Kodak Gold 200 Astro Photo 4', caption: 'Im gonna have to remember to shoot more from the ground like this. Kodak Gold 200, 10 to 30 second exposure' },
