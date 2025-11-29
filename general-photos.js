@@ -1,4 +1,62 @@
 const generalPhotosData = [
+// Kodakporta800pulled to 500
+{ 
+  thumb: 'slrphotos/valleyjoe.porta800pulled001.thumb.jpg',
+  full: 'slrphotos/valleyjoe.porta800pulled001.jpg',
+  alt: 'Valley Joe Porta 800 Photo 001',
+  caption: 'shot with Kodak Porta 800, shot at ISO 500 and pulled .5'
+},
+
+{ 
+  thumb: 'slrphotos/valleyjoe.porta800pulled003.thumb.jpg',
+  full: 'slrphotos/valleyjoe.porta800pulled003.jpg',
+  alt: 'Valley Joe Porta 800 Photo 003',
+  caption: 'shot with Kodak Porta 800, shot at ISO 500 and pulled .5'
+},
+
+{ 
+  thumb: 'slrphotos/valleyjoe.porta800pulled005.thumb.jpg',
+  full: 'slrphotos/valleyjoe.porta800pulled005.jpg',
+  alt: 'Valley Joe Porta 800 Photo 005',
+  caption: 'shot with Kodak Porta 800, shot at ISO 500 and pulled .5'
+},
+
+{ 
+  thumb: 'slrphotos/valleyjoe.porta800pulled006.thumb.jpg',
+  full: 'slrphotos/valleyjoe.porta800pulled006.jpg',
+  alt: 'Valley Joe Porta 800 Photo 006',
+  caption: 'shot with Kodak Porta 800, shot at ISO 500 and pulled .5'
+},
+
+{ 
+  thumb: 'slrphotos/valleyjoe.porta800pulled030.thumb.jpg',
+  full: 'slrphotos/valleyjoe.porta800pulled030.jpg',
+  alt: 'Valley Joe Porta 800 Photo 030',
+  caption: 'shot with Kodak Porta 800, shot at ISO 500 and pulled .5'
+},
+
+{ 
+  thumb: 'slrphotos/valleyjoe.porta800pulled034.thumb.jpg',
+  full: 'slrphotos/valleyjoe.porta800pulled034.jpg',
+  alt: 'Valley Joe Porta 800 Photo 034',
+  caption: 'shot with Kodak Porta 800, shot at ISO 500 and pulled .5'
+},
+
+{ 
+  thumb: 'slrphotos/valleyjoe.porta800pulled035.thumb.jpg',
+  full: 'slrphotos/valleyjoe.porta800pulled035.jpg',
+  alt: 'Valley Joe Porta 800 Photo 035',
+  caption: 'shot with Kodak Porta 800, shot at ISO 500 and pulled .5'
+},
+
+{ 
+  thumb: 'slrphotos/valleyjoe.porta800pulled036.thumb.jpg',
+  full: 'slrphotos/valleyjoe.porta800pulled036.jpg',
+  alt: 'Valley Joe Porta 800 Photo 036',
+  caption: 'shot with Kodak Porta 800, shot at ISO 500 and pulled .5'
+}
+
+
 // Harman Red. I need to make another section for this type I think
 { thumb: 'slrphotos/sanfran.harmanred250.thumb001.jpg', full: 'slrphotos/sanfran.harmanred250.001.jpg', alt: 'San Francisco Harman Red Photo 1', caption: 'Haraman Red 125 pushed to 250- a day in SF' },
 { thumb: 'slrphotos/sanfran.harmanred250.thumb002.jpg', full: 'slrphotos/sanfran.harmanred250.002.jpg', alt: 'San Francisco Harman Red Photo 2', caption: 'Haraman Red 125 pushed to 250- a day in SF' },
