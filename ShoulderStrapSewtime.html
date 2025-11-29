@@ -5,8 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shoulder Strap Sew Time - One Plus One Creatives</title>
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="homepage-features.css">
-    <script src="security.js"></script>
     <style>
         /* Project-specific styles */
         .project-header {
@@ -229,7 +227,7 @@
         
         <div class="contact">
             <p>Do you have questions, comments, or suggestions for what I could do next? Reach out!</p>
-            <p><a href="/cdn-cgi/l/email-protection#97f4f8f9e3f6f4e3d7f8f9f2e7fbe2e4f8f9f2f4e5f2f6e3fee1f2e4b9f4f8fa"><span class="__cf_email__" data-cfemail="14777b7a60757760547b7a71647861677b7a7177667175607d6271673a777b79">[email&#160;protected]</span></a></p>
+            <p><a href="mailto:contact@oneplusonecreatives.com">contact@oneplusonecreatives.com</a></p>
         </div>
     </div>
     
@@ -243,7 +241,7 @@
         <div class="image-counter" id="image-counter">1 / 11</div>
     </div>
     
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    <script>
         // Global variables for navigation
         let allImages = [];
         let currentImageIndex = 0;
@@ -459,4 +457,12 @@
             
             if (body.classList.contains('dyslexic-font')) {
                 body.classList.remove('dyslexic-font');
-     
+                button.textContent = 'Dyslexic? This button will change the font';
+            } else {
+                body.classList.add('dyslexic-font');
+                button.textContent = 'Standard Font';
+            }
+        }
+    </script>
+</body>
+</html>

@@ -6,8 +6,6 @@
     <title>Astro/Night (35mm Film) - One Plus One Creatives</title>
     <link rel="stylesheet" href="styles.css">
     <script src="night-photos.js"></script>
-    <link rel="stylesheet" href="homepage-features.css">
-    <script src="security.js"></script>
 </head>
 <body>
     <button class="font-toggle" onclick="toggleFont()" id="fontToggle">Dyslexic Friendly Font Here!</button>
@@ -72,7 +70,7 @@
         </div>
         
         <div class="contact">
-            <a href="/cdn-cgi/l/email-protection#42212d2c36232136022d2c27322e37312d2c2721302723362b3427316c212d2f">Contact Me</a>
+            <a href="mailto:contact@oneplusonecreatives.com">Contact Me</a>
         </div>
     </div>
     
@@ -88,7 +86,7 @@
         <div class="info-btn" id="info-btn" onclick="toggleCaption()">ⓘ</div>
     </div>
     
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    <script>
         // Photo data loaded from external file
         const photoData = nightPhotosData;
 
@@ -373,4 +371,11 @@
         }
 
         // Close lightbox when clicking outside the image
-        document.getElementById('lightbox').addEventLi
+        document.getElementById('lightbox').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeLightbox();
+            }
+        });
+    </script>
+</body>
+</html>

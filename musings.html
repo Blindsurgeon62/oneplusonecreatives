@@ -4,9 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Musings - One Plus One Creatives</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="homepage-features.css">
-    <script src="security.js"></script>
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <button class="font-toggle" onclick="toggleFont()" id="fontToggle">This button is a Dyslexic Font Option</button>
@@ -183,7 +181,7 @@
         
         <div class="contact">
             <p>Reach out if you have any questions or comments!</p>
-            <p><a href="/cdn-cgi/l/email-protection#13707c7d67727067537c7d76637f66607c7d7670617672677a6576603d707c7e"><span class="__cf_email__" data-cfemail="d5b6babba1b4b6a195babbb0a5b9a0a6babbb0b6a7b0b4a1bca3b0a6fbb6bab8">[email&#160;protected]</span></a></p>
+            <p><a href="mailto:contact@oneplusonecreatives.com">contact@oneplusonecreatives.com</a></p>
         </div>
         
         <div class="copyright">
@@ -191,7 +189,7 @@
         </div>
     </div>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    <script>
         function toggleEssay(essayId, summaryId) {
             const content = document.getElementById(essayId);
             const summary = document.getElementById(summaryId);
@@ -213,4 +211,13 @@
             const button = document.getElementById('fontToggle');
             
             if (body.classList.contains('dyslexic-font')) {
-                body.classList.re
+                body.classList.remove('dyslexic-font');
+                button.textContent = 'Dyslexic Font';
+            } else {
+                body.classList.add('dyslexic-font');
+                button.textContent = 'Standard Font';
+            }
+        }
+    </script>
+</body>
+</html>
