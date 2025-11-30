@@ -3,13 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>One Plus One Creatives</title>
+    <title>One Plus One Creatives - Debug Version</title>
     <link rel="stylesheet" href="styles.css">
     <script src="general-photos.js"></script>
     <script src="night-photos.js"></script>
 </head>
 <body>
     <button class="font-toggle" onclick="toggleFont()" id="fontToggle">Dyslexic? This button might help!</button>
+    
+    <!-- Debug Info Box -->
+    <div style="background: #333; color: #0f0; padding: 10px; margin: 10px; font-family: monospace; border: 1px solid #0f0;">
+        <div>DEBUG MODE - Photo System Status:</div>
+        <div id="debugStatus">Loading...</div>
+    </div>
     
     <div class="container">
         <h1>One Plus One Creatives</h1>
@@ -36,9 +42,9 @@
         <div class="content-box">
             <h2>Here's a shot I took of.. actually, I don't know which picture is there. It was randomly chosen when you opened the page! I see a harmony in this, with the photo that happens to load mirroring how I approach this website: unplanned in direction, but deliberate in effort.</h2>
             <div class="random-photo-preview" id="randomPhotoPreview" onclick="openLightboxFromPreview()">
-                <img id="previewImage" src="" alt="Random photo">
+                <img id="previewImage" src="slrphotos/logo1.jpg" alt="Random photo">
             </div>
-            <div class="photo-info" id="photoInfo"></div>
+            <div class="photo-info" id="photoInfo">Loading photo info...</div>
         </div>
         
         <div class="content-box">
@@ -62,13 +68,44 @@
     </div>
 
     <script>
+        // Debug logging
+        console.log('=== DEBUG: Script Starting ===');
+        
         // Initialize variables
         let allPhotos = [];
         let currentPhoto = null;
+        let debugStatus = document.getElementById('debugStatus');
+        
+        // Update debug status
+        function updateDebug(message) {
+            console.log('DEBUG:', message);
+            if (debugStatus) {
+                debugStatus.innerHTML += '<br>' + message;
+            }
+        }
+
+        // Check what's loaded immediately
+        updateDebug('Checking for photo data...');
+        updateDebug('generalPhotosData exists: ' + (typeof generalPhotosData !== 'undefined'));
+        updateDebug('nightPhotosData exists: ' + (typeof nightPhotosData !== 'undefined'));
 
         // Wait for all scripts to load
         window.addEventListener('DOMContentLoaded', function() {
+            updateDebug('=== DOMContentLoaded Event Fired ===');
+            
             // Check if photo data exists
+            if (typeof generalPhotosData !== 'undefined') {
+                updateDebug('General photos loaded: ' + generalPhotosData.length + ' photos');
+            } else {
+                updateDebug('ERROR: generalPhotosData is undefined');
+            }
+            
+            if (typeof nightPhotosData !== 'undefined') {
+                updateDebug('Night photos loaded: ' + nightPhotosData.length + ' photos');
+            } else {
+                updateDebug('ERROR: nightPhotosData is undefined');
+            }
+            
             if (typeof generalPhotosData !== 'undefined' && typeof nightPhotosData !== 'undefined') {
                 // Combine photo data from both galleries
                 allPhotos = [
@@ -76,40 +113,49 @@
                     ...nightPhotosData.map(p => ({...p, gallery: 'Astro/Night', galleryUrl: 'nightshots.html'}))
                 ];
                 
+                updateDebug('Combined photos: ' + allPhotos.length + ' total photos');
+                updateDebug('Attempting to show random photo...');
+                
                 // Show initial random photo
                 showRandomPhoto();
             } else {
-                console.error('Photo data not loaded. Check that general-photos.js and night-photos.js are loading correctly.');
-                // Fallback: hide the photo preview section if data doesn't load
-                document.getElementById('randomPhotoPreview').style.display = 'none';
+                updateDebug('ERROR: Cannot combine photo arrays - one or both are undefined');
+                // Show placeholder
+                document.getElementById('photoInfo').innerHTML = 'Error loading photos - check console';
             }
         });
 
         // Show a random photo
         function showRandomPhoto(event) {
+            updateDebug('showRandomPhoto called');
+            
             if (event) {
                 event.stopPropagation();
             }
             
             // Make sure we have photos to show
-            if (allPhotos.length === 0) {
-                console.error('No photos available to display');
+            if (!allPhotos || allPhotos.length === 0) {
+                updateDebug('ERROR: No photos available (array empty or undefined)');
                 return;
             }
             
             const randomIndex = Math.floor(Math.random() * allPhotos.length);
             currentPhoto = allPhotos[randomIndex];
             
+            updateDebug('Selected photo index: ' + randomIndex);
+            updateDebug('Photo thumb: ' + currentPhoto.thumb);
+            updateDebug('Photo gallery: ' + currentPhoto.gallery);
+            
             // Update preview image
             const previewImg = document.getElementById('previewImage');
             if (previewImg && currentPhoto) {
+                updateDebug('Setting image src to: ' + currentPhoto.thumb);
                 previewImg.src = currentPhoto.thumb;
                 previewImg.onerror = function() {
-                    console.error('Failed to load image:', currentPhoto.thumb);
-                    // Try another photo if this one fails
-                    if (allPhotos.length > 1) {
-                        showRandomPhoto();
-                    }
+                    updateDebug('ERROR: Failed to load image: ' + currentPhoto.thumb);
+                };
+                previewImg.onload = function() {
+                    updateDebug('SUCCESS: Image loaded: ' + currentPhoto.thumb);
                 };
             }
             
@@ -128,17 +174,18 @@
 
         // Open lightbox from preview
         function openLightboxFromPreview() {
+            updateDebug('openLightboxFromPreview called');
+            
             if (!currentPhoto) {
-                console.error('No photo selected');
+                updateDebug('ERROR: No currentPhoto set');
                 return;
             }
+            
+            updateDebug('Opening lightbox with: ' + currentPhoto.full);
             
             const lightboxImg = document.getElementById('lightbox-img');
             if (lightboxImg) {
                 lightboxImg.src = currentPhoto.full;
-                lightboxImg.onerror = function() {
-                    console.error('Failed to load full image:', currentPhoto.full);
-                };
             }
             
             document.getElementById('lightbox').style.display = 'block';
@@ -156,9 +203,7 @@
             let captionHTML = '';
             
             if (currentPhoto.caption) {
-                // Fix the caption to handle line breaks properly
-                const captionText = currentPhoto.caption.replace(/<br>/g, '<br>');
-                captionHTML += captionText + '<br><br>';
+                captionHTML += currentPhoto.caption + '<br><br>';
             }
             
             captionHTML += `<span class="gallery-source">From <a href="${currentPhoto.galleryUrl}">${currentPhoto.gallery}</a> gallery</span>`;
@@ -203,16 +248,9 @@
                 }
             }
         });
+        
+        // Final debug check
+        updateDebug('=== Script Loaded Complete ===');
     </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
