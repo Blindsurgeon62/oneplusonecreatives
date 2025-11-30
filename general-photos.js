@@ -54,7 +54,7 @@ const generalPhotosData = [
   full: 'slrphotos/valleyjoe.porta800pulled036.jpg',
   alt: 'Valley Joe Porta 800 Photo 036',
   caption: 'shot with Kodak Porta 800, shot at ISO 500 and pulled .5'
-}
+},
 
 
 // Harman Red. I need to make another section for this type I think
