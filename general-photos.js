@@ -1,4 +1,13 @@
 const generalPhotosData = [
+
+{ thumb: 'slrphotos/kodaktri400.002.jpg', full: 'slrphotos/kodaktri400.002.jpg', alt: 'Kodak Tri-X Photo 2', caption: 'kodak tri-x 400 though a Canon Rebel 2000 ' },
+{ thumb: 'slrphotos/kodaktri400.003.jpg', full: 'slrphotos/kodaktri400.003.jpg', alt: 'Kodak Tri-X Photo 3', caption: 'kodak tri-x 400 though a Canon Rebel 2000 ' },
+{ thumb: 'slrphotos/kodaktri400.004.jpg', full: 'slrphotos/kodaktri400.004.jpg', alt: 'Kodak Tri-X Photo 4', caption: 'kodak tri-x 400 though a Canon Rebel 2000 ' },
+{ thumb: 'slrphotos/kodaktri400.005.jpg', full: 'slrphotos/kodaktri400.005.jpg', alt: 'Kodak Tri-X Photo 5', caption: 'kodak tri-x 400 though a Canon Rebel 2000 ' },
+{ thumb: 'slrphotos/kodaktri400.007.jpg', full: 'slrphotos/kodaktri400.007.jpg', alt: 'Kodak Tri-X Photo 7', caption: 'kodak tri-x 400 though a Canon Rebel 2000 ' },
+{ thumb: 'slrphotos/kodaktri400.008.jpg', full: 'slrphotos/kodaktri400.008.jpg', alt: 'Kodak Tri-X Photo 8', caption: 'kodak tri-x 400 though a Canon Rebel 2000 ' },
+{ thumb: 'slrphotos/kodaktri400.011.jpg', full: 'slrphotos/kodaktri400.011.jpg', alt: 'Kodak Tri-X Photo 11', caption: 'kodak tri-x 400 though a Canon Rebel 2000 ' },
+
 // Kodakporta800pulled to 500
 { 
   thumb: 'slrphotos/valleyjoe.porta800pulled001.thumb.jpg',
@@ -35,26 +44,8 @@ const generalPhotosData = [
   caption: 'shot with Kodak Porta 800, shot at ISO 500 and pulled .5'
 },
 
-{ 
-  thumb: 'slrphotos/valleyjoe.porta800pulled034.thumb.jpg',
-  full: 'slrphotos/valleyjoe.porta800pulled034.jpg',
-  alt: 'Valley Joe Porta 800 Photo 034',
-  caption: 'shot with Kodak Porta 800, shot at ISO 500 and pulled .5'
-},
-
-{ 
-  thumb: 'slrphotos/valleyjoe.porta800pulled035.thumb.jpg',
-  full: 'slrphotos/valleyjoe.porta800pulled035.jpg',
-  alt: 'Valley Joe Porta 800 Photo 035',
-  caption: 'shot with Kodak Porta 800, shot at ISO 500 and pulled .5'
-},
-
-{ 
-  thumb: 'slrphotos/valleyjoe.porta800pulled036.thumb.jpg',
-  full: 'slrphotos/valleyjoe.porta800pulled036.jpg',
-  alt: 'Valley Joe Porta 800 Photo 036',
-  caption: 'shot with Kodak Porta 800, shot at ISO 500 and pulled .5'
-},
+{ thumb: 'slrphotos/valleyjoe.porta800pulled034.thumb.jpg',full: 'slrphotos/valleyjoe.porta800pulled034.jpg', alt: 'Valley Joe Porta 800 Photo 034', caption: 'shot with Kodak Porta 800, shot at ISO 500 and pulled .5'},
+{ thumb: 'slrphotos/valleyjoe.porta800pulled035.thumb.jpg',full: 'slrphotos/valleyjoe.porta800pulled035.jpg',alt: 'Valley Joe Porta 800 Photo 035', caption: 'shot with Kodak Porta 800, shot at ISO 500 and pulled .5'},{thumb: 'slrphotos/valleyjoe.porta800pulled036.thumb.jpg', full: 'slrphotos/valleyjoe.porta800pulled036.jpg', alt: 'Valley Joe Porta 800 Photo 036',caption: 'shot with Kodak Porta 800, shot at ISO 500 and pulled .5'},
 
 
 // Harman Red. I need to make another section for this type I think
