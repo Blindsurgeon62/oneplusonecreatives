@@ -1,5 +1,22 @@
 const nightPhotosData = [
-
+//Bunny Goat Farm first night out
+{ thumb: 'slrphotos/bunnygoat001.thumb.jpg', full: 'slrphotos/bunnygoat001.jpg', alt: 'Kodacolor 100 Photo 1', caption: 'Kodacolor 100' },
+{ thumb: 'slrphotos/bunnygoat002.thumb.jpg', full: 'slrphotos/bunnygoat002.jpg', alt: 'Kodacolor 100 Photo 2', caption: 'Kodacolor 100' },
+{ thumb: 'slrphotos/bunnygoat003.thumb.jpg', full: 'slrphotos/bunnygoat003.jpg', alt: 'Kodacolor 100 Photo 3', caption: 'Kodacolor 100' },
+{ thumb: 'slrphotos/bunnygoat004.thumb.jpg', full: 'slrphotos/bunnygoat004.jpg', alt: 'Kodacolor 100 Photo 4', caption: 'Kodacolor 100' },
+{ thumb: 'slrphotos/bunnygoat005.thumb.jpg', full: 'slrphotos/bunnygoat005.jpg', alt: 'Kodacolor 100 Photo 5', caption: 'Kodacolor 100' },
+{ thumb: 'slrphotos/bunnygoat006.thumb.jpg', full: 'slrphotos/bunnygoat006.jpg', alt: 'Kodacolor 100 Photo 6', caption: 'Kodacolor 100' },
+{ thumb: 'slrphotos/bunnygoat007.thumb.jpg', full: 'slrphotos/bunnygoat007.jpg', alt: 'Kodacolor 100 Photo 7', caption: 'Kodacolor 100' },
+{ thumb: 'slrphotos/bunnygoat008.thumb.jpg', full: 'slrphotos/bunnygoat008.jpg', alt: 'Kodacolor 100 Photo 8', caption: 'Kodacolor 100' },
+{ thumb: 'slrphotos/bunnygoat009.thumb.jpg', full: 'slrphotos/bunnygoat009.jpg', alt: 'Kodacolor 100 Photo 9', caption: 'Kodacolor 100' },
+{ thumb: 'slrphotos/bunnygoat010.thumb.jpg', full: 'slrphotos/bunnygoat010.jpg', alt: 'Kodacolor 100 Photo 10', caption: 'Kodacolor 100' },
+{ thumb: 'slrphotos/bunnygoat016.thumb.jpg', full: 'slrphotos/bunnygoat016.jpg', alt: 'Kodacolor 100 Photo 16', caption: 'Kodacolor 100' },
+{ thumb: 'slrphotos/bunnygoat017.thumb.jpg', full: 'slrphotos/bunnygoat017.jpg', alt: 'Kodacolor 100 Photo 17', caption: 'Kodacolor 100' },
+{ thumb: 'slrphotos/bunnygoat018.thumb.jpg', full: 'slrphotos/bunnygoat018.jpg', alt: 'Kodacolor 100 Photo 18', caption: 'Kodacolor 100' },
+{ thumb: 'slrphotos/bunnygoat019.thumb.jpg', full: 'slrphotos/bunnygoat019.jpg', alt: 'Kodacolor 100 Photo 19', caption: 'Kodacolor 100' },
+{ thumb: 'slrphotos/bunnygoat020.thumb.jpg', full: 'slrphotos/bunnygoat020.jpg', alt: 'Kodacolor 100 Photo 20', caption: 'Kodacolor 100' },
+{ thumb: 'slrphotos/bunnygoat021.thumb.jpg', full: 'slrphotos/bunnygoat021.jpg', alt: 'Kodacolor 100 Photo 21', caption: 'Kodacolor 100' },
+{ thumb: 'slrphotos/bunnygoat022.thumb.jpg', full: 'slrphotos/bunnygoat022.jpg', alt: 'Kodacolor 100 Photo 22', caption: 'Kodacolor 100' },
 //Lomography Turquoise
 { thumb: 'slrphotos/lomogturqno1013.thumb.jpg', full: 'slrphotos/lomogturqno1013.jpg', alt: 'Lomography Turquoise Photo 13', caption: 'Shot with Lomography Turquoise at 250 ISO though my Canon Rebel 2000' },
 { thumb: 'slrphotos/lomogturqno1014.thumb.jpg', full: 'slrphotos/lomogturqno1014.jpg', alt: 'Lomography Turquoise Photo 14', caption: 'Shot with Lomography Turquoise at 250 ISO though my Canon Rebel 2000' },
