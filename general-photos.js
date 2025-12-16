@@ -1,6 +1,6 @@
 const generalPhotosData = [
 
-
+{ thumb: 'slrphotos/ghost.thumb.jpg', full: 'slrphotos/ghost.jpg', alt: 'ghost', caption: 'I had just recieved my 50mm Lens! Fuji 400' },
 //Lomography Turquoise
 { thumb: 'slrphotos/lomogturqno1001.thumb.jpg', full: 'slrphotos/lomogturqno1001.jpg', alt: 'Lomography Turquoise Photo 1', caption: 'Shot with Lomography Turquoise at 250 ISO though my Canon Rebel 2000' },
 { thumb: 'slrphotos/lomogturqno1002.thumb.jpg', full: 'slrphotos/lomogturqno1002.jpg', alt: 'Lomography Turquoise Photo 2', caption: 'Shot with Lomography Turquoise at 250 ISO though my Canon Rebel 2000' },
