@@ -1,4 +1,25 @@
 const nightPhotosData = [
+//Bunnygoat Geminid shower and others 
+{ thumb: 'slrphotos/Porta400Geminid-1.thumb.jpg', full: 'slrphotos/Porta400Geminid-1.jpg', alt: 'Porta 400 Geminid Photo', caption: 'Shot with Porta 400' },
+{ thumb: 'slrphotos/Porta400Geminid (1 of 15).thumb.jpg', full: 'slrphotos/Porta400Geminid (1 of 15).jpg', alt: 'Porta 400 Geminid Photo 1', caption: 'Shot with Porta 400' },
+{ thumb: 'slrphotos/Porta400Geminid (3 of 15).thumb.jpg', full: 'slrphotos/Porta400Geminid (3 of 15).jpg', alt: 'Porta 400 Geminid Photo 3', caption: 'Shot with Porta 400' },
+{ thumb: 'slrphotos/Porta400Geminid (2 of 15).thumb.jpg', full: 'slrphotos/Porta400Geminid (2 of 15).jpg', alt: 'Porta 400 Geminid Photo 2', caption: 'Shot with Porta 400' },
+{ thumb: 'slrphotos/Porta400Geminid (4 of 15).thumb.jpg', full: 'slrphotos/Porta400Geminid (4 of 15).jpg', alt: 'Porta 400 Geminid Photo 4', caption: 'Shot with Porta 400' },
+{ thumb: 'slrphotos/Porta400Geminid (5 of 15).thumb.jpg', full: 'slrphotos/Porta400Geminid (5 of 15).jpg', alt: 'Porta 400 Geminid Photo 5', caption: 'Shot with Porta 400' },
+{ thumb: 'slrphotos/Porta400Geminid (6 of 15).thumb.jpg', full: 'slrphotos/Porta400Geminid (6 of 15).jpg', alt: 'Porta 400 Geminid Photo 6', caption: 'Shot with Porta 400' },
+{ thumb: 'slrphotos/Porta400Geminid (8 of 15).thumb.jpg', full: 'slrphotos/Porta400Geminid (8 of 15).jpg', alt: 'Porta 400 Geminid Photo 8', caption: 'Shot with Porta 400' },
+{ thumb: 'slrphotos/Porta400Geminid (9 of 15).thumb.jpg', full: 'slrphotos/Porta400Geminid (9 of 15).jpg', alt: 'Porta 400 Geminid Photo 9', caption: 'Shot with Porta 400' },
+{ thumb: 'slrphotos/Porta400Geminid (10 of 15).thumb.jpg', full: 'slrphotos/Porta400Geminid (10 of 15).jpg', alt: 'Porta 400 Geminid Photo 10', caption: 'Shot with Porta 400' },
+{ thumb: 'slrphotos/Porta400Geminid (13 of 15).thumb.jpg', full: 'slrphotos/Porta400Geminid (13 of 15).jpg', alt: 'Porta 400 Geminid Photo 13', caption: 'Shot with Porta 400' },
+{ thumb: 'slrphotos/Porta400Geminid (14 of 15).thumb.jpg', full: 'slrphotos/Porta400Geminid (14 of 15).jpg', alt: 'Porta 400 Geminid Photo 14', caption: 'Shot with Porta 400' },
+{ thumb: 'slrphotos/Porta400Geminid (15 of 15).thumb.jpg', full: 'slrphotos/Porta400Geminid (15 of 15).jpg', alt: 'Porta 400 Geminid Photo 15', caption: 'Shot with Porta 400' },
+{ thumb: 'slrphotos/kodakgold200night-1.thumb.jpg', full: 'slrphotos/kodakgold200night-1.jpg', alt: 'Kodak Gold 200 Night Photo 1', caption: 'Shot with Kodak Gold 200' },
+{ thumb: 'slrphotos/kodakgold200night-2.thumb.jpg', full: 'slrphotos/kodakgold200night-2.jpg', alt: 'Kodak Gold 200 Night Photo 2', caption: 'Shot with Kodak Gold 200' },
+{ thumb: 'slrphotos/kodakgold200night-3.thumb.jpg', full: 'slrphotos/kodakgold200night-3.jpg', alt: 'Kodak Gold 200 Night Photo 3', caption: 'Shot with Kodak Gold 200' },
+{ thumb: 'slrphotos/kodakgold200night-4.thumb.jpg', full: 'slrphotos/kodakgold200night-4.jpg', alt: 'Kodak Gold 200 Night Photo 4', caption: 'Shot with Kodak Gold 200' },
+{ thumb: 'slrphotos/Fuji400nov25-1.thumb.jpg', full: 'slrphotos/Fuji400nov25-1.jpg', alt: 'Fuji 400 Nov 25 Photo 1', caption: 'Shot with Fuji 400' },
+{ thumb: 'slrphotos/Fuji400nov25-2.thumb.jpg', full: 'slrphotos/Fuji400nov25-2.jpg', alt: 'Fuji 400 Nov 25 Photo 2', caption: 'Shot with Fuji 400' },
+{ thumb: 'slrphotos/Fuji400nov25-3.thumb.jpg', full: 'slrphotos/Fuji400nov25-3.jpg', alt: 'Fuji 400 Nov 25 Photo 3', caption: 'Shot with Fuji 400' },Claude is AI and can make mistakes. Please double-check responses.
 //Bunny Goat Farm first night out
 { thumb: 'slrphotos/bunnygoat001.thumb.jpg', full: 'slrphotos/bunnygoat001.jpg', alt: 'Kodacolor 100 Photo 1', caption: 'Kodacolor 100' },
 { thumb: 'slrphotos/bunnygoat002.thumb.jpg', full: 'slrphotos/bunnygoat002.jpg', alt: 'Kodacolor 100 Photo 2', caption: 'Kodacolor 100' },
