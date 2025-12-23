@@ -19,7 +19,7 @@ const nightPhotosData = [
 { thumb: 'slrphotos/kodakgold200night-4.thumb.jpg', full: 'slrphotos/kodakgold200night-4.jpg', alt: 'Kodak Gold 200 Night Photo 4', caption: 'Shot with Kodak Gold 200' },
 { thumb: 'slrphotos/Fuji400nov25-1.thumb.jpg', full: 'slrphotos/Fuji400nov25-1.jpg', alt: 'Fuji 400 Nov 25 Photo 1', caption: 'Shot with Fuji 400' },
 { thumb: 'slrphotos/Fuji400nov25-2.thumb.jpg', full: 'slrphotos/Fuji400nov25-2.jpg', alt: 'Fuji 400 Nov 25 Photo 2', caption: 'Shot with Fuji 400' },
-{ thumb: 'slrphotos/Fuji400nov25-3.thumb.jpg', full: 'slrphotos/Fuji400nov25-3.jpg', alt: 'Fuji 400 Nov 25 Photo 3', caption: 'Shot with Fuji 400' },Claude is AI and can make mistakes. Please double-check responses.
+{ thumb: 'slrphotos/Fuji400nov25-3.thumb.jpg', full: 'slrphotos/Fuji400nov25-3.jpg', alt: 'Fuji 400 Nov 25 Photo 3', caption: 'Shot with Fuji 400' },
 //Bunny Goat Farm first night out
 { thumb: 'slrphotos/bunnygoat001.thumb.jpg', full: 'slrphotos/bunnygoat001.jpg', alt: 'Kodacolor 100 Photo 1', caption: 'Kodacolor 100' },
 { thumb: 'slrphotos/bunnygoat002.thumb.jpg', full: 'slrphotos/bunnygoat002.jpg', alt: 'Kodacolor 100 Photo 2', caption: 'Kodacolor 100' },

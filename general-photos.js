@@ -6,7 +6,7 @@ const generalPhotosData = [
 { thumb: 'slrphotos/bunnygoat001.thumb.jpg', full: 'slrphotos/bunnygoat001.jpg', alt: 'Bunny Goat Photo 1', caption: '' },
 { thumb: 'slrphotos/Porta400Geminid (12 of 15).thumb.jpg', full: 'slrphotos/Porta400Geminid (12 of 15).jpg', alt: 'Porta 400 Geminid Photo 12', caption: 'Shot with Porta 400' },
 { thumb: 'slrphotos/Porta400Geminid (7 of 15).thumb.jpg', full: 'slrphotos/Porta400Geminid (7 of 15).jpg', alt: 'Porta 400 Geminid Photo 7', caption: 'Shot with Porta 400' },
-{ thumb: 'slrphotos/Porta400Geminid (11 of 15).thumb.jpg', full: 'slrphotos/Porta400Geminid (11 of 15).jpg', alt: 'Porta 400 Geminid Photo 11', caption: 'Shot with Porta 400' },now (for another page) do the same for Porta400Geminid-1.jpg 
+{ thumb: 'slrphotos/Porta400Geminid (11 of 15).thumb.jpg', full: 'slrphotos/Porta400Geminid (11 of 15).jpg', alt: 'Porta 400 Geminid Photo 11', caption: 'Shot with Porta 400' },
 
 { thumb: 'slrphotos/ghost.thumb.jpg', full: 'slrphotos/ghost.jpg', alt: 'ghost', caption: 'I had just recieved my 50mm Lens! Fuji 400' },
 //Lomography Turquoise
