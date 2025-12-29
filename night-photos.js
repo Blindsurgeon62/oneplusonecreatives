@@ -1,4 +1,25 @@
 const nightPhotosData = [
+//Fuji 400
+//
+{ thumb: 'slrphotos/fuji400nov25-1.thumb.jpg', full: 'slrphotos/fuji400nov25-1.jpg', alt: 'Fuji 400 Photo 1', caption: 'Shot on Fuji 400 with my Canon Rebel 2000' },
+{ thumb: 'slrphotos/fuji400nov25-2.thumb.jpg', full: 'slrphotos/fuji400nov25-2.jpg', alt: 'Fuji 400 Photo 2', caption: 'Shot on Fuji 400 with my Canon Rebel 2000' },
+{ thumb: 'slrphotos/fuji400nov25-3.thumb.jpg', full: 'slrphotos/fuji400nov25-3.jpg', alt: 'Fuji 400 Photo 3', caption: 'Shot on Fuji 400 with my Canon Rebel 2000' },
+{ thumb: 'slrphotos/fuji400nov25-4.thumb.jpg', full: 'slrphotos/fuji400nov25-4.jpg', alt: 'Fuji 400 Photo 4', caption: 'Shot on Fuji 400 with my Canon Rebel 2000' },
+{ thumb: 'slrphotos/fuji400nov25-5.thumb.jpg', full: 'slrphotos/fuji400nov25-5.jpg', alt: 'Fuji 400 Photo 5', caption: 'Shot on Fuji 400 with my Canon Rebel 2000' },
+{ thumb: 'slrphotos/fuji400nov25-6.thumb.jpg', full: 'slrphotos/fuji400nov25-6.jpg', alt: 'Fuji 400 Photo 6', caption: 'Shot on Fuji 400 with my Canon Rebel 2000' },
+{ thumb: 'slrphotos/fuji400nov25-7.thumb.jpg', full: 'slrphotos/fuji400nov25-7.jpg', alt: 'Fuji 400 Photo 7', caption: 'Shot on Fuji 400 with my Canon Rebel 2000' },
+{ thumb: 'slrphotos/fuji400nov25-8.thumb.jpg', full: 'slrphotos/fuji400nov25-8.jpg', alt: 'Fuji 400 Photo 8', caption: 'Shot on Fuji 400 with my Canon Rebel 2000' },
+{ thumb: 'slrphotos/fuji400nov25-9.thumb.jpg', full: 'slrphotos/fuji400nov25-9.jpg', alt: 'Fuji 400 Photo 9', caption: 'Shot on Fuji 400 with my Canon Rebel 2000' },
+{ thumb: 'slrphotos/fuji400nov25-10.thumb.jpg', full: 'slrphotos/fuji400nov25-10.jpg', alt: 'Fuji 400 Photo 10', caption: 'Shot on Fuji 400 with my Canon Rebel 2000' },
+{ thumb: 'slrphotos/fuji400nov25-11.thumb.jpg', full: 'slrphotos/fuji400nov25-11.jpg', alt: 'Fuji 400 Photo 11', caption: 'Shot on Fuji 400 with my Canon Rebel 2000' },
+{ thumb: 'slrphotos/fuji400nov25-12.thumb.jpg', full: 'slrphotos/fuji400nov25-12.jpg', alt: 'Fuji 400 Photo 12', caption: 'Shot on Fuji 400 with my Canon Rebel 2000' },
+{ thumb: 'slrphotos/fuji400nov25-13.thumb.jpg', full: 'slrphotos/fuji400nov25-13.jpg', alt: 'Fuji 400 Photo 13', caption: 'Shot on Fuji 400 with my Canon Rebel 2000' },
+{ thumb: 'slrphotos/fuji400nov25-14.thumb.jpg', full: 'slrphotos/fuji400nov25-14.jpg', alt: 'Fuji 400 Photo 14', caption: 'Shot on Fuji 400 with my Canon Rebel 2000' },
+{ thumb: 'slrphotos/fuji400nov25-15.thumb.jpg', full: 'slrphotos/fuji400nov25-15.jpg', alt: 'Fuji 400 Photo 15', caption: 'Shot on Fuji 400 with my Canon Rebel 2000' },
+{ thumb: 'slrphotos/fuji400nov25-16.thumb.jpg', full: 'slrphotos/fuji400nov25-16.jpg', alt: 'Fuji 400 Photo 16', caption: 'Shot on Fuji 400 with my Canon Rebel 2000' },
+{ thumb: 'slrphotos/fuji400nov25-17.thumb.jpg', full: 'slrphotos/fuji400nov25-17.jpg', alt: 'Fuji 400 Photo 17', caption: 'Shot on Fuji 400 with my Canon Rebel 2000' },
+{ thumb: 'slrphotos/fuji400nov25-18.thumb.jpg', full: 'slrphotos/fuji400nov25-18.jpg', alt: 'Fuji 400 Photo 18', caption: 'Shot on Fuji 400 with my Canon Rebel 2000' },
+
 //Bunnygoat Geminid shower and others 
 { thumb: 'slrphotos/Porta400Geminid-1.thumb.jpg', full: 'slrphotos/Porta400Geminid-1.jpg', alt: 'Porta 400 Geminid Photo', caption: 'Shot with Porta 400' },
 { thumb: 'slrphotos/Porta400Geminid (1 of 15).thumb.jpg', full: 'slrphotos/Porta400Geminid (1 of 15).jpg', alt: 'Porta 400 Geminid Photo 1', caption: 'Shot with Porta 400' },

@@ -1,5 +1,14 @@
 const generalPhotosData = [
 
+// Kentmere400BW
+{ thumb: 'slrphotos/kentmerenov25border001.thumb.jpg', full: 'slrphotos/kentmerenov25border001.jpg', alt: 'Kentmere Photo 1', caption: 'Shot on Kentmere400 with my Canon Rebel 2000' },
+{ thumb: 'slrphotos/kentmerenov25border002.thumb.jpg', full: 'slrphotos/kentmerenov25border002.jpg', alt: 'Kentmere Photo 2', caption: 'Shot on Kentmere400 with my Canon Rebel 2000' },
+{ thumb: 'slrphotos/kentmerenov25border003.thumb.jpg', full: 'slrphotos/kentmerenov25border003.jpg', alt: 'Kentmere Photo 3', caption: 'Shot on Kentmere400 with my Canon Rebel 2000' },
+{ thumb: 'slrphotos/kentmerenov25border004.thumb.jpg', full: 'slrphotos/kentmerenov25border004.jpg', alt: 'Kentmere Photo 4', caption: 'Shot on Kentmere400 with my Canon Rebel 2000' },
+{ thumb: 'slrphotos/kentmerenov25border005.thumb.jpg', full: 'slrphotos/kentmerenov25border005.jpg', alt: 'Kentmere Photo 5', caption: 'Shot on Kentmere400 with my Canon Rebel 2000' },
+{ thumb: 'slrphotos/kentmerenov25border006.thumb.jpg', full: 'slrphotos/kentmerenov25border006.jpg', alt: 'Kentmere Photo 6', caption: 'Shot on Kentmere400 with my Canon Rebel 2000' },
+{ thumb: 'slrphotos/kentmerenov25border007.thumb.jpg', full: 'slrphotos/kentmerenov25border007.jpg', alt: 'Kentmere Photo 7', caption: 'Shot on Kentmere400 with my Canon Rebel 2000' },
+{ thumb: 'slrphotos/kentmerenov25border008.thumb.jpg', full: 'slrphotos/kentmerenov25border008.jpg', alt: 'Kentmere Photo 8', caption: 'Shot on Kentmere400 with my Canon Rebel 2000' },
 // Novermber 25
 { thumb: 'slrphotos/chair.thumb.jpg', full: 'slrphotos/chair.jpg', alt: 'Chair Photo', caption: 'I was playing with photoshop on this one' },
 { thumb: 'slrphotos/duck.thumb.jpg', full: 'slrphotos/duck.jpg', alt: 'Duck Photo', caption: '' },
